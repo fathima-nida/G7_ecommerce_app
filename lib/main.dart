@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
 import 'package:g7_comerce_app/features/delivery/screens/delivery_dashboard.dart';
 
 void main() {
@@ -11,9 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
      
-      home:DeliveryDashboard(),
+      home:SplashScreen(),
     );
   }
 }
