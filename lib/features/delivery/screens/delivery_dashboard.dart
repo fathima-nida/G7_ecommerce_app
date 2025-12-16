@@ -12,7 +12,15 @@ class DeliveryDashboard extends StatelessWidget {
 
       body: Column(
         children: [
-          Container()
+          Container(
+            child: Column(
+              children: [
+                Row(
+                  children: [],
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
