@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:g7_comerce_app/features/delivery.dart/screens/dashboard.dart';
+import 'package:g7_comerce_app/features/delivery.dart/screens/delivery_dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
      
-      home:Dashboard(),
+      home:DeliveryDashboard(),
     );
   }
 }
