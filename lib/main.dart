@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:g7_comerce_app/features/delivery.dart/screens/delivery_dashboard.dart';
+import 'package:g7_comerce_app/features/delivery/screens/delivery_dashboard.dart';
 
 void main() {
   runApp(const MyApp());
