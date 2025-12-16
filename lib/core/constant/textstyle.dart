@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:g7_comerce_app/core/constant/app_colors.dart';
 
 class Textstyle {
-    static TextStyle g7MediumTextstyle(
-    BuildContext context, {
-    Color? fontColor,
-    double? fontSize,
-    FontWeight? fontWeight,
-  }) => TextStyle(
-    // fontSize: fontSize ?? 16.sp,
-    // fontFamily: 'Inter',
-    // color: fontColor ?? AppColors.white,
-    // fontWeight: fontWeight ?? FontWeight.w400,
-  );
+   
 }
