@@ -7,7 +7,13 @@ class DeliveryDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
+        title: Text('Delivery Dashboard'),
+      ),
+
+      body: Column(
+        children: [
+          Container()
+        ],
       ),
     );
   }
