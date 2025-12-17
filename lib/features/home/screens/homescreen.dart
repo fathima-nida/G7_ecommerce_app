@@ -193,18 +193,18 @@ class _HomescreenState extends State<Homescreen> {
                   style: AppTextstyle.large(fontSize: 16),
                 ),
               ),
-              GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount:3,
-                ),itemCount:widget.imagelist.length,
-                itemBuilder: (context,index){
-                 return Container(
-                 
-                  height: 186,
-                  width: 128,
-                 );
-                },
-              ),
+              // GridView.builder(
+              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //     crossAxisCount:3,
+              //   ),itemCount:widget.imagelist.length,
+              //   itemBuilder: (context,index){
+              //    return Container(
+              //    child: Icon(Icons.favorite_border_outlined),
+              //     height: 186,
+              //     width: 128,
+              //    );
+              //   },
+              // ),
             ],
           ),
         ),
