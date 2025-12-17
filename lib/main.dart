@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
-import 'package:g7_comerce_app/features/delivery/screens/delivery_dashboard.dart';
+import 'package:g7_comerce_app/features/home/screens/homescreen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
      
-      home:SplashScreen(),
+      home: Homescreen(),
     );
   }
 }
