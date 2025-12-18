@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
-import 'package:g7_comerce_app/features/dashboard/screens/all_product.dart';
 import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
 
 void main() {

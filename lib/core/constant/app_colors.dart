@@ -13,4 +13,8 @@ class AppColors {
   static const skyBlue = Color(0xff1A84DC);
   static const red = Color(0xffC41E1E);
   static const green = Color(0xff14AE5C);
+  static const blueWhite = Color(0xffF1F1F1);
+
+  static const warmgrey = Color(0xffDADBE3);
+  static const lytwhite = Color(0xffF7F7F7);
 }
