@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:g7_comerce_app/features/category/screens/chargerlist.dart';
+import 'package:g7_comerce_app/features/home/screens/homescreen.dart';
+
 import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
 import 'package:g7_comerce_app/features/category/screens/categorypage.dart';
 import 'package:g7_comerce_app/features/delivery/screens/delivery_dashboard.dart';
@@ -16,7 +19,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
      
-      home:CategoryPage(),
+      home: Chargerlistscreen(),
+
     );
   }
 }
