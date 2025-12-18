@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
 
-      home: BottomNavigationWidget(currentIndex: 0,),
+      home: BottomNavigationWidget(),
     );
   }
 }
