@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:g7_comerce_app/core/utils/bottom_navigation.dart';
 import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
 
-      home: CustomerDashboard(),
+      home: BottomNavigationWidget(currentIndex: 0,),
     );
   }
 }
