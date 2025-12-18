@@ -7,12 +7,20 @@ class Homescreen extends StatefulWidget {
    Homescreen({super.key});
   final List<String> imagelist = [
   AssetResources.headset,
-  AssetResources.mobilestand,
+  AssetResources.backcover,
   AssetResources.screenguard,
+  AssetResources.headset,
+  AssetResources.backcover,
+  AssetResources.screenguard,
+  
+  
 ];
 final List<String> nameList = [
-  "Headset"
-      "Mobile Stand"
+  "Headset",
+      "Back Cover",
+      "Screenfuard",
+      "Headset",
+      "Back Cover",
       "Screenfuard",
 ];
 
@@ -23,9 +31,12 @@ final List<String> nameList = [
 
 
 class _HomescreenState extends State<Homescreen> {
+   
   
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -116,11 +127,11 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         CircleAvatar(
                           backgroundColor: AppColors.warmgrey,
-                          backgroundImage: AssetImage(AssetResources.backcover),
+                          backgroundImage: AssetImage(AssetResources.mobilestand),
                           radius: 35,
                         ),
                         Text(
-                          "Backcovers",
+                          "Mobile Stands",
                           style: AppTextstyle.small(
                             fontWeight: FontWeight.w500,
                           ),
@@ -149,12 +160,12 @@ class _HomescreenState extends State<Homescreen> {
                         CircleAvatar(
                           backgroundColor: AppColors.warmgrey,
                           backgroundImage: AssetImage(
-                            AssetResources.mobilestand,
+                            AssetResources.backcover,
                           ),
                           radius: 35,
                         ),
                         Text(
-                          "Mobile Stands",
+                          "Back Cover",
                           style: AppTextstyle.small(
                             fontWeight: FontWeight.w500,
                           ),
@@ -190,21 +201,95 @@ class _HomescreenState extends State<Homescreen> {
                 padding: const EdgeInsets.only(right: 270),
                 child: Text(
                   "New Arrival",
-                  style: AppTextstyle.large(fontSize: 16),
+                  style: AppTextstyle.large(fontSize: 18),
                 ),
               ),
-              // GridView.builder(
-              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //     crossAxisCount:3,
-              //   ),itemCount:widget.imagelist.length,
-              //   itemBuilder: (context,index){
-              //    return Container(
-              //    child: Icon(Icons.favorite_border_outlined),
-              //     height: 186,
-              //     width: 128,
-              //    );
-              //   },
-              // ),
+              SizedBox(
+                width: width,
+                height: height/2.5,
+                child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount:3,
+                    mainAxisSpacing: 1,
+                    crossAxisSpacing: 2
+                  ),itemCount:widget.imagelist.length,
+                  itemBuilder: (context,index){
+                   return Container(
+                    
+                    color: AppColors.warmwhite,
+                    height: 186,
+                    width: 128,
+                   child: Column(
+                     children: [
+                       Align(
+                        alignment: AlignmentGeometry.topRight,
+                        child: Icon(Icons.favorite_border_outlined)),
+                        Image.asset(widget.imagelist[index]),
+                        Text(widget.nameList[index]),
+                        Text("₹ 25,000")
+                     ],
+                   ),
+                    
+                   );
+                  },
+                ),
+              ),
+              SizedBox(height: 5,),
+              Image.asset(AssetResources.ad2),
+              SizedBox(height: 15,),
+                Padding(
+                padding: const EdgeInsets.only(right: 270),
+                child: Text(
+                  "Offer Zone",
+                  style: AppTextstyle.large(fontSize: 18),
+                ),
+              ),
+               SizedBox(
+                width: width,
+                height: height/2.5,
+                child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount:3,
+                    mainAxisSpacing: 1,
+                    crossAxisSpacing: 2
+                  ),itemCount:widget.imagelist.length,
+                  itemBuilder: (context,index){
+                   return Container(
+                    
+                    color: AppColors.warmwhite,
+                    height: 186,
+                    width: 128,
+                   child: Column(
+                     children: [
+                       Align(
+                        alignment: AlignmentGeometry.topRight,
+                        child: Icon(Icons.favorite_border_outlined)),
+                        Expanded(child: Image.asset(widget.imagelist[index])),
+                        Text(widget.nameList[index]),
+                        Text("₹ 25,000",style: AppTextstyle.medium(fontWeight: FontWeight.w700),),
+                       Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: Container(
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(6),color: AppColors.lytwhite),
+                         
+                          child: Row(
+                            children: [
+                              Icon(Icons.shopping_bag_outlined,color: AppColors.green,size: 15,),
+                              SizedBox(width: 5,),
+                              Text("Add Cart",style: AppTextstyle.small(fontColor: AppColors.green),),
+                            ],
+                          ),
+                         ),
+                       )
+                     ],
+                   ),
+                    
+                   );
+                  },
+                ),
+              ),
             ],
           ),
         ),
