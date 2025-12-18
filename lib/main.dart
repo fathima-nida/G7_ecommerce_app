@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/features/auth/screens/loginscreen.dart';
 import 'package:g7_comerce_app/features/home/screens/homescreen.dart';
+import 'package:g7_comerce_app/features/home/screens/widgets/carousal.dart';
 
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
      
-      home:Homescreen(),
+      home:Homescreen()
     );
   }
 }
