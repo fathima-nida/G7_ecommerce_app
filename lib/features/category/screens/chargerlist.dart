@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
+import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
 
 class Chargerlistscreen extends StatelessWidget {
    Chargerlistscreen({super.key});
    final List<Map<String, dynamic>> items=[
-    {"image":"asset/categories/Ellipse 10.png"},
-    {"image":"asset/categories/Frame 9 (1).png" },
-    {"image":"asset/categories/Frame 9 (2).png"},
-    { "image":"asset/categories/Frame 9 (3).png"},
-    {"image":"asset/categories/Frame 9 (4).png"},
-    {"image":"asset/categories/Frame 9 (5).png"},
-    {"image":"asset/categories/Frame 40.png"},
+    {"image":AssetResources.charger1},
+    {"image":AssetResources.charger2},
+    {"image":AssetResources.charger3},
+    { "image":AssetResources.charger4},
+    {"image":AssetResources.charger5},
+    {"image":AssetResources.charger6},
+    {"image":AssetResources.charger7},
    ];
   @override
   Widget build(BuildContext context) {

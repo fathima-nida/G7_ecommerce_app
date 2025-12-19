@@ -16,23 +16,23 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 80),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.all(8),
               child: Image.asset(AssetResources.logo, height: 77),
             ),
             SizedBox(height: 30),
             Text("Sign in to your Account", style: AppTextstyle.large()),
             Text(
-              "Enter your email and password to login",
+              "Enter your mobile number to login",
               style: AppTextstyle.small(fontColor: AppColors.grey),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 30),
             Text(
-              "Email address",
+              "Mobile number",
               style: AppTextstyle.small(fontColor: AppColors.grey),
             ),
             SizedBox(height: 10),
@@ -43,50 +43,31 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(6),
                 ),
                 label: Text(
-                  "Enter your email",
+                  "Enter your Mobile number",
                   style: AppTextstyle.small(fontColor: AppColors.grey),
                 ),
-                prefixIcon: Icon(Icons.email_outlined, color: AppColors.pink),
+                prefixIcon: Icon(Icons.phone, size: 27,color: AppColors.pink),
               ),
             ),
-            SizedBox(height: 10),
-            Text(
-              "Password",
-              style: AppTextstyle.small(fontColor: AppColors.grey),
-            ),
-            SizedBox(height: 10),
-            TextFormField(
-              controller: TextEditingController(),
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                label: Text("Enter your pasword",style: AppTextstyle.small(fontColor: AppColors.grey),),
-                prefixIcon: Icon(Icons.lock_outline, color: AppColors.pink),
-                suffixIcon:showPassword?
-                 Icon(Icons.visibility_off_outlined):
-                 Icon(Icons.visibility_outlined)
-              ),
-            ),
+            
 
-            Padding(
-              padding: const EdgeInsets.only(left: 210),
-              child: Text(
-                "Forgot Your Password?",
-                
-                style: AppTextstyle.small(fontColor: AppColors.pink,fontWeight: FontWeight.w500),
-              ),
-            ),SizedBox(height: 80,),
+            SizedBox(height: 70,),
            
        Center(
-         child: FloatingActionButton(onPressed: (){},
-       
-         backgroundColor: AppColors.pink,
-         child: Text("Login",style: AppTextstyle.medium(fontColor: AppColors.white),),
+        child: ElevatedButton(
+         style:ElevatedButton.styleFrom(
+          backgroundColor: AppColors.pink,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(10)
+        )
          ),
+          onPressed: (){}, child: Container(
+            width: 274,
+            height: 51,
+            child: Center(child: Text("Login",style: AppTextstyle.medium(fontColor: AppColors.white),)))),
+         
        ),
-       SizedBox(height: 30,),
-       Center(child: Text("Salesman Account Login?",style: AppTextstyle.small(fontColor: AppColors.grey),))
+       
           ],
         ),
       ),
