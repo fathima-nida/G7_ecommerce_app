@@ -262,11 +262,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     ),
   ];
 
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-  }
+  
 
   @override
   Widget build(BuildContext context) {

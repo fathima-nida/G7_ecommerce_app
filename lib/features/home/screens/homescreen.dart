@@ -291,7 +291,7 @@ class _HomescreenState extends State<Homescreen> {
                   itemBuilder: (context, index) {
                     return Container(
                       color: AppColors.warmwhite,
-                      height: 186,
+                      // height: 180,
                       width: 128,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -303,13 +303,14 @@ class _HomescreenState extends State<Homescreen> {
                           Image.asset(widget.imagelist[index]),
                           Text(widget.nameList[index]),
                           Text(
-                            "₹ 25,000",
+                            "₹ 26,000",
                             style: AppTextstyle.medium(
                               fontWeight: FontWeight.w700,
                             ),
                           ),
+                          
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(6),
