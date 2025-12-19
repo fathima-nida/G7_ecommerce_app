@@ -21,7 +21,7 @@ class AssetResources {
   static const screenguard="assets/home/screen.png";
   static const mobilestand="assets/home/mobilestand.png";
   static const profile="assets/home/profile.png";
-
+   //nasla
   static const charger1="asset/categories/charger 1.png";
   static const charger2="asset/categories/charger2.png";
   static const charger3= "asset/categories/charger3.png";
@@ -29,4 +29,10 @@ class AssetResources {
   static const charger5="asset/categories/charger5.png";
   static const charger6="asset/categories/charger6.png";
   static const charger7= "asset/categories/charger7.png";
+  //nasla
+  static const  backcoverX="asset/categories/back cover.png";
+  static const headphone="asset/categories/headset.png";
+  static const chargerr="asset/categories/charger.png";
+  static const  stands="asset/categories/stands.png";
+  static const chargeruuu="asset/categories/chargeruuu.png";
 }
