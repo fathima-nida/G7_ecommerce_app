@@ -58,57 +58,64 @@ class _HomescreenState extends State<Homescreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 50),
                 child: Row(
-                  children: [
+               children: [
                     CircleAvatar(
                       backgroundImage: AssetImage(AssetResources.profile),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Ahmed Raza",
-                            style: AppTextstyle.medium(fontSize: 15),
-                          ),
-                          Text(
-                            "ahmedraza@gmail.com",
-                            style: AppTextstyle.small(
-                              fontSize: 13,
-                              fontColor: AppColors.grey,
-                            ),
+                    SizedBox(width: 5,),
+                    Expanded(
+                      child: Row(
+                      children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Ahmed Raza",
+                                style: AppTextstyle.medium(fontSize: 15),
+                              ),
+                              Text(
+                                "ahmedraza@gmail.com",
+                                style: AppTextstyle.small(
+                                  fontSize: 13,
+                                  fontColor: AppColors.grey,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(width: 70),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.lytwhite,
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.search_outlined,
-                          size: 20,
-                          color: AppColors.grey,
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.lytwhite,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.search_outlined,
+                              size: 20,
+                              color: AppColors.grey,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.lytwhite,
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.notifications_outlined,
-                          size: 20,
-                          color: AppColors.grey,
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.lytwhite,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.notifications_outlined,
+                              size: 20,
+                              color: AppColors.grey,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
@@ -125,7 +132,6 @@ class _HomescreenState extends State<Homescreen> {
                           backgroundImage: AssetImage(AssetResources.charger),
                           radius: 35,
                         ),
-
                         Text(
                           "Charges",
                           style: AppTextstyle.small(
@@ -208,7 +214,6 @@ class _HomescreenState extends State<Homescreen> {
               ),
               SizedBox(height: 13),
               Carousal(image: widget.ad),
-              //Image.asset(AssetResources.ad1),
               SizedBox(height: 15),
               Text(
                 "New Arrival",
@@ -245,14 +250,14 @@ class _HomescreenState extends State<Homescreen> {
                          Padding(
                          padding: const EdgeInsets.all(8.0),
                          child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(6),color: AppColors.lytwhite),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(6),color:index==2||index==5?AppColors.opacitypinkcolor: AppColors.Opacitygreencolor),
                          
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(Icons.shopping_bag_outlined,color:index==2||index==5?AppColors.pink: AppColors.green,size: 15,),
                               SizedBox(width: 5,),
-                              Text(index==2||index==5?"Remove":"Add Cart",style: AppTextstyle.small(fontColor:index==2||index==5?AppColors.pink: AppColors.green,),),
+                              Text(index==2||index==5?"Remove":"Add Cart",style: AppTextstyle.small(fontColor:index==2||index==5?AppColors.pink: AppColors.green,fontSize: 13),),
                             ],
                           ),
                          ),
@@ -302,14 +307,14 @@ class _HomescreenState extends State<Homescreen> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(6),color: AppColors.lytwhite),
+                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(6),color:index==2 || index==5?AppColors.opacitypinkcolor: AppColors.Opacitygreencolor,),
                           
                            child: Row(
                             mainAxisSize: MainAxisSize.min,
                              children: [
                                Icon(Icons.shopping_bag_outlined,color:index==2||index==5?AppColors.pink: AppColors.green,size: 15,),
                                SizedBox(width: 5,),
-                               Text(index==2||index==5?"Remove":"Add Cart",style: AppTextstyle.small(fontColor:index==2||index==5?AppColors.pink: AppColors.green),),
+                               Text(index==2||index==5?"Remove":"Add Cart",style: AppTextstyle.small(fontColor:index==2||index==5?AppColors.pink: AppColors.green,fontSize: 13),),
                              ],
                            ),
                           ),
