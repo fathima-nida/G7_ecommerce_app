@@ -1,0 +1,138 @@
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:g7_comerce_app/core/constant/app_colors.dart';
+import 'package:g7_comerce_app/core/constant/asset_resources.dart';
+import 'package:g7_comerce_app/core/constant/textstyle.dart';
+import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
+import 'package:g7_comerce_app/features/dashboard/screens/all_product.dart';
+import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
+import 'package:g7_comerce_app/features/dashboard/screens/order_view.dart';
+import 'package:g7_comerce_app/features/home/screens/homescreen.dart';
+
+class BottomNavigationWidget extends StatefulWidget {
+  const BottomNavigationWidget({super.key});
+
+  @override
+  State<BottomNavigationWidget> createState() => _BottomNavigationWidgetState();
+}
+
+class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    Homescreen(),
+    AllProduct(),
+    CustomerDashboard(),
+    OrderView(),
+    SplashScreen(),
+  ];
+
+  final List<_NavItem> _navItems = [
+    _NavItem(
+      label: 'Home',
+      icon: AssetResources.home,
+      activeIcon: AssetResources.homeWhite,
+    ),
+    _NavItem(
+      label: 'Category',
+      icon: AssetResources.category,
+      activeIcon: AssetResources.categoryWhite,
+    ),
+    _NavItem(
+      label: 'Cart',
+      icon: AssetResources.cart,
+      activeIcon: AssetResources.cartWhite,
+    ),
+    _NavItem(
+      label: 'Favourite',
+      icon: AssetResources.favorite,
+      activeIcon: AssetResources.favoriteWhite,
+    ),
+    _NavItem(
+      label: 'Profile',
+      icon: AssetResources.prfle,
+      activeIcon: AssetResources.prfleWhite,
+    ),
+  ];
+
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBody: true,
+      body: _pages[_currentIndex],
+
+      // 👇 CUSTOM NAV BAR
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.08),
+              blurRadius: 20,
+              offset: const Offset(0, -4),
+            ),
+          ],
+        ),
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(
+            _navItems.length,
+            (index) => _buildNavItem(index),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem(int index) {
+    final isSelected = _currentIndex == index;
+    final item = _navItems[index];
+
+    return GestureDetector(
+      onTap: () {
+        setState(() => _currentIndex = index);
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 280),
+        curve: Curves.easeOutCubic,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? AppColors.pink : Colors.transparent,
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(isSelected ? item.activeIcon : item.icon, height: 22),
+            if (isSelected) ...[
+              Text(
+                item.label,
+                style: AppTextstyle.small(
+                  fontSize: 9,
+                  fontWeight: FontWeight.w600,
+                  fontColor: AppColors.white,
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _NavItem {
+  final String label;
+  final String icon;
+  final String activeIcon;
+
+  const _NavItem({
+    required this.label,
+    required this.icon,
+    required this.activeIcon,
+  });
+}

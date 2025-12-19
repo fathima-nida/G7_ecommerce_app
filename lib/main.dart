@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:g7_comerce_app/features/auth/screens/loginscreen.dart';
-import 'package:g7_comerce_app/features/home/screens/homescreen.dart';
-import 'package:g7_comerce_app/features/home/screens/widgets/carousal.dart';
-
+import 'package:flutter/services.dart';
+import 'package:g7_comerce_app/core/utils/bottom_navigation.dart';
+import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
 
 void main() {
+
+WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.immersiveSticky,
+  );
+
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -14,10 +21,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-     
-      home:Homescreen()
+
+      home: BottomNavigationWidget(),
     );
   }
 }
