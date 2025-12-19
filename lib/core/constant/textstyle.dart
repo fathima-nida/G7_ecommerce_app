@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Textstyle {
+class AppTextstyle {
     static TextStyle small(
    {
     Color? fontColor,

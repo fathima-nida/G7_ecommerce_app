@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:g7_comerce_app/features/delivery/screens/delivery_dashboard.dart';
+import 'package:g7_comerce_app/features/screens/favourite.dart';
 
 
 void main() {
@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home:DeliveryDashboard  (),
+      home:Favourite(),
+      debugShowCheckedModeBanner:false,
     );
   }
 }

@@ -10,6 +10,22 @@ class AppColors {
    static const backgroundwhite = Color(0xffFFFFFF);
    static const containercolor = Color(0xffFAFAFA);
    static const boxcolor= Color(0x14AE5C0D);
-   static const green= Color(0xff14AE5C);
+   static const greenlight= Color(0xff14AE5C);
    static const grey= Color(0xff6F7384);
+
+
+ static Color get opacitygreenColor =>
+      const Color(0xff14AE5C).withOpacity(0.15);
+
+
+    // Colors.blue,
+    // Colors.green,
+    // Colors.blue,
+    // Colors.orange,
+    // Colors.blue,
+    // Colors.green,
+    // Colors.blue,
+    // Colors.orange,
+    // Colors.blue,
+    // Colors.green,
 }
