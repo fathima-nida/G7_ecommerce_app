@@ -17,4 +17,8 @@ class AppColors {
 
   static const warmgrey = Color(0xffDADBE3);
   static const lytwhite = Color(0xffF7F7F7);
+  
+  static const warmwhite=Color(0xffFAFAFA);
+  static const bluegrey=Color(0xff6F7384);
+  
 }

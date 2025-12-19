@@ -2,35 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
+import 'package:g7_comerce_app/features/home/screens/widgets/carousal.dart';
 
 class Homescreen extends StatefulWidget {
-   Homescreen({super.key});
+  Homescreen({super.key});
   final List<String> imagelist = [
-  AssetResources.headset,
-  AssetResources.mobilestand,
-  AssetResources.screenguard,
-];
-final List<String> nameList = [
-  "Headset"
-      "Mobile Stand"
-      "Screenfuard",
-];
+    AssetResources.headset,
+    AssetResources.backcover,
+    AssetResources.screenguard,
+    AssetResources.headset,
+    AssetResources.backcover,
+    AssetResources.screenguard,
+  ];
+  final List<String> nameList = [
+    "Headset",
+    "Back Cover",
+    "Screenguard",
+    "Headset",
+    "Back Cover",
+    "Screenguard",
+  ];
+  final List<String> ad = [AssetResources.ad1, AssetResources.ad1];
+  final List<String> ad2 = [AssetResources.ad2, AssetResources.ad2];
 
   @override
   State<Homescreen> createState() => _HomescreenState();
 }
 
-
-
 class _HomescreenState extends State<Homescreen> {
-  
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(9),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 50),
@@ -98,7 +107,7 @@ class _HomescreenState extends State<Homescreen> {
                     Column(
                       children: [
                         CircleAvatar(
-                          backgroundColor: AppColors.warmgrey,
+                          backgroundColor: AppColors.lytwhite,
                           backgroundImage: AssetImage(AssetResources.charger),
                           radius: 35,
                         ),
@@ -115,39 +124,7 @@ class _HomescreenState extends State<Homescreen> {
                     Column(
                       children: [
                         CircleAvatar(
-                          backgroundColor: AppColors.warmgrey,
-                          backgroundImage: AssetImage(AssetResources.backcover),
-                          radius: 35,
-                        ),
-                        Text(
-                          "Backcovers",
-                          style: AppTextstyle.small(
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 5),
-                    Column(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: AppColors.warmgrey,
-                          backgroundImage: AssetImage(AssetResources.headset),
-                          radius: 35,
-                        ),
-                        Text(
-                          "Headsets",
-                          style: AppTextstyle.small(
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 5),
-                    Column(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: AppColors.warmgrey,
+                          backgroundColor: AppColors.lytwhite,
                           backgroundImage: AssetImage(
                             AssetResources.mobilestand,
                           ),
@@ -165,7 +142,39 @@ class _HomescreenState extends State<Homescreen> {
                     Column(
                       children: [
                         CircleAvatar(
-                          backgroundColor: AppColors.warmgrey,
+                          backgroundColor: AppColors.lytwhite,
+                          backgroundImage: AssetImage(AssetResources.headset),
+                          radius: 35,
+                        ),
+                        Text(
+                          "Headsets",
+                          style: AppTextstyle.small(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 5),
+                    Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: AppColors.lytwhite,
+                          backgroundImage: AssetImage(AssetResources.backcover),
+                          radius: 35,
+                        ),
+                        Text(
+                          "Back Cover",
+                          style: AppTextstyle.small(
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 5),
+                    Column(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: AppColors.lytwhite,
                           backgroundImage: AssetImage(
                             AssetResources.screenguard,
                           ),
@@ -183,28 +192,161 @@ class _HomescreenState extends State<Homescreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
-              Image.asset(AssetResources.ad1),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(right: 270),
-                child: Text(
-                  "New Arrival",
-                  style: AppTextstyle.large(fontSize: 16),
+              SizedBox(height: 13),
+              Carousal(image: widget.ad),
+              //Image.asset(AssetResources.ad1),
+              SizedBox(height: 15),
+              Text("New Arrival", style: AppTextstyle.large(fontSize: 19)),
+              SizedBox(height: 15),
+              SizedBox(
+                width: width,
+                height: height / 2.5,
+                child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 1,
+                    crossAxisSpacing: 2,
+                    childAspectRatio: 0.7,
+                  ),
+                  itemCount: widget.imagelist.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      color: AppColors.warmwhite,
+                      height: 186,
+                      width: 128,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Icon(Icons.favorite_border_outlined),
+                          ),
+                          Image.asset(widget.imagelist[index]),
+                          Text(widget.nameList[index]),
+                          Text(
+                            "₹ 25,000",
+                            style: AppTextstyle.medium(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6),
+                                color: AppColors.lytwhite,
+                              ),
+
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.shopping_bag_outlined,
+                                    color: index == 2 || index == 5
+                                        ? AppColors.pink
+                                        : AppColors.green,
+                                    size: 15,
+                                  ),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    index == 2 || index == 5
+                                        ? "Remove"
+                                        : "Add Cart",
+                                    style: AppTextstyle.small(
+                                      fontColor: index == 2 || index == 5
+                                          ? AppColors.pink
+                                          : AppColors.green,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
-              // GridView.builder(
-              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //     crossAxisCount:3,
-              //   ),itemCount:widget.imagelist.length,
-              //   itemBuilder: (context,index){
-              //    return Container(
-              //    child: Icon(Icons.favorite_border_outlined),
-              //     height: 186,
-              //     width: 128,
-              //    );
-              //   },
-              // ),
+              SizedBox(height: 15),
+              Carousal(image: widget.ad2),
+              SizedBox(height: 15),
+              Text("Offer Zone", style: AppTextstyle.large(fontSize: 19)),
+              SizedBox(height: 15),
+              SizedBox(
+                height: height / 2.5,
+                width: width,
+                child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 1,
+                    crossAxisSpacing: 2,
+                    childAspectRatio: 0.7,
+                  ),
+                  itemCount: widget.imagelist.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      color: AppColors.warmwhite,
+                      height: 186,
+                      width: 128,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Icon(Icons.favorite_border_outlined),
+                          ),
+                          Image.asset(widget.imagelist[index]),
+                          Text(widget.nameList[index]),
+                          Text(
+                            "₹ 25,000",
+                            style: AppTextstyle.medium(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6),
+                                color: AppColors.lytwhite,
+                              ),
+
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.shopping_bag_outlined,
+                                    color: index == 2 || index == 5
+                                        ? AppColors.pink
+                                        : AppColors.green,
+                                    size: 15,
+                                  ),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    index == 2 || index == 5
+                                        ? "Remove"
+                                        : "Add Cart",
+                                    style: AppTextstyle.small(
+                                      fontColor: index == 2 || index == 5
+                                          ? AppColors.pink
+                                          : AppColors.green,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
