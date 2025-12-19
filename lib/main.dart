@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:g7_comerce_app/core/utils/bottom_navigation.dart';
 import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
-//import 'package:g7_comerce_app/features/delivery/screens/delivery_dashboard.dart';
 
 void main() {
+
+WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setEnabledSystemUIMode(
+    SystemUiMode.immersiveSticky,
+  );
+
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -13,8 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-     
-      //home:SplashScreen(),
+
+      home: BottomNavigationWidget(),
     );
   }
 }

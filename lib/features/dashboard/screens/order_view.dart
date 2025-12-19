@@ -12,21 +12,27 @@ class OrderView extends StatefulWidget {
 
 class _OrderViewState extends State<OrderView> {
   List<Step> stepList() => [
-    const Step(
-      title: Text('Processing'),
-      subtitle: Text('30-Dec-2025, 03:10 PM'),
-      content: Center(child: Text('processing')),
+    Step(
+      title: Text('Processing', style: AppTextstyle.small()),
+      subtitle: Text(
+        '30-Dec-2025, 03:10 PM',
+        style: AppTextstyle.small(fontSize: 12, fontColor: AppColors.grey),
+      ),
+      content: Center(child: Text('processing', style: AppTextstyle.small())),
       state: StepState.complete,
     ),
-    const Step(
-      title: Text('Pending'),
-      subtitle: Text('20-Dec-2025, 03:310 PM'),
+    Step(
+      title: Text('Pending', style: AppTextstyle.small()),
+      subtitle: Text(
+        '20-Dec-2025, 03:310 PM',
+        style: AppTextstyle.small(fontSize: 12, fontColor: AppColors.grey),
+      ),
       content: Center(child: Text('pending')),
       state: StepState.complete,
     ),
-    const Step(
-      title: Text('Delivered'),
-      content: Center(child: Text('delivered')),
+    Step(
+      title: Text('Delivered', style: AppTextstyle.small()),
+      content: Center(child: Text('delivered', style: AppTextstyle.small())),
       state: StepState.editing,
     ),
   ];
@@ -34,6 +40,16 @@ class _OrderViewState extends State<OrderView> {
   int getCurrentStep(List<Step> steps) {
     final index = steps.indexWhere((step) => step.state == StepState.editing);
     return index == -1 ? 0 : index; // fallback safety
+  }
+
+  Color getConnectorColor(int stepIndex) {
+    if (stepIndex < getCurrentStep(stepList())) {
+      return AppColors.skyBlue; // completed
+    } else if (stepIndex == getCurrentStep(stepList())) {
+      return AppColors.red; // active
+    } else {
+      return AppColors.grey; // upcoming
+    }
   }
 
   @override
@@ -174,65 +190,45 @@ class _OrderViewState extends State<OrderView> {
                     ],
                   ),
                   children: [
-                    // Column(
-                    //   children: [
-
-                    //     _orderStep(
-                    //       title: 'Processing',
-                    //       time: '20-Dec-2025, 03:10 PM',
-                    //       isCompleted: true,
-                    //       isLast: false,
-                    //     ),
-                    //     _orderStep(
-                    //       title: 'Pending',
-                    //       time: '20-Dec-2025, 04:00 PM',
-                    //       isCompleted: false,
-                    //       isLast: false,
-                    //     ),
-                    //     _orderStep(
-                    //       title: 'Delivered',
-                    //       time: 'Expected soon',
-                    //       isCompleted: false,
-                    //       isLast: true,
-                    //     ),
-                    //   ],
-                    // ),
-                    Stepper(
-                      currentStep: getCurrentStep(stepList()),
-                      physics: const NeverScrollableScrollPhysics(),
-                      controlsBuilder: (context, details) {
-                        return const SizedBox();
-                      },
-                      stepIconBuilder: (stepIndex, stepState) {
-                        return Icon(
-                          Icons.check_circle,
-                          color: stepState == StepState.complete
-                              ? AppColors.skyBlue
-                              : stepState == StepState.editing
-                              ? AppColors.red
-                              : AppColors.grey,
-                        );
-                      },
-
-                      // stepIconBuilder: (stepIndex, stepState) {
-                      //   if (stepState == StepState.complete) {
-                      //     return const Icon(
-                      //       Icons.check_circle,
-                      //       color: AppColors.skyBlue,
-                      //     );
-                      //   } else if (stepState == StepState.editing) {
-                      //     return const Icon(
-                      //       Icons.check_circle,
-                      //       color: AppColors.red,
-                      //     );
-                      //   } else {
-                      //     return const Icon(
-                      //       Icons.check_circle,
-                      //       color: AppColors.grey,
-                      //     );
-                      //   }
-                      // },
-                      steps: stepList(),
+                    Theme(
+                      data: Theme.of(context).copyWith(
+                        // dividerColor: getConnectorColor(
+                        //   getCurrentStep(stepList()),
+                        // ),
+                        colorScheme: Theme.of(context).colorScheme.copyWith(
+                          onSurface: Colors.white, // removes grey circle
+                          primary: Colors.white, // active circle
+                        ),
+                      ),
+                      child: Stepper(
+                        type: StepperType.vertical,
+                        currentStep: getCurrentStep(stepList()),
+                        connectorThickness: 2,
+                        // connectorColor: getConnectorColor(
+                        //   getCurrentStep(stepList()),
+                        // ) ,
+                        physics: const NeverScrollableScrollPhysics(),
+                        controlsBuilder: (context, details) {
+                          return const SizedBox();
+                        },
+                        stepIconHeight: 25,
+                        stepIconWidth: 25,
+                        // stepIconMargin: EdgeInsets.all(0),
+                        stepIconBuilder: (stepIndex, stepState) {
+                          return Center(
+                            child: Icon(
+                              Icons.check_circle,
+                              color: stepState == StepState.complete
+                                  ? AppColors.skyBlue
+                                  : stepState == StepState.editing
+                                  ? AppColors.red
+                                  : AppColors.grey,
+                              size: 25,
+                            ),
+                          );
+                        },
+                        steps: stepList(),
+                      ),
                     ),
                   ],
                 ),
@@ -301,49 +297,6 @@ class _OrderViewState extends State<OrderView> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _orderStep({
-    required String title,
-    required String time,
-    required bool isCompleted,
-    required bool isLast,
-  }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Column(
-          children: [
-            Icon(
-              isCompleted ? Icons.check_circle : Icons.check_circle,
-              color: isCompleted ? AppColors.skyBlue : AppColors.grey,
-              size: 22,
-            ),
-            if (!isLast)
-              Container(
-                height: 50,
-                width: 2,
-                color: isCompleted ? AppColors.skyBlue : AppColors.grey,
-              ),
-          ],
-        ),
-        const SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title, style: AppTextstyle.small(fontWeight: FontWeight.w600)),
-            const SizedBox(height: 4),
-            Text(
-              time,
-              style: AppTextstyle.small(
-                fontSize: 12,
-                fontColor: AppColors.grey,
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 }
