@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:g7_comerce_app/features/screens/favourite.dart';
-
+import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
+//import 'package:g7_comerce_app/features/delivery/screens/delivery_dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home:Favourite(),
-      debugShowCheckedModeBanner:false,
+     
+      //home:SplashScreen(),
     );
   }
 }

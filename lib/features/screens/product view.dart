@@ -88,7 +88,7 @@ SizedBox(
               "₹ 29,999",
               style: TextStyle(
                 fontSize: 22,
-                color: AppColors.greenlight,
+                color: AppColors.green,
                 fontWeight: FontWeight.bold,
               ),
             ),
