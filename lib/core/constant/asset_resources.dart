@@ -1,5 +1,10 @@
 class AssetResources {
   static const logo = "assets/auth/g7.png";
+  
+  static const phone="assets/category/phone.png";
+  static const phonestand="assets/category/phonestand.png";
+  static const screencard="assets/category/screecard.png";
+   static const chargerb="assets/category/chrgrbg.png";
   static const pending = 'assets/dashboard/pending.png';
   static const accepted = 'assets/dashboard/accepted.png';
   static const billed = 'assets/dashboard/billed.png';
