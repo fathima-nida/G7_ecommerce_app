@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
@@ -145,9 +143,9 @@ class Favourite extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    Icons.shopping_bag_outlined,
-                                    size: 18,
+                                  Image.asset(
+                                    AssetResources.bag,
+                                    
                                     color: AppColors.greenlight,
                                   ),
                                   const SizedBox(width: 6),
@@ -158,6 +156,7 @@ class Favourite extends StatelessWidget {
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                     ),
+                                    
                                   ),
                                 ],
                               ),
