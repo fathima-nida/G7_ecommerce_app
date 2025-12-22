@@ -6,15 +6,11 @@ import 'package:g7_comerce_app/features/cart/cartlists.dart';
 import 'package:g7_comerce_app/features/category/screens/chargerlist.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
 
-WidgetsFlutterBinding.ensureInitialized();
-
-  SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.immersiveSticky,
-  );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -22,10 +18,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-
-      home: Chargerlistscreen(),
-    );
+    return MaterialApp(title: 'Flutter Demo', home: BottomNavigationWidget());
   }
 }
