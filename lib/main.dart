@@ -4,6 +4,7 @@ import 'package:g7_comerce_app/core/utils/bottom_navigation.dart';
 import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
 import 'package:g7_comerce_app/features/cart/cartlists.dart';
 import 'package:g7_comerce_app/features/category/screens/chargerlist.dart';
+import 'package:g7_comerce_app/features/home/screens/homescreen.dart';
 
 void main() {
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
 
-      home: Chargerlistscreen(),
+      home:Homescreen(),
     );
   }
 }
