@@ -47,5 +47,9 @@ class AppColors {
   
   static const warmwhite=Color(0xffFAFAFA);
   static const bluegrey=Color(0xff6F7384);
+  static  Color get opacitypinkcolor=>
+  const Color(0xffE43D5E).withOpacity(0.1);
+  static Color get Opacitygreencolor=>
+  const Color(0xff14AE5C).withOpacity(0.1);
   
 }

@@ -48,53 +48,60 @@ class _HomescreenState extends State<Homescreen> {
                     CircleAvatar(
                       backgroundImage: AssetImage(AssetResources.profile),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    SizedBox(width: 5),
+                    Expanded(
+                      child: Row(
                         children: [
-                          Text(
-                            "Ahmed Raza",
-                            style: AppTextstyle.medium(fontSize: 15),
-                          ),
-                          Text(
-                            "ahmedraza@gmail.com",
-                            style: AppTextstyle.small(
-                              fontSize: 13,
-                              fontColor: AppColors.grey,
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Ahmed Raza",
+                                style: AppTextstyle.medium(fontSize: 15),
+                              ),
+                              Text(
+                                "ahmedraza@gmail.com",
+                                style: AppTextstyle.small(
+                                  fontSize: 13,
+                                  fontColor: AppColors.grey,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(width: 70),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.lytwhite,
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.search_outlined,
-                          size: 20,
-                          color: AppColors.grey,
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.lytwhite,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.search_outlined,
+                              size: 20,
+                              color: AppColors.grey,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.lytwhite,
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.notifications_outlined,
-                          size: 20,
-                          color: AppColors.grey,
+                        Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.lytwhite,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.notifications_outlined,
+                              size: 20,
+                              color: AppColors.grey,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
@@ -111,7 +118,6 @@ class _HomescreenState extends State<Homescreen> {
                           backgroundImage: AssetImage(AssetResources.charger),
                           radius: 35,
                         ),
-
                         Text(
                           "Charges",
                           style: AppTextstyle.small(
@@ -194,7 +200,6 @@ class _HomescreenState extends State<Homescreen> {
               ),
               SizedBox(height: 13),
               Carousal(image: widget.ad),
-              //Image.asset(AssetResources.ad1),
               SizedBox(height: 15),
               Text("New Arrival", style: AppTextstyle.large(fontSize: 19)),
               SizedBox(height: 15),
@@ -236,7 +241,9 @@ class _HomescreenState extends State<Homescreen> {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(6),
-                                color: AppColors.lytwhite,
+                                color: index == 2 || index == 5
+                                    ? AppColors.opacitypinkcolor
+                                    : AppColors.Opacitygreencolor,
                               ),
 
                               child: Row(
@@ -258,6 +265,7 @@ class _HomescreenState extends State<Homescreen> {
                                       fontColor: index == 2 || index == 5
                                           ? AppColors.pink
                                           : AppColors.green,
+                                      fontSize: 13,
                                     ),
                                   ),
                                 ],
@@ -276,7 +284,6 @@ class _HomescreenState extends State<Homescreen> {
               Text("Offer Zone", style: AppTextstyle.large(fontSize: 19)),
               SizedBox(height: 15),
               SizedBox(
-                height: height / 2.5,
                 width: width,
                 child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
@@ -292,7 +299,7 @@ class _HomescreenState extends State<Homescreen> {
                     return Container(
                       color: AppColors.warmwhite,
                       // height: 180,
-                      width: 128,
+                      // width: 128,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -308,13 +315,18 @@ class _HomescreenState extends State<Homescreen> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          
+                          SizedBox(height: 10),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0,
+                            ),
                             child: Container(
+                              padding: EdgeInsets.all(2),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(6),
-                                color: AppColors.lytwhite,
+                                color: index == 2 || index == 5
+                                    ? AppColors.opacitypinkcolor
+                                    : AppColors.Opacitygreencolor,
                               ),
 
                               child: Row(
@@ -336,12 +348,14 @@ class _HomescreenState extends State<Homescreen> {
                                       fontColor: index == 2 || index == 5
                                           ? AppColors.pink
                                           : AppColors.green,
+                                      fontSize: 13,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
                           ),
+                          // SizedBox(height: 10),
                         ],
                       ),
                     );
