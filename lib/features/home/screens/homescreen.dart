@@ -11,7 +11,7 @@ class Homescreen extends StatefulWidget {
     AssetResources.backcovers,
     AssetResources.screenguard,
     AssetResources.headset,
-    AssetResources.backcover,
+    AssetResources.backcovers,
     AssetResources.screenguard,
   ];
   final List<String> nameList = [
