@@ -5,7 +5,7 @@ class AssetResources {
   static const phonestand="assets/category/phonestand.png";
   static const screencard="assets/category/screecard.png";
    static const chargerb="assets/category/chrgrbg.png";
-  static const charger= "asset/categories/charger.png";
+  static const charger= "asset/categories/charger 1.png";
   static const backcover= "asset/categories/back cover.png";
   static const screencards= "asset/categories/screencard.png";
   static const stand =  "asset/categories/stand.png";

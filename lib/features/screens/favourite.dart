@@ -44,6 +44,8 @@ class Favourite extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(10),
             child: Container(
+              height: 150,
+              width: 300,
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
@@ -130,7 +132,7 @@ class Favourite extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            //  SizedBox(width: 40),
+                             SizedBox(width: 40),
                             Container(
                               height: 34,
                               width: 104,
@@ -175,3 +177,4 @@ class Favourite extends StatelessWidget {
     );
   }
 }
+
