@@ -7,7 +7,8 @@ class AppTextstyle {
    {
     Color? fontColor,
     double? fontSize,
-    FontWeight?fontWeight,
+    FontWeight?fontWeight, 
+    
    
   }) {
     return GoogleFonts.plusJakartaSans(
@@ -42,3 +43,5 @@ fontWeight: fontWeight??FontWeight.w700,
     );
   }
 }
+
+

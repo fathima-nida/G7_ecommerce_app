@@ -15,6 +15,7 @@ class AllProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         elevation: 0,
         shape: const Border(
