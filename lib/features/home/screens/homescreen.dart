@@ -8,7 +8,7 @@ class Homescreen extends StatefulWidget {
   Homescreen({super.key});
   final List<String> imagelist = [
     AssetResources.headset,
-    AssetResources.backcover,
+    AssetResources.backcovers,
     AssetResources.screenguard,
     AssetResources.headset,
     AssetResources.backcover,
@@ -165,7 +165,7 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         CircleAvatar(
                           backgroundColor: AppColors.lytwhite,
-                          backgroundImage: AssetImage(AssetResources.backcover),
+                          backgroundImage: AssetImage(AssetResources.backcovers),
                           radius: 35,
                         ),
                         Text(
