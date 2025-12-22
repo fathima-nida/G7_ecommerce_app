@@ -158,15 +158,7 @@ import 'package:g7_comerce_app/core/constant/textstyle.dart';
 class Chargerlistscreen extends StatelessWidget {
   Chargerlistscreen({super.key});
 
-  final List<Map<String, dynamic>> items = [
-    {"image": AssetResources.charger1},
-    {"image": AssetResources.charger2},
-    {"image": AssetResources.charger3},
-    {"image": AssetResources.charger4},
-    {"image": AssetResources.charger5},
-    {"image": AssetResources.charger6},
-    {"image": AssetResources.charger7},
-  ];
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -233,7 +225,7 @@ class Chargerlistscreen extends StatelessWidget {
             /// LIST VIEW
             Expanded(
               child: ListView.builder(
-                itemCount: items.length,
+                itemCount: 10,
                 itemBuilder: (_, index) {
 
                   return Container(
@@ -251,17 +243,7 @@ class Chargerlistscreen extends StatelessWidget {
                       children: [
 
                         /// IMAGE
-                        Container(
-                          height: 70,
-                          width: 70,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: AssetImage(items[index]["image"]),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
+                        Image.asset(AssetResources.backcover),
                         SizedBox(width: 12),
 
                         /// TEXT

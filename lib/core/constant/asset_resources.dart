@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AssetResources {
   static const logo = "assets/auth/g7.png";
   
@@ -38,17 +40,8 @@ class AssetResources {
   static const favoriteWhite = 'assets/bottom_navigation/white_favourite.png';
   static const prfleWhite = 'assets/bottom_navigation/white_profile .png';
 
-   //nasla
-  static const charger1="asset/categories/charger 1.png";
-  static const charger2="asset/categories/charger2.png";
-  static const charger3= "asset/categories/charger3.png";
-  static const charger4="asset/categories/charger4.png";
-  static const charger5="asset/categories/charger5.png";
-  static const charger6="asset/categories/charger6.png";
-  static const charger7= "asset/categories/charger7.png";
-  static const  backcoverX="asset/categories/back cover.png";
-  static const headphone="asset/categories/headset.png";
- 
-  
- 
+   static const clrcharger= "assets/categories/clrdcharger.png";
+   static const whitecharger="assets/categories/charger3.png";
+   static const boxCart='assets/categories/box.png';
+   
 }

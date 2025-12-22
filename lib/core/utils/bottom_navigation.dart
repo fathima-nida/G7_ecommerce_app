@@ -5,6 +5,7 @@ import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
 import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
+import 'package:g7_comerce_app/features/category/screens/categorypage.dart';
 import 'package:g7_comerce_app/features/dashboard/screens/all_product.dart';
 import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
 import 'package:g7_comerce_app/features/dashboard/screens/order_view.dart';
@@ -26,6 +27,8 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     CustomerDashboard(),
     OrderView(),
     SplashScreen(),
+    CategoryPage(),
+
   ];
 
   final List<_NavItem> _navItems = [

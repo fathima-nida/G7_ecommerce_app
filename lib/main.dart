@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
 
-      home: Chargerlistscreen(),
+      home: CartScreen(),
     );
   }
 }
