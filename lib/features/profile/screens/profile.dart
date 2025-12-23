@@ -1,11 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 //import 'package:g7_comerce_app/core/constant/asset_resource.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
-
+import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
 
 // profile screen
 
@@ -19,15 +17,10 @@ class ProfileScreen extends StatelessWidget {
 
       body: Column(
         children: [
-          
           Container(
             height: 220,
             width: double.infinity,
-            padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-              top: 50,
-            ),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
             child: Row(
               children: [
                 CircleAvatar(
@@ -50,24 +43,18 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       "ahmedraza@gmail.com",
-                      style: AppTextstyle.small(
-                        fontColor: AppColors.white,
-                      ),
+                      style: AppTextstyle.small(fontColor: AppColors.white),
                     ),
                   ],
                 ),
 
                 const Spacer(),
 
-                const Icon(
-                  Icons.logout,
-                  color: AppColors.white,
-                )
+                const Icon(Icons.logout, color: AppColors.white),
               ],
             ),
           ),
 
-          
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
@@ -80,10 +67,11 @@ class ProfileScreen extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.only(top: 30),
                 children: [
-                  
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     child: Text(
                       "Personal Information",
                       style: AppTextstyle.medium(),
@@ -91,8 +79,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
 
                   ListTile(
-                    leading:
-                        const Icon(Icons.edit, color: AppColors.pink),
+                    leading: const Icon(Icons.edit, color: AppColors.pink),
                     title: Text(
                       "Profile Edit",
                       style: AppTextstyle.medium(
@@ -100,27 +87,36 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing:
-                        const Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.dashboard,
-                        color: AppColors.pink),
-                    title: Text(
-                      "Order Dashboard",
-                      style: AppTextstyle.medium(
-                        fontColor: AppColors.grey,
-                        fontWeight: FontWeight.w500,
+                    leading: const Icon(Icons.dashboard, color: AppColors.pink),
+                    title: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CustomerDashboard(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Order Dashboard",
+                        style: AppTextstyle.medium(
+                          fontColor: AppColors.grey,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
-                    trailing:
-                        const Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                   ),
-                  
+
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     child: Text(
                       "Support & Information",
                       style: AppTextstyle.medium(),
@@ -128,8 +124,10 @@ class ProfileScreen extends StatelessWidget {
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.privacy_tip,
-                        color: AppColors.pink),
+                    leading: const Icon(
+                      Icons.privacy_tip,
+                      color: AppColors.pink,
+                    ),
                     title: Text(
                       "Privacy Policy",
                       style: AppTextstyle.medium(
@@ -137,13 +135,14 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing:
-                        const Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.description,
-                        color: AppColors.pink),
+                    leading: const Icon(
+                      Icons.description,
+                      color: AppColors.pink,
+                    ),
                     title: Text(
                       "Terms & Conditions",
                       style: AppTextstyle.medium(
@@ -154,8 +153,10 @@ class ProfileScreen extends StatelessWidget {
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.help_outline,
-                        color: AppColors.pink),
+                    leading: const Icon(
+                      Icons.help_outline,
+                      color: AppColors.pink,
+                    ),
                     title: Text(
                       "FAQs",
                       style: AppTextstyle.medium(
@@ -165,10 +166,11 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
 
-                  
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     child: Text(
                       "Account Management",
                       style: AppTextstyle.medium(),
@@ -176,8 +178,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
 
                   ListTile(
-                    leading:
-                        const Icon(Icons.lock, color: AppColors.pink),
+                    leading: const Icon(Icons.lock, color: AppColors.pink),
                     title: Text(
                       "Change Password",
                       style: AppTextstyle.medium(
@@ -185,8 +186,7 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing:
-                        const Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(Icons.arrow_forward_ios),
                   ),
                 ],
               ),
@@ -197,5 +197,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-

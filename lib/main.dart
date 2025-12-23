@@ -6,15 +6,11 @@ import 'package:g7_comerce_app/features/auth/screens/loginscreen.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
 
-WidgetsFlutterBinding.ensureInitialized();
-
-  SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.immersiveSticky,
-  );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -24,8 +20,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home:LoginScreen(),
-    );
+      title: 'Flutter Demo', home: BottomNavigationWidget());
   }
 }

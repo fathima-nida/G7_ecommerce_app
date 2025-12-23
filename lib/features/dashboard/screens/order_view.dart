@@ -55,7 +55,9 @@ class _OrderViewState extends State<OrderView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
+        backgroundColor: AppColors.white,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -74,7 +76,7 @@ class _OrderViewState extends State<OrderView> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(18.0),
+          padding: EdgeInsetsGeometry.symmetric(horizontal: 16, vertical: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -155,6 +157,7 @@ class _OrderViewState extends State<OrderView> {
                   ],
                 ),
               ),
+              SizedBox(height: 12),
               Container(
                 decoration: BoxDecoration(
                   border: Border(
@@ -233,9 +236,9 @@ class _OrderViewState extends State<OrderView> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 12),
               Container(
-                height: MediaQuery.of(context).size.height * 0.25,
+                height: MediaQuery.of(context).size.height * 0.2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: AppColors.blueWhite,
@@ -244,7 +247,7 @@ class _OrderViewState extends State<OrderView> {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      Image.asset(AssetResources.headset, height: 120),
+                      Image.asset(AssetResources.headset, height: 72),
                       Expanded(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
-import 'package:g7_comerce_app/features/dashboard/screens/all_product.dart';
-import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
-import 'package:g7_comerce_app/features/dashboard/screens/order_view.dart';
+import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
+import 'package:g7_comerce_app/features/cart/cartlists.dart';
+import 'package:g7_comerce_app/features/category/screens/categorypage.dart';
+
 import 'package:g7_comerce_app/features/home/screens/homescreen.dart';
 import 'package:g7_comerce_app/features/profile/screens/profile.dart';
+import 'package:g7_comerce_app/features/screens/favourite.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
   const BottomNavigationWidget({super.key});
@@ -21,10 +23,10 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
 
   final List<Widget> _pages = [
     Homescreen(),
-    AllProduct(),
-    CustomerDashboard(),
-    OrderView(),
-    ProfileScreen(),
+    CategoryPage(),
+    CartScreen(),
+    Favourite(),
+    ProfileScreen()
   ];
 
   final List<_NavItem> _navItems = [

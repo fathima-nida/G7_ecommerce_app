@@ -83,7 +83,12 @@ class _HomescreenState extends State<Homescreen> {
                           ),
                           child: IconButton(
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Searchscreen()));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Searchscreen(),
+                                ),
+                              );
                             },
                             icon: Icon(
                               Icons.search_outlined,
@@ -170,7 +175,9 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         CircleAvatar(
                           backgroundColor: AppColors.lytwhite,
-                          backgroundImage: AssetImage(AssetResources.backcovers),
+                          backgroundImage: AssetImage(
+                            AssetResources.backcovers,
+                          ),
                           radius: 35,
                         ),
                         Text(
@@ -248,7 +255,7 @@ class _HomescreenState extends State<Homescreen> {
                                   ? AppColors.opacitypinkcolor
                                   : AppColors.Opacitygreencolor,
                             ),
-              
+
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -299,9 +306,9 @@ class _HomescreenState extends State<Homescreen> {
                 itemBuilder: (context, index) {
                   return Container(
                     color: AppColors.warmwhite,
-                  
+
                     child: Column(
-                     // mainAxisSize: MainAxisSize.min,
+                      // mainAxisSize: MainAxisSize.min,
                       children: [
                         Align(
                           alignment: Alignment.topRight,
@@ -317,9 +324,7 @@ class _HomescreenState extends State<Homescreen> {
                         ),
                         SizedBox(height: 10),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Container(
                             padding: EdgeInsets.all(2),
                             decoration: BoxDecoration(
@@ -328,7 +333,7 @@ class _HomescreenState extends State<Homescreen> {
                                   ? AppColors.opacitypinkcolor
                                   : AppColors.Opacitygreencolor,
                             ),
-              
+
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -355,7 +360,6 @@ class _HomescreenState extends State<Homescreen> {
                             ),
                           ),
                         ),
-                      
                       ],
                     ),
                   );
