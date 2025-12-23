@@ -47,6 +47,7 @@ class _HomescreenState extends State<Homescreen> {
                 child: Row(
                   children: [
                     CircleAvatar(
+                      
                       backgroundImage: AssetImage(AssetResources.profile),
                     ),
                     SizedBox(width: 5),
@@ -363,6 +364,7 @@ class _HomescreenState extends State<Homescreen> {
                   );
                 },
               ),
+              SizedBox(height: 60,)
             ],
           ),
         ),
