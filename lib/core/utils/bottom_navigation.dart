@@ -8,6 +8,7 @@ import 'package:g7_comerce_app/features/cart/cartlists.dart';
 import 'package:g7_comerce_app/features/category/screens/categorypage.dart';
 
 import 'package:g7_comerce_app/features/home/screens/homescreen.dart';
+import 'package:g7_comerce_app/features/profile/screens/profile.dart';
 import 'package:g7_comerce_app/features/screens/favourite.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
@@ -25,7 +26,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     CategoryPage(),
     CartScreen(),
     Favourite(),
-    SplashScreen(),
+    ProfileScreen()
   ];
 
   final List<_NavItem> _navItems = [
@@ -78,7 +79,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
           ],
         ),
         child: Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(
             _navItems.length,
             (index) => _buildNavItem(index),
@@ -105,7 +106,8 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
           borderRadius: BorderRadius.circular(25),
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          // mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Image.asset(isSelected ? item.activeIcon : item.icon, height: 22),
             if (isSelected) ...[
