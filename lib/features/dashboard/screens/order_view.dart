@@ -155,6 +155,7 @@ class _OrderViewState extends State<OrderView> {
                   ],
                 ),
               ),
+              SizedBox(height: 12,),
               Container(
                 decoration: BoxDecoration(
                   border: Border(
@@ -233,9 +234,9 @@ class _OrderViewState extends State<OrderView> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 12),
               Container(
-                height: MediaQuery.of(context).size.height * 0.25,
+                height: MediaQuery.of(context).size.height * 0.2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: AppColors.blueWhite,
