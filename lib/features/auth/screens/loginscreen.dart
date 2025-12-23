@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
+import 'package:g7_comerce_app/core/utils/bottom_navigation.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 80),
         child: Column(
@@ -61,7 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
           borderRadius: BorderRadiusGeometry.circular(10)
         )
          ),
-          onPressed: (){}, child: Container(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNavigationWidget()));
+          }, child: Container(
             width: 274,
             height: 51,
             child: Center(child: Text("Login",style: AppTextstyle.medium(fontColor: AppColors.white),)))),
