@@ -36,6 +36,7 @@ class _HomescreenState extends State<Homescreen> {
     // final width = MediaQuery.of(context).size.width;
     // final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(9),
@@ -75,7 +76,7 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                     Row(
                       children: [
-                        Container(
+                        Container( 
                           decoration: BoxDecoration(
                             color: AppColors.lytwhite,
                             shape: BoxShape.circle,
@@ -238,7 +239,7 @@ class _HomescreenState extends State<Homescreen> {
                           child: Icon(Icons.favorite_border_outlined),
                         ),
                         Expanded(child: Image.asset(widget.imagelist[index])),
-                        Text(widget.nameList[index]),
+                        Text(widget.nameList[index],style: AppTextstyle.small(fontColor: AppColors.bluegrey),),
                         Text(
                           "₹ 25,000",
                           style: AppTextstyle.medium(
@@ -313,8 +314,8 @@ class _HomescreenState extends State<Homescreen> {
                           alignment: Alignment.topRight,
                           child: Icon(Icons.favorite_border_outlined),
                         ),
-                        Expanded(child: Image.asset(widget.imagelist[index])),
-                        Text(widget.nameList[index]),
+                        Expanded(child: Image.asset(widget.imagelist[index],)),
+                        Text(widget.nameList[index],style: AppTextstyle.small(fontColor: AppColors.bluegrey),),
                         Text(
                           "₹ 25,000",
                           style: AppTextstyle.medium(
