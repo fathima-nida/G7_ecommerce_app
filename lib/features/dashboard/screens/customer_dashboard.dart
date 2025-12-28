@@ -29,7 +29,7 @@ class CustomerDashboard extends StatelessWidget {
           },
           icon: Icon(Icons.arrow_back),
         ),
-        title: Text('Order Dashboard'),
+        title: Text('Order Dashboard',style: AppTextstyle.medium(),),
       ),
 
       body: Padding(
