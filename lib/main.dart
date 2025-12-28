@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:g7_comerce_app/core/utils/bottom_navigation.dart';
+import 'package:g7_comerce_app/features/screens/customer_choose.dart';
+import 'package:g7_comerce_app/features/screens/favouriealert.dart';
 import 'package:g7_comerce_app/features/screens/favourite.dart';
 
 
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home:Favourite(),
+      home:CustomerListPage(),
     );
   }
 }

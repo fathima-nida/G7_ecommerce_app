@@ -2,9 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
+import 'package:g7_comerce_app/features/screens/favouriealert.dart';
 
 class Favourite extends StatelessWidget {
   Favourite({super.key});
+
+  Future<void> _openDescriptionSheet(BuildContext context) async {
+    final result = await showModalBottomSheet<String>(
+      context: context,
+      isScrollControlled: true, 
+      backgroundColor: Colors.transparent,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => const DescriptionBottomSheet(),
+    );
+
+    if (result != null && result.isNotEmpty) {
+      debugPrint("User description: $result");
+
+    }
+  }
+
 
   final List<Map<String, dynamic>> products = [
     {
@@ -93,7 +112,7 @@ class Favourite extends StatelessWidget {
                                   width: 34,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
+                                    border: Border.all(color: AppColors.grey),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   // child: IconButton(
@@ -105,24 +124,24 @@ class Favourite extends StatelessWidget {
                                     child: Icon(Icons.remove),
                                   ),
                                 ),
-                                
+
                                 const SizedBox(width: 12),
-                                
+
                                 Text(
                                   "04",
                                   style: AppTextstyle.small(
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
-                                
+
                                 const SizedBox(width: 12),
-                                
+
                                 Container(
                                   height: 34,
                                   width: 34,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
+                                    border: Border.all(color: AppColors.grey),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: InkWell(
@@ -132,35 +151,38 @@ class Favourite extends StatelessWidget {
                                 ),
                               ],
                             ),
-                             SizedBox(width: 40),
-                            Container(
-                              height: 34,
-                              width: 104,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: AppColors.opacitygreenColor, // button background
-                                
-                              ),
-                              
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    AssetResources.bag,
-                                    
-                                    color: AppColors.greenlight,
-                                  ),
-                                  const SizedBox(width: 6),
-                                  Text(
-                                    "Add Cart",
-                                    style: TextStyle(
+                            SizedBox(width: 40),
+                            InkWell(
+                               onTap: () {
+                               _openDescriptionSheet(context);
+                               },
+                              // onTap: () => _openDescriptionSheet(context),
+                               borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                height: 34,
+                                width: 104,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: AppColors.opacitygreenColor,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      AssetResources.bag,
                                       color: AppColors.greenlight,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
                                     ),
-                                    
-                                  ),
-                                ],
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      "Add Cart",
+                                      style: TextStyle(
+                                        color: AppColors.greenlight,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -177,4 +199,3 @@ class Favourite extends StatelessWidget {
     );
   }
 }
-
