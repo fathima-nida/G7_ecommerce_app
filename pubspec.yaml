@@ -69,7 +69,8 @@ flutter:
    - asset/categories/
    - assets/bottom_navigation/
    - asset/categories/
-   
+   - assets/profile/
+   - assets/search/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

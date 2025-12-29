@@ -59,10 +59,10 @@ class ProfileScreen extends StatelessWidget {
 
                 const Spacer(),
 
-                const Icon(
-                  Icons.logout,
-                  color: AppColors.white,
-                )
+                Image.asset(AssetResources.logout,
+                width: 28,
+                height: 28,
+                ),
               ],
             ),
           ),
@@ -92,7 +92,10 @@ class ProfileScreen extends StatelessWidget {
 
                   ListTile(
                     leading:
-                        const Icon(Icons.edit, color: AppColors.pink),
+                        Image.asset(AssetResources.edit,
+                        width: 20,
+                        height: 20,
+                        ),
                     title: Text(
                       "Profile Edit",
                       style: AppTextstyle.medium(
@@ -101,12 +104,17 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     trailing:
-                        const Icon(Icons.arrow_forward_ios),
+                        const Icon(Icons.arrow_forward_ios,
+                        color: AppColors.grey,
+                        ),
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.dashboard,
-                        color: AppColors.pink),
+                    leading: 
+                    Image.asset(AssetResources.order,
+                    width: 20,
+                    height: 20,
+                    ),
                     title: Text(
                       "Order Dashboard",
                       style: AppTextstyle.medium(
@@ -115,7 +123,9 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     trailing:
-                        const Icon(Icons.arrow_forward_ios),
+                         Icon(Icons.arrow_forward_ios,
+                        color: AppColors.grey,
+                        ),
                   ),
                   
                   Padding(
@@ -128,8 +138,10 @@ class ProfileScreen extends StatelessWidget {
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.privacy_tip,
-                        color: AppColors.pink),
+                    leading: Image.asset(AssetResources.tick,
+                    width: 20,
+                    height: 20,
+                    ),
                     title: Text(
                       "Privacy Policy",
                       style: AppTextstyle.medium(
@@ -138,12 +150,17 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     trailing:
-                        const Icon(Icons.arrow_forward_ios),
+                         Icon(Icons.arrow_forward_ios,
+                        color: AppColors.grey,
+                        ),
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.description,
-                        color: AppColors.pink),
+                    leading: 
+                    Image.asset(AssetResources.document,
+                    width: 20,
+                    height: 20,
+                    ),
                     title: Text(
                       "Terms & Conditions",
                       style: AppTextstyle.medium(
@@ -151,11 +168,18 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
+                    trailing:
+                         Icon(Icons.arrow_forward_ios,
+                        color: AppColors.grey,
+                        ),
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.help_outline,
-                        color: AppColors.pink),
+                    leading:
+                    Image.asset(AssetResources.questionmark,
+                    width: 20,
+                    height: 20,
+                    ),
                     title: Text(
                       "FAQs",
                       style: AppTextstyle.medium(
@@ -163,6 +187,10 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
+                    trailing:
+                         Icon(Icons.arrow_forward_ios,
+                        color: AppColors.grey,
+                        ),
                   ),
 
                   
@@ -177,7 +205,10 @@ class ProfileScreen extends StatelessWidget {
 
                   ListTile(
                     leading:
-                        const Icon(Icons.lock, color: AppColors.pink),
+                        Image.asset(AssetResources.lock,
+                        width: 20,
+                        height: 20,
+                        ),
                     title: Text(
                       "Change Password",
                       style: AppTextstyle.medium(
@@ -186,7 +217,9 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     trailing:
-                        const Icon(Icons.arrow_forward_ios),
+                         Icon(Icons.arrow_forward_ios,
+                        color: AppColors.grey,
+                        ),
                   ),
                 ],
               ),

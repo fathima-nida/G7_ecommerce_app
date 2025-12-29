@@ -50,6 +50,15 @@ class AssetResources {
   static const  backcoverX="asset/categories/back cover.png";
   static const headphone="asset/categories/headset.png";
  
-  
- 
+  //hisana
+
+ static const logout = "assets/profile/logout .png";
+ static const edit = "assets/profile/edit.png";
+ static const order = "assets/profile/order.png";  
+ static const tick = "assets/profile/shield-tick .png";
+ static const document = "assets/profile/document-text .png";
+ static const questionmark = "assets/profile/question mark.png";
+ static const lock = "assets/profile/lock .png";
+ static const filter = "assets/search/filter.png";
+
 }
