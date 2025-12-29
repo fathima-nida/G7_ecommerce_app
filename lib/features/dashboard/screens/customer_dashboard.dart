@@ -20,9 +20,16 @@ class CustomerDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget devider = SizedBox(height: 10);
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-        title: Text('Order Dashboard'),
+        backgroundColor: AppColors.white,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
+        title: Text('Order Dashboard',style: AppTextstyle.medium(),),
       ),
 
       body: Padding(
@@ -177,7 +184,7 @@ class CustomerDashboard extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              Image.asset(item['image']),
+                              Image.asset(item['image'], height: 40),
                             ],
                           ),
                           Text(item['count'], style: AppTextstyle.large()),

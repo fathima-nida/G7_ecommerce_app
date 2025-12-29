@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:g7_comerce_app/core/utils/bottom_navigation.dart';
+import 'package:g7_comerce_app/features/auth/screens/loginscreen.dart';
 import 'package:g7_comerce_app/features/screens/customer_choose.dart';
 import 'package:g7_comerce_app/features/screens/favouriealert.dart';
 import 'package:g7_comerce_app/features/screens/favourite.dart';
 
-
-
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
 
-WidgetsFlutterBinding.ensureInitialized();
-
-  SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.immersiveSticky,
-  );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
