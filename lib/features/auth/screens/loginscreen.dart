@@ -10,7 +10,8 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
-bool showPassword=true;
+
+bool showPassword = true;
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
@@ -18,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 80),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 80),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -48,30 +49,40 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Enter your Mobile number",
                   style: AppTextstyle.small(fontColor: AppColors.grey),
                 ),
-                prefixIcon: Icon(Icons.phone, size: 27,color: AppColors.pink),
+                prefixIcon: Icon(Icons.phone, size: 27, color: AppColors.pink),
               ),
             ),
-            
 
-            SizedBox(height: 70,),
-           
-       Center(
-        child: ElevatedButton(
-         style:ElevatedButton.styleFrom(
-          backgroundColor: AppColors.pink,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(10)
-        )
-         ),
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNavigationWidget()));
-          }, child: Container(
-            width: 274,
-            height: 51,
-            child: Center(child: Text("Login",style: AppTextstyle.medium(fontColor: AppColors.white),)))),
-         
-       ),
-       
+            SizedBox(height: 70),
+
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.pink,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BottomNavigationWidget(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: 274,
+                  height: 51,
+                  child: Center(
+                    child: Text(
+                      "Login",
+                      style: AppTextstyle.medium(fontColor: AppColors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
