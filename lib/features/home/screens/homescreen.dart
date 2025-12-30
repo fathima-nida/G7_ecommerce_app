@@ -3,6 +3,7 @@ import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
 import 'package:g7_comerce_app/features/home/screens/widgets/carousal.dart';
+import 'package:g7_comerce_app/features/search/screens/searchscreen.dart';
 
 class Homescreen extends StatefulWidget {
   Homescreen({super.key});
@@ -35,6 +36,7 @@ class _HomescreenState extends State<Homescreen> {
     // final width = MediaQuery.of(context).size.width;
     // final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(9),
@@ -46,6 +48,7 @@ class _HomescreenState extends State<Homescreen> {
                 child: Row(
                   children: [
                     CircleAvatar(
+                      
                       backgroundImage: AssetImage(AssetResources.profile),
                     ),
                     SizedBox(width: 5),
@@ -73,13 +76,20 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                     Row(
                       children: [
-                        Container(
+                        Container( 
                           decoration: BoxDecoration(
                             color: AppColors.lytwhite,
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Searchscreen(),
+                                ),
+                              );
+                            },
                             icon: Icon(
                               Icons.search_outlined,
                               size: 20,
@@ -165,7 +175,9 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         CircleAvatar(
                           backgroundColor: AppColors.lytwhite,
-                          backgroundImage: AssetImage(AssetResources.backcovers),
+                          backgroundImage: AssetImage(
+                            AssetResources.backcovers,
+                          ),
                           radius: 35,
                         ),
                         Text(
@@ -227,7 +239,7 @@ class _HomescreenState extends State<Homescreen> {
                           child: Icon(Icons.favorite_border_outlined),
                         ),
                         Expanded(child: Image.asset(widget.imagelist[index])),
-                        Text(widget.nameList[index]),
+                        Text(widget.nameList[index],style: AppTextstyle.small(fontColor: AppColors.bluegrey),),
                         Text(
                           "₹ 25,000",
                           style: AppTextstyle.medium(
@@ -243,7 +255,7 @@ class _HomescreenState extends State<Homescreen> {
                                   ? AppColors.opacitypinkcolor
                                   : AppColors.Opacitygreencolor,
                             ),
-              
+
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -294,16 +306,16 @@ class _HomescreenState extends State<Homescreen> {
                 itemBuilder: (context, index) {
                   return Container(
                     color: AppColors.warmwhite,
-                  
+
                     child: Column(
-                     // mainAxisSize: MainAxisSize.min,
+                      // mainAxisSize: MainAxisSize.min,
                       children: [
                         Align(
                           alignment: Alignment.topRight,
                           child: Icon(Icons.favorite_border_outlined),
                         ),
-                        Expanded(child: Image.asset(widget.imagelist[index])),
-                        Text(widget.nameList[index]),
+                        Expanded(child: Image.asset(widget.imagelist[index],)),
+                        Text(widget.nameList[index],style: AppTextstyle.small(fontColor: AppColors.bluegrey),),
                         Text(
                           "₹ 25,000",
                           style: AppTextstyle.medium(
@@ -312,9 +324,7 @@ class _HomescreenState extends State<Homescreen> {
                         ),
                         SizedBox(height: 10),
                         Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Container(
                             padding: EdgeInsets.all(2),
                             decoration: BoxDecoration(
@@ -323,7 +333,7 @@ class _HomescreenState extends State<Homescreen> {
                                   ? AppColors.opacitypinkcolor
                                   : AppColors.Opacitygreencolor,
                             ),
-              
+
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -350,12 +360,12 @@ class _HomescreenState extends State<Homescreen> {
                             ),
                           ),
                         ),
-                      
                       ],
                     ),
                   );
                 },
               ),
+              SizedBox(height: 60,)
             ],
           ),
         ),

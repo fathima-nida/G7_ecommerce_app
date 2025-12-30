@@ -1,11 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 //import 'package:g7_comerce_app/core/constant/asset_resource.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
-
+import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
 
 // profile screen
 
@@ -19,15 +17,10 @@ class ProfileScreen extends StatelessWidget {
 
       body: Column(
         children: [
-          
           Container(
             height: 220,
             width: double.infinity,
-            padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-              top: 50,
-            ),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
             child: Row(
               children: [
                 CircleAvatar(
@@ -50,9 +43,7 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       "ahmedraza@gmail.com",
-                      style: AppTextstyle.small(
-                        fontColor: AppColors.white,
-                      ),
+                      style: AppTextstyle.small(fontColor: AppColors.white),
                     ),
                   ],
                 ),
@@ -67,7 +58,6 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
 
-          
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
@@ -80,10 +70,11 @@ class ProfileScreen extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.only(top: 30),
                 children: [
-                  
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     child: Text(
                       "Personal Information",
                       style: AppTextstyle.medium(),
@@ -127,10 +118,12 @@ class ProfileScreen extends StatelessWidget {
                         color: AppColors.grey,
                         ),
                   ),
-                  
+
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     child: Text(
                       "Support & Information",
                       style: AppTextstyle.medium(),
@@ -193,10 +186,11 @@ class ProfileScreen extends StatelessWidget {
                         ),
                   ),
 
-                  
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     child: Text(
                       "Account Management",
                       style: AppTextstyle.medium(),
@@ -230,5 +224,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:g7_comerce_app/core/utils/bottom_navigation.dart';
+import 'package:g7_comerce_app/features/auth/screens/loginscreen.dart';
 import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
 import 'package:g7_comerce_app/features/profile/screens/profile.dart';
 import 'package:g7_comerce_app/features/screens/customer_choose.dart';
@@ -9,18 +10,12 @@ import 'package:g7_comerce_app/features/screens/favourite.dart';
 import 'package:g7_comerce_app/features/screens/product%20view.dart';
 import 'package:g7_comerce_app/features/search/screens/searchscreen.dart';
 
-
-
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
 
-WidgetsFlutterBinding.ensureInitialized();
-
-  SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.immersiveSticky,
-  );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -32,6 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       home:Searchscreen(),
+      
     );
   }
 }
