@@ -22,11 +22,7 @@ const  CartScreen({super.key});
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.white,
-        leading: const Icon(Icons.arrow_back, color: AppColors.black),
-        title: Text(
-          "Cart",
-          style: AppTextstyle.large(fontColor: AppColors.black),
-        ),
+        
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -187,126 +183,133 @@ const  CartScreen({super.key});
 
 
                    child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(AssetResources.headset),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Resource to descover and connect'),
-                          Row(
-                            children: [
-                              Icon(Icons.currency_rupee_rounded),
-                              Text('29,999')
-                            ],
-                          ),
-                          Container(
-                            height:46 ,
-                            width: width/1.5,
-                            padding: EdgeInsets.symmetric(horizontal: 12),
-                            decoration: BoxDecoration(
-                              color: AppColors.warmgrey,
-                              borderRadius:BorderRadius.circular(12),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: SizedBox(
-                                    child: Text('Your resource to discover and connect with designers ',
-                                    style: AppTextstyle.small(fontWeight: FontWeight.w500,fontColor: AppColors.grey,fontSize: 12),
-                                    softWrap: true,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  height: 25,
-                                  width: 1,
-                                  color: AppColors.backgroundwhite,
-                                ),
-                                SizedBox(width: 5,),
-                                Image.asset(AssetResources.boxCart)
-                              ],
-                            ),
-                          ),
-
-                           SizedBox(height: 6,),
-                          Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Center(child: Image.asset(AssetResources.headset,scale: 9,)),
+       
+     
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Text('Resource to descover and connect'),
                             Row(
                               children: [
-                                Container(
-                                  height: 34,
-                                  width: 34,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  
-                                  child: InkWell(
-                                    onTap: () {},
-                                    child: Icon(Icons.remove),
-                                  ),
-                                ),
-                                
-                                const SizedBox(width: 12),
-                                
-                                Text(
-                                  "04",
-                                  style: AppTextstyle.small(
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                
-                                const SizedBox(width: 12),
-                                
-                                Container(
-                                  height: 34,
-                                  width: 34,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: InkWell(
-                                    onTap: () {},
-                                    child: Icon(Icons.add),
-                                  ),
-                                ),
+                                Icon(Icons.currency_rupee_rounded),
+                                Text('29,999')
                               ],
                             ),
-                             SizedBox(width: 40),
                             Container(
-                              height: 34,
-                              width: 94,
+                              height:46 ,
+                              width: width/1.5,
+                              padding: EdgeInsets.symmetric(horizontal: 12),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: AppColors.opacitygreenColor, // button background
-                                
+                                color: AppColors.lytwhite,
+                                borderRadius:BorderRadius.circular(12),
                               ),
-                              
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Icon(
-                                    Icons.shopping_bag_outlined,
-                                    size: 18,
-                                    color: AppColors.greenlight,
+                                  Expanded(
+                                    child: SizedBox(
+                                      child: Text('Your resource to discover and connect with designers ', 
+                                      style: AppTextstyle.small(fontWeight: FontWeight.w500,fontColor: AppColors.bluegrey,fontSize: 12),
+                                      softWrap: true,
+                                      ),
+                                    ),
                                   ),
-                                  const SizedBox(width: 6),
-                                  Text(
-                                    "Remove",
-                                    style: AppTextstyle.small(fontWeight: FontWeight.w500,fontColor: AppColors.pink)
+                                  Container(
+                                    height: 25,
+                                    width: 1,
+                                    color: AppColors.backgroundwhite,
                                   ),
+                                  SizedBox(width: 5,),
+                                  Image.asset(AssetResources.boxCart, )
                                 ],
                               ),
                             ),
+                        
+                             SizedBox(height: 6,),
+                            Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 34,
+                                    width: 34,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: Icon(Icons.remove),
+                                    ),
+                                  ),
+                                  
+                                  const SizedBox(width: 12),
+                                  
+                                  Text(
+                                    "04",
+                                    style: AppTextstyle.small(
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  
+                                  const SizedBox(width: 12),
+                                  
+                                  Container(
+                                    height: 34,
+                                    width: 34,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: Icon(Icons.add),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                               SizedBox(width: 40),
+                              Container(
+                                height: 34,
+                                width: 94,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: AppColors.opacitypinkcolor, // button background
+                                  
+                                ),
+                                
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.shopping_bag_outlined,
+                                      size: 18,
+                                      color: AppColors.pink,
+                                    ),
+                                    // Image.asset(AssetResources.redbag,height: 13.56,width: 13.56,
+                                    // color: AppColors.pink,),
+                                    //  const SizedBox(width: 6),
+                                    Text(
+                                      "Remove",
+                                      style: AppTextstyle.small(fontWeight: FontWeight.w500,fontColor: AppColors.pink)
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                           ],
                         ),
-                      ),
-                        ],
                       )
                     ],
                    ),

@@ -8,10 +8,10 @@ class Homescreen extends StatefulWidget {
   Homescreen({super.key});
   final List<String> imagelist = [
     AssetResources.headset,
-    AssetResources.backcover,
+    AssetResources.backcovers,
     AssetResources.screenguard,
     AssetResources.headset,
-    AssetResources.backcover,
+    AssetResources.backcovers,
     AssetResources.screenguard,
   ];
   final List<String> nameList = [
@@ -32,8 +32,8 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+    // final width = MediaQuery.of(context).size.width;
+    // final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -115,7 +115,7 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         CircleAvatar(
                           backgroundColor: AppColors.lytwhite,
-                          backgroundImage: AssetImage(AssetResources.charger),
+                          backgroundImage: AssetImage(AssetResources.chargers),
                           radius: 35,
                         ),
                         Text(
@@ -165,7 +165,7 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         CircleAvatar(
                           backgroundColor: AppColors.lytwhite,
-                          backgroundImage: AssetImage(AssetResources.backcover),
+                          backgroundImage: AssetImage(AssetResources.backcovers),
                           radius: 35,
                         ),
                         Text(
@@ -203,164 +203,158 @@ class _HomescreenState extends State<Homescreen> {
               SizedBox(height: 15),
               Text("New Arrival", style: AppTextstyle.large(fontSize: 19)),
               SizedBox(height: 15),
-              SizedBox(
-                width: width,
-                height: height / 2.5,
-                child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 1,
-                    crossAxisSpacing: 2,
-                    childAspectRatio: 0.7,
-                  ),
-                  itemCount: widget.imagelist.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      color: AppColors.warmwhite,
-                      height: 186,
-                      width: 128,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: Icon(Icons.favorite_border_outlined),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 1,
+                  crossAxisSpacing: 2,
+                  childAspectRatio: 0.7,
+                ),
+                itemCount: widget.imagelist.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    color: AppColors.warmwhite,
+                    // height: 186,
+                    // width: 128,
+                    child: Column(
+                      //mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: Icon(Icons.favorite_border_outlined),
+                        ),
+                        Expanded(child: Image.asset(widget.imagelist[index])),
+                        Text(widget.nameList[index]),
+                        Text(
+                          "₹ 25,000",
+                          style: AppTextstyle.medium(
+                            fontWeight: FontWeight.w700,
                           ),
-                          Image.asset(widget.imagelist[index]),
-                          Text(widget.nameList[index]),
-                          Text(
-                            "₹ 25,000",
-                            style: AppTextstyle.medium(
-                              fontWeight: FontWeight.w700,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: index == 2 || index == 5
+                                  ? AppColors.opacitypinkcolor
+                                  : AppColors.Opacitygreencolor,
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                color: index == 2 || index == 5
-                                    ? AppColors.opacitypinkcolor
-                                    : AppColors.Opacitygreencolor,
-                              ),
-
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.shopping_bag_outlined,
-                                    color: index == 2 || index == 5
+              
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.shopping_bag_outlined,
+                                  color: index == 2 || index == 5
+                                      ? AppColors.pink
+                                      : AppColors.green,
+                                  size: 15,
+                                ),
+                                SizedBox(width: 5),
+                                Text(
+                                  index == 2 || index == 5
+                                      ? "Remove"
+                                      : "Add Cart",
+                                  style: AppTextstyle.small(
+                                    fontColor: index == 2 || index == 5
                                         ? AppColors.pink
                                         : AppColors.green,
-                                    size: 15,
+                                    fontSize: 13,
                                   ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    index == 2 || index == 5
-                                        ? "Remove"
-                                        : "Add Cart",
-                                    style: AppTextstyle.small(
-                                      fontColor: index == 2 || index == 5
-                                          ? AppColors.pink
-                                          : AppColors.green,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
               SizedBox(height: 15),
               Carousal(image: widget.ad2),
               SizedBox(height: 15),
               Text("Offer Zone", style: AppTextstyle.large(fontSize: 19)),
               SizedBox(height: 15),
-              SizedBox(
-                width: width,
-                child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 1,
-                    crossAxisSpacing: 2,
-                    childAspectRatio: 0.7,
-                  ),
-                  itemCount: widget.imagelist.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      color: AppColors.warmwhite,
-                      // height: 180,
-                      // width: 128,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: Icon(Icons.favorite_border_outlined),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 1,
+                  crossAxisSpacing: 2,
+                  childAspectRatio: 0.7,
+                ),
+                itemCount: widget.imagelist.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    color: AppColors.warmwhite,
+                  
+                    child: Column(
+                     // mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: Icon(Icons.favorite_border_outlined),
+                        ),
+                        Expanded(child: Image.asset(widget.imagelist[index])),
+                        Text(widget.nameList[index]),
+                        Text(
+                          "₹ 25,000",
+                          style: AppTextstyle.medium(
+                            fontWeight: FontWeight.w700,
                           ),
-                          Image.asset(widget.imagelist[index]),
-                          Text(widget.nameList[index]),
-                          Text(
-                            "₹ 26,000",
-                            style: AppTextstyle.medium(
-                              fontWeight: FontWeight.w700,
-                            ),
+                        ),
+                        SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0,
                           ),
-                          SizedBox(height: 10),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
+                          child: Container(
+                            padding: EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: index == 2 || index == 5
+                                  ? AppColors.opacitypinkcolor
+                                  : AppColors.Opacitygreencolor,
                             ),
-                            child: Container(
-                              padding: EdgeInsets.all(2),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                color: index == 2 || index == 5
-                                    ? AppColors.opacitypinkcolor
-                                    : AppColors.Opacitygreencolor,
-                              ),
-
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.shopping_bag_outlined,
-                                    color: index == 2 || index == 5
+              
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.shopping_bag_outlined,
+                                  color: index == 2 || index == 5
+                                      ? AppColors.pink
+                                      : AppColors.green,
+                                  size: 15,
+                                ),
+                                SizedBox(width: 5),
+                                Text(
+                                  index == 2 || index == 5
+                                      ? "Remove"
+                                      : "Add Cart",
+                                  style: AppTextstyle.small(
+                                    fontColor: index == 2 || index == 5
                                         ? AppColors.pink
                                         : AppColors.green,
-                                    size: 15,
+                                    fontSize: 13,
                                   ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    index == 2 || index == 5
-                                        ? "Remove"
-                                        : "Add Cart",
-                                    style: AppTextstyle.small(
-                                      fontColor: index == 2 || index == 5
-                                          ? AppColors.pink
-                                          : AppColors.green,
-                                      fontSize: 13,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                          // SizedBox(height: 10),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        ),
+                      
+                      ],
+                    ),
+                  );
+                },
               ),
             ],
           ),

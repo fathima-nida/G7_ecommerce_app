@@ -33,6 +33,7 @@ class AssetResources {
   static const cart = 'assets/bottom_navigation/cart.png';
   static const favorite = 'assets/bottom_navigation/favourite.png';
   static const prfle = 'assets/bottom_navigation/profile.png';
+  static const bag ="assets/category/Bag.png";
 
   static const homeWhite = 'assets/bottom_navigation/white_house.png';
   static const categoryWhite = 'assets/bottom_navigation/white_category.png';
@@ -43,5 +44,6 @@ class AssetResources {
    static const clrcharger= "assets/categories/clrdcharger.png";
    static const whitecharger="assets/categories/charger3.png";
    static const boxCart='assets/categories/box.png';
+   static const redbag= "assets/categories/Pro.png";
    
 }
