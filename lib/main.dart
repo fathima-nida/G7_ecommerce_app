@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:g7_comerce_app/core/utils/bottom_navigation.dart';
 import 'package:g7_comerce_app/features/auth/screens/loginscreen.dart';
+import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
 
 
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo', home: BottomNavigationWidget());
+      title: 'Flutter Demo', 
+      home: SplashScreen());
   }
 }
