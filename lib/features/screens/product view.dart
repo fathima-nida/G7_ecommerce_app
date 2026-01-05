@@ -14,8 +14,10 @@ class _ProductViewPageState extends State<ProductViewPage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
+        
         leading: const BackButton(),
         title: const Text("Product View"),
         backgroundColor: AppColors.white,
@@ -104,7 +106,7 @@ SizedBox(
 
             const Text(
               "Description is any type of communication that aims to make vivid a place, object, person, group, or other physical entity. It is one of four rhetorical...",
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: AppColors.grey),
             ),
           ],
         ),

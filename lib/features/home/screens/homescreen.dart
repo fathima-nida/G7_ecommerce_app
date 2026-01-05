@@ -3,7 +3,7 @@ import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
 import 'package:g7_comerce_app/features/home/screens/widgets/carousal.dart';
-import 'package:g7_comerce_app/features/search/screens/searchscreen.dart';
+import 'package:g7_comerce_app/features/home/screens/searchscreen.dart';
 
 class Homescreen extends StatefulWidget {
   Homescreen({super.key});
