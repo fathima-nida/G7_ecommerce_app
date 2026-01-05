@@ -175,9 +175,9 @@ class Favourite extends StatelessWidget {
                                     const SizedBox(width: 6),
                                     Text(
                                       "Add Cart",
-                                      style: TextStyle(
-                                        color: AppColors.greenlight,
-                                        fontSize: 14,
+                                      style: AppTextstyle.small(
+                                        fontColor: AppColors.greenlight,
+                                        //fontSize: 14,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
