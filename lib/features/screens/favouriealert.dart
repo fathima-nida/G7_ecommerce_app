@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
+import 'package:g7_comerce_app/core/theme/textstyle.dart';
 
 class DescriptionBottomSheet extends StatelessWidget {
   const DescriptionBottomSheet({super.key});
@@ -36,14 +37,14 @@ class DescriptionBottomSheet extends StatelessWidget {
               ),
             ),
     
-            const Text(
+            Text(
               "Enter Description",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: AppTextstyle.large( fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
             Text(
               "Type your comment on your cart product",
-              style: TextStyle(fontSize: 13, color: AppColors.grey),
+              style:AppTextstyle.small( fontColor: AppColors.grey),
             ),
             const SizedBox(height: 16),
     

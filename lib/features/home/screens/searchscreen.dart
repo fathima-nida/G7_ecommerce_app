@@ -14,10 +14,10 @@ class Searchscreen extends StatelessWidget {
   final List<Map<String, dynamic>> items = [
     {"image": AssetResources.screencard},
     {"image": AssetResources.backcovers},
-    {"image": AssetResources.charger1},
+    {"image": AssetResources.chargerb},
     {"image": AssetResources.headset},
     {"image": AssetResources.mobilestand},
-    {"image": AssetResources.charger1},
+    {"image": AssetResources.chargerb},
     {"image": AssetResources.screenguard},
   ];
 

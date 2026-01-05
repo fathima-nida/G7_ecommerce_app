@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
+import 'package:g7_comerce_app/features/home/screens/searchscreen.dart';
 import 'package:g7_comerce_app/features/home/screens/widgets/carousal.dart';
 import 'package:g7_comerce_app/features/home/screens/searchscreen.dart';
 
@@ -230,13 +231,13 @@ class _HomescreenState extends State<Homescreen> {
                   return Container(
                     color: AppColors.warmwhite,
                     // height: 186,
-                    // width: 128,
+                    // width: 12
                     child: Column(
                       //mainAxisSize: MainAxisSize.min,
                       children: [
                         Align(
                           alignment: Alignment.topRight,
-                          child: Icon(Icons.favorite_border_outlined),
+                          child:Image.asset(AssetResources.favorite,scale: 1,),
                         ),
                         Expanded(child: Image.asset(widget.imagelist[index])),
                         Text(widget.nameList[index],style: AppTextstyle.small(fontColor: AppColors.bluegrey),),
@@ -259,13 +260,11 @@ class _HomescreenState extends State<Homescreen> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(
-                                  Icons.shopping_bag_outlined,
-                                  color: index == 2 || index == 5
+                             
+                                Image.asset(AssetResources.bag,
+                                color: index == 2 || index == 5
                                       ? AppColors.pink
-                                      : AppColors.green,
-                                  size: 15,
-                                ),
+                                       : AppColors.green,),
                                 SizedBox(width: 5),
                                 Text(
                                   index == 2 || index == 5
@@ -312,7 +311,7 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         Align(
                           alignment: Alignment.topRight,
-                          child: Icon(Icons.favorite_border_outlined),
+                          child:Image.asset(AssetResources.favorite,scale: 1,),
                         ),
                         Expanded(child: Image.asset(widget.imagelist[index],)),
                         Text(widget.nameList[index],style: AppTextstyle.small(fontColor: AppColors.bluegrey),),
@@ -337,13 +336,10 @@ class _HomescreenState extends State<Homescreen> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(
-                                  Icons.shopping_bag_outlined,
-                                  color: index == 2 || index == 5
-                                      ? AppColors.pink
-                                      : AppColors.green,
-                                  size: 15,
-                                ),
+                            
+                                Image.asset(AssetResources.bag,color: index == 2 || index == 5
+                                     ? AppColors.pink
+                                      : AppColors.green,),
                                 SizedBox(width: 5),
                                 Text(
                                   index == 2 || index == 5

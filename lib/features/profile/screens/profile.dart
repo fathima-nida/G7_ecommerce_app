@@ -1,11 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
-//import 'package:g7_comerce_app/core/constant/asset_resource.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
 import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
-
-// profile screen
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -14,9 +12,9 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.pink,
-
       body: Column(
         children: [
+          /// TOP PROFILE SECTION
           Container(
             height: 220,
             width: double.infinity,
@@ -43,7 +41,9 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       "ahmedraza@gmail.com",
-                      style: AppTextstyle.small(fontColor: AppColors.white),
+                      style: AppTextstyle.small(
+                        fontColor: AppColors.white,
+                      ),
                     ),
                   ],
                 ),
@@ -55,6 +55,7 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
 
+          /// CONTENT SECTION
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
@@ -67,6 +68,7 @@ class ProfileScreen extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.only(top: 30),
                 children: [
+                  /// PERSONAL INFO
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -97,6 +99,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
 
+                  /// ORDER DASHBOARD (IMAGE CLICK NAVIGATION)
                   ListTile(
                     onTap: () {
                       Navigator.push(
@@ -124,6 +127,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
 
+                  /// SUPPORT
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -192,6 +196,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
 
+                  /// ACCOUNT
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -230,3 +235,4 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
+

@@ -1,4 +1,5 @@
 import 'package:g7_comerce_app/core/build_config/app_env.dart';
+import 'package:g7_comerce_app/core/utils/shared_pref_helper/shared_pref_helper.dart';
 
 class BuildConfig {
   static late final AppEnv environment;
@@ -18,13 +19,17 @@ class BuildConfig {
     BuildConfig.timeOut = timeOut;
     BuildConfig.isDeveloperWindowEnabled = isDeveloperWindowEnabled;
 
-    await UpdateAppToken();
+    await updateAppToken();
   }
-
-  static Future<void> UpdateAppToken({String? token}) async {
+static Future<void> updateAppToken({String? token}) async {
     if (token != null) {
       BuildConfig.appToken = token;
-      await share
+      await SharedPrefHelper.saveAppToken(token);
+    } else {
+      final stored = await SharedPrefHelper.getAppToken();
+      if (stored != null && stored.isNotEmpty) {
+        BuildConfig.appToken = stored;
+      }
     }
   }
 }
