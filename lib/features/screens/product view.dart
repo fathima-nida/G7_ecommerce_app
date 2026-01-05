@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
+import 'package:g7_comerce_app/core/constant/textstyle.dart';
 
 class ProductViewPage extends StatefulWidget {
   const ProductViewPage({super.key});
@@ -14,10 +15,8 @@ class _ProductViewPageState extends State<ProductViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
-        
         leading: const BackButton(),
         title: const Text("Product View"),
         backgroundColor: AppColors.white,
@@ -34,22 +33,22 @@ class _ProductViewPageState extends State<ProductViewPage> {
             // ),
 
             // const SizedBox(height: 16),
-SizedBox(
-  height: 400,
-  child: PageView(
-    children: [
-      Image.asset( AssetResources.chargerb, fit: BoxFit.cover),
-      Image.asset( AssetResources.chargerb, fit: BoxFit.cover),
-      Image.asset( AssetResources.chargerb, fit: BoxFit.cover),
-    ],
-  ),
-),
+            SizedBox(
+              height: 400,
+              child: PageView(
+                children: [
+                  Image.asset(AssetResources.chargerb, fit: BoxFit.cover),
+                  Image.asset(AssetResources.chargerb, fit: BoxFit.cover),
+                  Image.asset(AssetResources.chargerb, fit: BoxFit.cover),
+                ],
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                 Text(
                   "Your resource to discover and \nconnect",
-                  style: TextStyle(fontSize: 16),
+                  style: AppTextstyle.medium(fontSize: 16),
                 ),
 
                 /// Quantity Controller
@@ -64,14 +63,14 @@ SizedBox(
                       },
                     ),
 
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 5),
 
                     Text(
                       quantity.toString().padLeft(2, '0'),
                       style: const TextStyle(fontSize: 16),
                     ),
 
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 5),
 
                     _quantityButton(
                       icon: Icons.add,
@@ -86,27 +85,27 @@ SizedBox(
 
             const SizedBox(height: 10),
 
-            const Text(
+               Text(
               "₹ 29,999",
-              style: TextStyle(
-                fontSize: 22,
-                color: AppColors.green,
+              style: AppTextstyle.large(
+                
+                fontColor: AppColors.green,
                 fontWeight: FontWeight.bold,
               ),
             ),
 
             const SizedBox(height: 16),
 
-            const Text(
+        Text(
               "Description",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: AppTextstyle.medium( fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 6),
 
-            const Text(
+             Text(
               "Description is any type of communication that aims to make vivid a place, object, person, group, or other physical entity. It is one of four rhetorical...",
-              style: TextStyle(color: AppColors.grey),
+              style: AppTextstyle.small(fontColor: AppColors.grey,fontWeight: FontWeight.w500),
             ),
           ],
         ),
@@ -150,6 +149,7 @@ SizedBox(
       ),
     );
   }
+
   /// Reusable quantity button
   Widget _quantityButton({
     required IconData icon,
@@ -160,10 +160,7 @@ SizedBox(
         border: Border.all(color: AppColors.lighteGrey),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: IconButton(
-        icon: Icon(icon),
-        onPressed: onPressed,
-      ),
+      child: IconButton(icon: Icon(icon), onPressed: onPressed),
     );
   }
 }
