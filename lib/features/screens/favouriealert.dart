@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:g7_comerce_app/core/constant/app_colors.dart';
+import 'package:g7_comerce_app/core/theme/app_colors.dart';
 
 class DescriptionBottomSheet extends StatelessWidget {
   const DescriptionBottomSheet({super.key});
