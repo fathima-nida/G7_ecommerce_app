@@ -14,10 +14,10 @@ class Searchscreen extends StatelessWidget {
   final List<Map<String, dynamic>> items = [
     {"image": AssetResources.screencard},
     {"image": AssetResources.backcovers},
-    {"image": AssetResources.charger1},
+    {"image": AssetResources.chargerb},
     {"image": AssetResources.headset},
     {"image": AssetResources.mobilestand},
-    {"image": AssetResources.charger1},
+    {"image": AssetResources.chargerb},
     {"image": AssetResources.screenguard},
   ];
 
@@ -74,7 +74,13 @@ class Searchscreen extends StatelessWidget {
                     color: AppColors.lytwhite,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Icon(Icons.tune),
+                  // child: const Icon(Icons.tune),
+                  child: Center(
+                    child: Image.asset(AssetResources.filter,
+                    // width: 22,
+                    // height: 22,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -146,10 +152,9 @@ class Searchscreen extends StatelessWidget {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      const Icon(
-                                        Icons.shopping_bag_outlined,
-                                        size: 18,
-                                        color: AppColors.green,
+                                      Image.asset(AssetResources.bag,
+                                      width: 18,
+                                      height: 18,
                                       ),
                                       const SizedBox(width: 6),
                                       Text(
@@ -166,7 +171,10 @@ class Searchscreen extends StatelessWidget {
                           ),
 
                           /// Favorite
-                          const Icon(Icons.favorite_border, size: 22),
+                          Image.asset(AssetResources.favorite,
+                          // width: 20,
+                          // height: 20,
+                          ),
                         ],
                       ),
                     ),

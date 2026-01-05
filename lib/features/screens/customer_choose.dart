@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:g7_comerce_app/core/constant/app_colors.dart';
 
 class CustomerListPage extends StatelessWidget {
   CustomerListPage({super.key});
 
   final List<Color> avatarColors = [
-    Colors.blue,
-    Colors.green,
-    Colors.blue,
-    Colors.orange,
-    Colors.blue,
-    Colors.green,
-    Colors.blue,
-    Colors.orange,
-    Colors.blue,
-    Colors.green,
+    AppColors.blue,
+    AppColors.green,
+    AppColors.skyBlue,
+    AppColors.orange,
+    AppColors.blue,
+    AppColors.green,
+    AppColors.skyBlue,
+    AppColors.orange,
+    AppColors.blue,
+    AppColors.green,
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor:  AppColors.lighteGrey,
       body: SafeArea(
         child: Column(
           children: [
@@ -31,7 +32,7 @@ class CustomerListPage extends StatelessWidget {
                   prefixIcon: const Icon(Icons.arrow_back),
                   suffixIcon: const Icon(Icons.search),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: AppColors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide.none,
@@ -49,7 +50,7 @@ class CustomerListPage extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
@@ -60,7 +61,7 @@ class CustomerListPage extends StatelessWidget {
                             child: const Text(
                               "C",
                               style: TextStyle(
-                                color: Colors.white,
+                                color: AppColors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -82,7 +83,7 @@ class CustomerListPage extends StatelessWidget {
                                 Text(
                                   "Malappuram",
                                   style: TextStyle(
-                                    color: Colors.grey,
+                                    color: AppColors.grey,
                                   ),
                                 ),
                               ],
@@ -91,7 +92,7 @@ class CustomerListPage extends StatelessWidget {
                           const Text(
                             "Perithalmanna",
                             style: TextStyle(
-                              color: Colors.grey,
+                              color: AppColors.grey,
                             ),
                           ),
                         ],

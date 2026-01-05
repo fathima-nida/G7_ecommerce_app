@@ -1,11 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
-//import 'package:g7_comerce_app/core/constant/asset_resource.dart';
 import 'package:g7_comerce_app/core/constant/textstyle.dart';
 import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
-
-// profile screen
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -14,9 +12,9 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.pink,
-
       body: Column(
         children: [
+          /// TOP PROFILE SECTION
           Container(
             height: 220,
             width: double.infinity,
@@ -43,18 +41,21 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       "ahmedraza@gmail.com",
-                      style: AppTextstyle.small(fontColor: AppColors.white),
+                      style: AppTextstyle.small(
+                        fontColor: AppColors.white,
+                      ),
                     ),
                   ],
                 ),
 
                 const Spacer(),
 
-                const Icon(Icons.logout, color: AppColors.white),
+                Image.asset(AssetResources.logout, width: 28, height: 28),
               ],
             ),
           ),
 
+          /// CONTENT SECTION
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
@@ -67,6 +68,7 @@ class ProfileScreen extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.only(top: 30),
                 children: [
+                  /// PERSONAL INFO
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -79,7 +81,11 @@ class ProfileScreen extends StatelessWidget {
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.edit, color: AppColors.pink),
+                    leading: Image.asset(
+                      AssetResources.edit,
+                      width: 20,
+                      height: 20,
+                    ),
                     title: Text(
                       "Profile Edit",
                       style: AppTextstyle.medium(
@@ -87,31 +93,41 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing: const Icon(Icons.arrow_forward_ios),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.grey,
+                    ),
                   ),
 
+                  /// ORDER DASHBOARD (IMAGE CLICK NAVIGATION)
                   ListTile(
-                    leading: const Icon(Icons.dashboard, color: AppColors.pink),
-                    title: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CustomerDashboard(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "Order Dashboard",
-                        style: AppTextstyle.medium(
-                          fontColor: AppColors.grey,
-                          fontWeight: FontWeight.w500,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CustomerDashboard(),
                         ),
+                      );
+                    },
+                    leading: Image.asset(
+                      AssetResources.order,
+                      width: 20,
+                      height: 20,
+                    ),
+                    title: Text(
+                      "Order Dashboard",
+                      style: AppTextstyle.medium(
+                        fontColor: AppColors.grey,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing: const Icon(Icons.arrow_forward_ios),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.grey,
+                    ),
                   ),
 
+                  /// SUPPORT
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -124,9 +140,10 @@ class ProfileScreen extends StatelessWidget {
                   ),
 
                   ListTile(
-                    leading: const Icon(
-                      Icons.privacy_tip,
-                      color: AppColors.pink,
+                    leading: Image.asset(
+                      AssetResources.tick,
+                      width: 20,
+                      height: 20,
                     ),
                     title: Text(
                       "Privacy Policy",
@@ -135,13 +152,17 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing: const Icon(Icons.arrow_forward_ios),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.grey,
+                    ),
                   ),
 
                   ListTile(
-                    leading: const Icon(
-                      Icons.description,
-                      color: AppColors.pink,
+                    leading: Image.asset(
+                      AssetResources.document,
+                      width: 20,
+                      height: 20,
                     ),
                     title: Text(
                       "Terms & Conditions",
@@ -150,12 +171,17 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.grey,
+                    ),
                   ),
 
                   ListTile(
-                    leading: const Icon(
-                      Icons.help_outline,
-                      color: AppColors.pink,
+                    leading: Image.asset(
+                      AssetResources.questionmark,
+                      width: 20,
+                      height: 20,
                     ),
                     title: Text(
                       "FAQs",
@@ -164,8 +190,13 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.grey,
+                    ),
                   ),
 
+                  /// ACCOUNT
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -178,7 +209,11 @@ class ProfileScreen extends StatelessWidget {
                   ),
 
                   ListTile(
-                    leading: const Icon(Icons.lock, color: AppColors.pink),
+                    leading: Image.asset(
+                      AssetResources.lock,
+                      width: 20,
+                      height: 20,
+                    ),
                     title: Text(
                       "Change Password",
                       style: AppTextstyle.medium(
@@ -186,7 +221,10 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing: const Icon(Icons.arrow_forward_ios),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: AppColors.grey,
+                    ),
                   ),
                 ],
               ),
@@ -197,3 +235,4 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
+

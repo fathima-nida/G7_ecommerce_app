@@ -65,7 +65,7 @@ class _OrderViewState extends State<OrderView> {
           icon: Icon(Icons.arrow_back),
         ),
         title: Text('Order View', style: AppTextstyle.medium()),
-        elevation: 0, // remove shadow if you want a clean line
+        elevation: 0, 
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
           child: Container(
