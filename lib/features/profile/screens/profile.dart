@@ -50,11 +50,7 @@ class ProfileScreen extends StatelessWidget {
 
                 const Spacer(),
 
-                Image.asset(
-                  AssetResources.logout,
-                  width: 28,
-                  height: 28,
-                ),
+                Image.asset(AssetResources.logout, width: 28, height: 28),
               ],
             ),
           ),
@@ -100,27 +96,23 @@ class ProfileScreen extends StatelessWidget {
                     trailing: const Icon(
                       Icons.arrow_forward_ios,
                       color: AppColors.grey,
-                      size: 16,
                     ),
                   ),
 
                   /// ORDER DASHBOARD (IMAGE CLICK NAVIGATION)
                   ListTile(
-                    leading: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                 CustomerDashboard(),
-                          ),
-                        );
-                      },
-                      child: Image.asset(
-                        AssetResources.order,
-                        width: 20,
-                        height: 20,
-                      ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CustomerDashboard(),
+                        ),
+                      );
+                    },
+                    leading: Image.asset(
+                      AssetResources.order,
+                      width: 20,
+                      height: 20,
                     ),
                     title: Text(
                       "Order Dashboard",
@@ -129,10 +121,9 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing: const Icon(
+                    trailing: Icon(
                       Icons.arrow_forward_ios,
                       color: AppColors.grey,
-                      size: 16,
                     ),
                   ),
 
@@ -161,10 +152,9 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing: const Icon(
+                    trailing: Icon(
                       Icons.arrow_forward_ios,
                       color: AppColors.grey,
-                      size: 16,
                     ),
                   ),
 
@@ -181,10 +171,9 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing: const Icon(
+                    trailing: Icon(
                       Icons.arrow_forward_ios,
                       color: AppColors.grey,
-                      size: 16,
                     ),
                   ),
 
@@ -201,10 +190,9 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing: const Icon(
+                    trailing: Icon(
                       Icons.arrow_forward_ios,
                       color: AppColors.grey,
-                      size: 16,
                     ),
                   ),
 
@@ -233,10 +221,9 @@ class ProfileScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    trailing: const Icon(
+                    trailing: Icon(
                       Icons.arrow_forward_ios,
                       color: AppColors.grey,
-                      size: 16,
                     ),
                   ),
                 ],
