@@ -48,7 +48,7 @@ SizedBox(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  "Your resource to discover and \nconnect  fg",
+                  "Your resource to discover and \nconnect",
                   style: TextStyle(fontSize: 16),
                 ),
 
