@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
-import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
 import 'package:g7_comerce_app/features/cart/cartlists.dart';
 import 'package:g7_comerce_app/features/category/screens/categorypage.dart';
 
