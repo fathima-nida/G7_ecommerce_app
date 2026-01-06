@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:g7_comerce_app/core/constant/app_colors.dart';
-import 'package:g7_comerce_app/core/constant/asset_resources.dart';
-import 'package:g7_comerce_app/core/constant/textstyle.dart';
+import 'package:g7_comerce_app/core/theme/app_colors.dart';
+import 'package:g7_comerce_app/core/theme/asset_resources.dart';
+import 'package:g7_comerce_app/core/theme/textstyle.dart';
 
 class ProductViewPage extends StatefulWidget {
   const ProductViewPage({super.key});
@@ -82,9 +82,7 @@ class _ProductViewPageState extends State<ProductViewPage> {
                 ),
               ],
             ),
-
             const SizedBox(height: 10),
-
                Text(
               "₹ 29,999",
               style: AppTextstyle.large(
@@ -93,9 +91,7 @@ class _ProductViewPageState extends State<ProductViewPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             const SizedBox(height: 16),
-
         Text(
               "Description",
               style: AppTextstyle.medium( fontWeight: FontWeight.bold),
