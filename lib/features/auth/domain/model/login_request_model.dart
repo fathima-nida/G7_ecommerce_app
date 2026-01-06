@@ -9,3 +9,4 @@ class LoginRequestModel extends Equatable {
     return {"MobileNo": mobile,};
   }
 }
+

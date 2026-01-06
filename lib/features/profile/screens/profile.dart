@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
-import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
+import 'package:g7_comerce_app/features/dashboard/presentation/customer_dashboard.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

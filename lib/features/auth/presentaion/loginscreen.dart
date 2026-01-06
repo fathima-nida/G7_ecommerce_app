@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
-import 'package:g7_comerce_app/features/widgets/bottom_navigation.dart';
+import 'package:g7_comerce_app/core/widgets/bottom_navigation.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
