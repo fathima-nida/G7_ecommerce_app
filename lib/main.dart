@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:g7_comerce_app/features/auth/screens/loginscreen.dart';
-import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
-import 'package:g7_comerce_app/features/screens/customer_choose.dart';
-import 'package:g7_comerce_app/features/screens/favourite.dart';
-import 'package:g7_comerce_app/features/screens/product%20view.dart';
-import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
+import 'package:g7_comerce_app/features/auth/presentaion/loginscreen.dart';
+
+import 'package:g7_comerce_app/features/favourite/customer_choose.dart';
+import 'package:g7_comerce_app/features/favourite/presentation/favourite.dart';
+import 'package:g7_comerce_app/features/home/screens/product%20view.dart';
 import 'package:g7_comerce_app/features/dashboard/screens/customer_dashboard.dart';
 import 'package:g7_comerce_app/features/home/screens/searchscreen.dart';
 import 'package:g7_comerce_app/features/profile/screens/profile.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
-import 'package:g7_comerce_app/features/screens/favouriealert.dart';
+import 'package:g7_comerce_app/features/favourite/presentation/favouriealert.dart';
 
 class Favourite extends StatelessWidget {
   Favourite({super.key});

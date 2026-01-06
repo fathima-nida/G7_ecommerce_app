@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
-import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
 import 'package:g7_comerce_app/features/cart/cartlists.dart';
 import 'package:g7_comerce_app/features/category/screens/categorypage.dart';
 
 import 'package:g7_comerce_app/features/home/screens/homescreen.dart';
 import 'package:g7_comerce_app/features/profile/screens/profile.dart';
-import 'package:g7_comerce_app/features/screens/favourite.dart';
+import 'package:g7_comerce_app/features/favourite/presentation/favourite.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
   const BottomNavigationWidget({super.key});
@@ -126,7 +125,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     );
   }
 }
-
 class _NavItem {
   final String label;
   final String icon;
