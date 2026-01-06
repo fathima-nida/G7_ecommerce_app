@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:g7_comerce_app/features/auth/screens/loginscreen.dart';
+import 'package:g7_comerce_app/features/auth/screens/otp_screen.dart';
 import 'package:g7_comerce_app/features/auth/screens/splashscreen.dart';
 import 'package:g7_comerce_app/features/screens/customer_choose.dart';
 import 'package:g7_comerce_app/features/screens/favourite.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: LoginScreen(),
+      home: OtpScreen(),
     );
   }
 }
