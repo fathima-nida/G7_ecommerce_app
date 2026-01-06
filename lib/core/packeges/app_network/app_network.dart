@@ -3,8 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:g7_comerce_app/core/build_config/build_config.dart';
-import 'package:g7_comerce_app/core/commom/app_failure.dart';
-import 'package:g7_comerce_app/core/commom/generic_types.dart';
+import 'package:g7_comerce_app/core/common/app_failure.dart';
+import 'package:g7_comerce_app/core/common/generic_types.dart';
 import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
 
 class AppNetwork {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
-import 'package:g7_comerce_app/features/dashboard/screens/all_product.dart';
+import 'package:g7_comerce_app/features/dashboard/presentation/all_product.dart';
 
 class CustomerDashboard extends StatelessWidget {
   CustomerDashboard({super.key});
