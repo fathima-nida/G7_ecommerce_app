@@ -1,4 +1,4 @@
-import 'package:g7_comerce_app/core/constant/pref_resources.dart';
+import 'package:g7_comerce_app/core/constants/pref_resources.dart';
 import 'package:g7_comerce_app/core/utils/App_storage.dart';
 
 class SharedPrefHelper {
@@ -18,25 +18,9 @@ class SharedPrefHelper {
     return AppStorage.getString(PrefResources.TOKENAPP);
   }
 
-  static Future<void> saveUserToken(String token) async {
-    await AppStorage.setString(PrefResources.TOKENUSER, token);
-  }
-
-  static Future<String?> getUserToken() async {
-    return AppStorage.getString(PrefResources.TOKENUSER);
-  }
-
+ 
   static Future<void> clearAppToken() async {
     await AppStorage.remove(PrefResources.TOKENAPP);
-  }
-
-  static Future<void> clearUserToken() async {
-    await AppStorage.remove(PrefResources.TOKENUSER);
-  }
-
-  static Future<void> clearTokens() async {
-    await AppStorage.remove(PrefResources.TOKENAPP);
-    await AppStorage.remove(PrefResources.TOKENUSER);
   }
 
   static Future<void> clearAll() async {
