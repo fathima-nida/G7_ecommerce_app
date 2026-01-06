@@ -1,5 +1,5 @@
 import 'package:g7_comerce_app/core/build_config/app_env.dart';
-import 'package:g7_comerce_app/core/utils/shared_pref_helper/shared_pref_helper.dart';
+import 'package:g7_comerce_app/utils/shared_pref_helper/shared_pref_helper.dart';
 
 class BuildConfig {
   static late final AppEnv environment;
