@@ -49,12 +49,8 @@ class AssetResources {
   static const charger7 = "asset/categories/charger7.png";
   static const backcoverX = "asset/categories/back cover.png";
   static const headphone = "asset/categories/headset.png";
-
-
-   
  
   //hisana
-
  static const logout = "assets/profile/logout .png";
  static const edit = "assets/profile/edit.png";
  static const order = "assets/profile/order.png";  
