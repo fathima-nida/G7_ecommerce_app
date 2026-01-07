@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-class CustomDashboardReqModel extends Equatable {
+class CstmrDashboardReqModel extends Equatable {
   final String fromData;
   final String toDate;
-  const CustomDashboardReqModel({required this.fromData, required this.toDate});
+  const CstmrDashboardReqModel({required this.fromData, required this.toDate});
 
   @override
   List<Object?> get props => [fromData, toDate];
