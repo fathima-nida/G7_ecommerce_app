@@ -43,9 +43,25 @@ class AssetResources {
   static const favoriteWhite = 'assets/bottom_navigation/white_favourite.png';
   static const prfleWhite = 'assets/bottom_navigation/white_profile .png';
 
-   static const clrcharger= "assets/categories/clrdcharger.png";
-   static const whitecharger="assets/categories/charger3.png";
-   static const boxCart='assets/categories/box.png';
-   static const redbag= "assets/categories/Pro.png";
-   
+  //nasla
+  static const charger1 = "assets/category/charger 1.png";
+  static const charger2 = "assets/category/charger2.png";
+  static const charger3 = "assets/category/charger3.png";
+  static const charger4 = "assets/category/charger4.png";
+  static const charger5 = "assets/category/charger5.png";
+  static const charger6 = "assets/category/charger6.png";
+  static const charger7 = "assets/category/charger7.png";
+  static const backcoverx="assets/category/back cover.png";
+  static const headphone ="assets/category/headset.png";
+  static const boxcart=  "assets/categories/box.png";
+ 
+  //hisana
+ static const logout = "assets/profile/logout .png";
+ static const edit = "assets/profile/edit.png";
+ static const order = "assets/profile/order.png";  
+ static const tick = "assets/profile/shield-tick .png";
+ static const document = "assets/profile/document-text .png";
+ static const questionmark = "assets/profile/question mark.png";
+ static const lock = "assets/profile/lock .png";
+ static const filter = "assets/search/filter.png";
 }

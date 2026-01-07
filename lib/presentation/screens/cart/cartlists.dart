@@ -224,7 +224,7 @@ const  CartScreen({super.key});
                                     color: AppColors.backgroundwhite,
                                   ),
                                   SizedBox(width: 5,),
-                                  Image.asset(AssetResources.boxCart, )
+                                  Image.asset(AssetResources.boxcart ),
                                 ],
                               ),
                             ),

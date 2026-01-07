@@ -76,7 +76,7 @@ class Searchscreen extends StatelessWidget {
                   ),
                   // child: const Icon(Icons.tune),
                   child: Center(
-                    child: Image.asset(AssetResources.f,
+                    child: Image.asset(AssetResources.filter,
                     // width: 22,
                     // height: 22,
                     ),
