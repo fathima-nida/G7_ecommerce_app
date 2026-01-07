@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class AssetResources {
-  static const logo = "assets/auth/g7.png";
+  static const logo = "assets/auth/logo.png";
   
   static const phone="assets/category/phone.png";
   static const phonestand="assets/category/phonestand.png";
   static const screencard="assets/category/screecard.png";
    static const chargerb="assets/category/chrgrbg.png";
-  static const charger= "asset/categories/charger.png";
-  static const backcover= "asset/categories/back cover.png";
-  static const screencards= "asset/categories/screencard.png";
-  static const stand =  "asset/categories/stand.png";
+  static const charger= "assets/categories/charger.png";
+  static const backcover= "assets/categories/back cover.png";
+  static const screencards= "assets/categories/screencard.png";
+  static const stand =  "assets/categories/stand.png";
   static const pending = 'assets/dashboard/pending.png';
   static const accepted = 'assets/dashboard/accepted.png';
   static const billed = 'assets/dashboard/billed.png';
-  static const processing = 'assets/dashboard/proccesing.png';
+  static const processing = 'assets/dashboard/processing.png';
   static const packed = 'assets/dashboard/packed.png';
   static const dispatched = 'assets/dashboard/dispatched.png';
   static const delivered = 'assets/dashboard/delivered.png';
@@ -33,7 +33,7 @@ class AssetResources {
   static const cart = 'assets/bottom_navigation/cart.png';
   static const favorite = 'assets/bottom_navigation/favourite.png';
   static const prfle = 'assets/bottom_navigation/profile.png';
-  static const bag ="assets/category/Bag.png";
+  static const bag = "assets/category/Bag.png";
 
   static const homeWhite = 'assets/bottom_navigation/white_house.png';
   static const categoryWhite = 'assets/bottom_navigation/white_category.png';

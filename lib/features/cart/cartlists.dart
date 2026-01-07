@@ -39,7 +39,7 @@ const  CartScreen({super.key});
                     margin: const EdgeInsets.only(bottom: 12),
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: AppColors.white,
+                      color: AppColors.warmwhite,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
                         color: Colors.grey.withOpacity(0.15),
@@ -341,25 +341,25 @@ const  CartScreen({super.key});
 
             const SizedBox(height: 10),
 
-            // /// CHECKOUT BUTTON
-            // Container(
-            //   height: 45,
-            //   width: double.infinity,
-            //   decoration: BoxDecoration(
-            //     color: AppColors.pink,
-            //     borderRadius: BorderRadius.circular(25),
-            //   ),
-            //   child: Center(
-            //     child: Text(
-            //       "Checkout (0${items.length})",
-            //       style: AppTextstyle.medium(
-            //         fontColor: AppColors.white,
-            //       ),
-            //     ),
-            //   ),
-            // ),
+            /// CHECKOUT BUTTON
+            Container(
+              height: 45,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColors.pink,
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: Center(
+                child: Text(
+                  "Checkout",
+                  style: AppTextstyle.medium(
+                    fontColor: AppColors.white,
+                  ),
+                ),
+              ),
+            ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 55),
           ],
         ),
       ),

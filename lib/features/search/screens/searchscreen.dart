@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/constant/app_colors.dart';
 import 'package:g7_comerce_app/core/constant/asset_resources.dart';
@@ -30,7 +28,12 @@ class Searchscreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         elevation: 0,
-        leading: const Icon(Icons.arrow_back, color: AppColors.black),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back, color: AppColors.black),
+        ),
         title: Text(
           "Search Product",
           style: AppTextstyle.medium(fontWeight: FontWeight.bold),
@@ -57,9 +60,7 @@ class Searchscreen extends StatelessWidget {
                         const SizedBox(width: 8),
                         Text(
                           "Search Products",
-                          style: AppTextstyle.small(
-                            fontColor: AppColors.grey,
-                          ),
+                          style: AppTextstyle.small(fontColor: AppColors.grey),
                         ),
                       ],
                     ),
@@ -119,7 +120,9 @@ class Searchscreen extends StatelessWidget {
                               children: [
                                 Text(
                                   "Resource to discover and connect",
-                                  style: AppTextstyle.medium(fontColor: AppColors.grey),
+                                  style: AppTextstyle.medium(
+                                    fontColor: AppColors.grey,
+                                  ),
                                 ),
                                 const SizedBox(height: 5),
                                 Text(
@@ -134,10 +137,10 @@ class Searchscreen extends StatelessWidget {
                                 Container(
                                   height: 33,
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 12),
+                                    horizontal: 12,
+                                  ),
                                   decoration: BoxDecoration(
-                                    color:
-                                        AppColors.green.withOpacity(0.1),
+                                    color: AppColors.green.withOpacity(0.1),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Row(

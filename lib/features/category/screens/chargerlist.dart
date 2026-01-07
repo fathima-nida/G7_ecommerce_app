@@ -166,7 +166,13 @@ class Chargerlistscreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         elevation: 0,
-        leading: Icon(Icons.arrow_back, color: AppColors.black),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back,color: AppColors.black,),
+        ),
+        // leading: Icon(Icons.arrow_back, color: AppColors.black),
         centerTitle: false,
         title: Text("Charges", style: AppTextstyle.large()),
         actions: [
@@ -243,7 +249,7 @@ class Chargerlistscreen extends StatelessWidget {
                       children: [
 
                         /// IMAGE
-                        Image.asset(AssetResources.backcover),
+                        Image.asset(AssetResources.charger),
                         SizedBox(width: 12),
 
                         /// TEXT
