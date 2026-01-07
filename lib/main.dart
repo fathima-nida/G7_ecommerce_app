@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:g7_comerce_app/presentation/screens/auth/loginscreen.dart';
 
-
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
