@@ -172,7 +172,7 @@ class Chargerlistscreen extends StatelessWidget {
           },
           child: Icon(Icons.arrow_back,color: AppColors.black,),
         ),
-        // leading: Icon(Icons.arrow_back, color: AppColors.black),
+        
         centerTitle: false,
         title: Text("Charges", style: AppTextstyle.large()),
         actions: [
