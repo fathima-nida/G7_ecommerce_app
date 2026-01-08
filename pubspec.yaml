@@ -42,6 +42,10 @@ dependencies:
   dartz: ^0.10.1
   equatable: ^2.0.7
   json_annotation: ^4.9.0
+  bloc: ^9.2.0
+  flutter_bloc: ^9.1.1
+  get_it: ^9.2.0
+  flutter_screenutil: ^5.9.3
  
 
 dev_dependencies:
