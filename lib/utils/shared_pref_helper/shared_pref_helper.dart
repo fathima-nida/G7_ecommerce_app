@@ -24,6 +24,6 @@ class SharedPrefHelper {
   }
 
   static Future<void> clearAll() async {
-    await AppStorage.clearAll();
+    await AppStorage.clearAll();  
   }
 }

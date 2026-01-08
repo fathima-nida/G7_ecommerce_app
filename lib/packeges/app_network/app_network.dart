@@ -1,36 +1,151 @@
+// import 'dart:developer';
+// import 'package:dartz/dartz.dart';
+// import 'package:dio/dio.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:g7_comerce_app/core/build_config/build_config.dart';
+// import 'package:g7_comerce_app/domain/common/app_failure.dart';
+// import 'package:g7_comerce_app/domain/common/generic_types.dart';
+// import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
+
+// class AppNetwork {
+//   // Base Dio options
+//   static BaseOptions get _baseOptions => BaseOptions(
+//         receiveDataWhenStatusError: true,
+//         baseUrl: BuildConfig.baseUrl,
+//         headers: {"Content-Type": "application/json"},
+//       );
+
+//   /// Generic GET request
+//   static FutureEither<Response<dynamic>> get({
+//     required String url,
+//     required String mobile,
+//     Map<String, dynamic>? queryParameters,
+//   }) async {
+//     try {
+//       final dio = Dio(_baseOptions..headers.addAll(_getCustomHeaders(url,mobile)));
+
+//       // Logging interceptor
+//       dio.interceptors.add(LogInterceptor(
+//         request: true,
+//         requestBody: true,
+//         responseBody: true,
+//         error: true,
+//       ));
+
+//       final res = await dio.get(url, queryParameters: queryParameters);
+//       return Right(res);
+//     } on DioException catch (e) {
+//       log(
+//         "${e.message} | URL: ${e.response?.realUri} | Status: ${e.response?.statusCode} | Error: ${e.error}",
+//       );
+//       return Left(AppFailure.server(
+//         e.message ?? "Server error",
+//         e.response?.statusCode ?? 500,
+//       ));
+//     } catch (e) {
+//       log("$e");
+//       return Left(AppFailure.client(
+//         kDebugMode ? e.toString() : "Unexpected error occurred",
+//       ));
+//     }
+//   }
+
+//   /// Generic POST request
+//   static FutureEither<Response<dynamic>> post({
+//     required String url,
+//     required String mobile,
+//     Map<String, dynamic>? queryParameters,
+//     Map<String, dynamic>? body,
+//     Object? data,
+//   }) async {
+//     try {
+//       final dio = Dio(_baseOptions..headers.addAll(_getCustomHeaders(url,mobile)));
+
+//       // Logging interceptor
+//       dio.interceptors.add(LogInterceptor(
+//         request: true,
+//         requestBody: true,
+//         responseBody: true,
+//         error: true,
+//       ));
+
+//       final payload = body ?? data;
+
+//       final res = await dio.post(
+//         url,
+//         queryParameters: queryParameters,
+//         data: payload,
+//       );
+
+//       return Right(res);
+//     } on DioException catch (e) {
+//       log("POST URL: $url | Body: $body | Data: $data");
+//       log(
+//         "${e.message} | URL: ${e.response?.realUri} | Status: ${e.response?.statusCode} | Error: ${e.error}",
+//       );
+
+//       return Left(AppFailure.server(
+//         e.message ?? "Server error",
+//         e.response?.statusCode ?? 500,
+//       ));
+//     } catch (e) {
+//       log("$e");
+//       return Left(AppFailure.client(
+//         kDebugMode ? e.toString() : "Unexpected error occurred",
+//       ));
+//     }
+//   }
+
+//   /// Determines correct Authorization headers based on endpoint
+//   static Map<String, dynamic> _getCustomHeaders(String url, String mobile) {
+//     final Map<String, dynamic> headers = {"Content-Type": "application/json"};
+
+//     if (url.contains(ApiEndpoints.login(mobile))) {
+     
+   
+//       // userAuth  require appToken
+//       headers["Authorization"] = "Bearer ${BuildConfig.appToken}";
+//     } 
+
+//     return headers;
+//   }
+// }
+
+
 import 'dart:developer';
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:g7_comerce_app/core/build_config/build_config.dart';
+import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
 import 'package:g7_comerce_app/domain/common/app_failure.dart';
 import 'package:g7_comerce_app/domain/common/generic_types.dart';
-import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
 
 class AppNetwork {
   // Base Dio options
   static BaseOptions get _baseOptions => BaseOptions(
-        receiveDataWhenStatusError: true,
-        baseUrl: BuildConfig.baseUrl,
-        headers: {"Content-Type": "application/json"},
-      );
+    receiveDataWhenStatusError: true,
+    baseUrl: BuildConfig.baseUrl,
+    headers: {"Content-Type": "application/json"},
+  );
 
   /// Generic GET request
   static FutureEither<Response<dynamic>> get({
     required String url,
-    required String mobile,
     Map<String, dynamic>? queryParameters,
   }) async {
     try {
-      final dio = Dio(_baseOptions..headers.addAll(_getCustomHeaders(url,mobile)));
+      final dio = Dio(_baseOptions..headers.addAll(_getCustomHeaders(url)));
 
       // Logging interceptor
-      dio.interceptors.add(LogInterceptor(
-        request: true,
-        requestBody: true,
-        responseBody: true,
-        error: true,
-      ));
+      dio.interceptors.add(
+        LogInterceptor(
+          request: true,
+          requestBody: true,
+          responseBody: true,
+          error: true,
+        ),
+      );
 
       final res = await dio.get(url, queryParameters: queryParameters);
       return Right(res);
@@ -38,36 +153,41 @@ class AppNetwork {
       log(
         "${e.message} | URL: ${e.response?.realUri} | Status: ${e.response?.statusCode} | Error: ${e.error}",
       );
-      return Left(AppFailure.server(
-        e.message ?? "Server error",
-        e.response?.statusCode ?? 500,
-      ));
+      return Left(
+        AppFailure.server(
+          e.message ?? "Server error",
+          e.response?.statusCode ?? 500,
+        ),
+      );
     } catch (e) {
       log("$e");
-      return Left(AppFailure.client(
-        kDebugMode ? e.toString() : "Unexpected error occurred",
-      ));
+      return Left(
+        AppFailure.client(
+          kDebugMode ? e.toString() : "Unexpected error occurred",
+        ),
+      );
     }
   }
 
   /// Generic POST request
   static FutureEither<Response<dynamic>> post({
     required String url,
-    required String mobile,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? body,
     Object? data,
   }) async {
     try {
-      final dio = Dio(_baseOptions..headers.addAll(_getCustomHeaders(url,mobile)));
+      final dio = Dio(_baseOptions..headers.addAll(_getCustomHeaders(url)));
 
       // Logging interceptor
-      dio.interceptors.add(LogInterceptor(
-        request: true,
-        requestBody: true,
-        responseBody: true,
-        error: true,
-      ));
+      dio.interceptors.add(
+        LogInterceptor(
+          request: true,
+          requestBody: true,
+          responseBody: true,
+          error: true,
+        ),
+      );
 
       final payload = body ?? data;
 
@@ -84,26 +204,29 @@ class AppNetwork {
         "${e.message} | URL: ${e.response?.realUri} | Status: ${e.response?.statusCode} | Error: ${e.error}",
       );
 
-      return Left(AppFailure.server(
-        e.message ?? "Server error",
-        e.response?.statusCode ?? 500,
-      ));
+      return Left(
+        AppFailure.server(
+          e.message ?? "Server error",
+          e.response?.statusCode ?? 500,
+        ),
+      );
     } catch (e) {
       log("$e");
-      return Left(AppFailure.client(
-        kDebugMode ? e.toString() : "Unexpected error occurred",
-      ));
+      return Left(
+        AppFailure.client(
+          kDebugMode ? e.toString() : "Unexpected error occurred",
+        ),
+      );
     }
   }
 
   /// Determines correct Authorization headers based on endpoint
-  static Map<String, dynamic> _getCustomHeaders(String url, String mobile) {
+  static Map<String, dynamic> _getCustomHeaders(String url) {
     final Map<String, dynamic> headers = {"Content-Type": "application/json"};
 
-    if (url.contains(ApiEndpoints.login(mobile))) {
-     
-   
-      // userAuth  require appToken
+    if (url.contains(ApiEndpoints.login)) {
+      // No token needed for appAuth
+    
       headers["Authorization"] = "Bearer ${BuildConfig.appToken}";
     } 
 
