@@ -151,6 +151,7 @@
 
 
 import 'package:flutter/material.dart';
+
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
@@ -158,15 +159,7 @@ import 'package:g7_comerce_app/core/theme/textstyle.dart';
 class Chargerlistscreen extends StatelessWidget {
   Chargerlistscreen({super.key});
 
-  final List<Map<String, dynamic>> items = [
-    {"image": AssetResources.charger1},
-    {"image": AssetResources.charger2},
-    {"image": AssetResources.charger3},
-    {"image": AssetResources.charger4},
-    {"image": AssetResources.charger5},
-    {"image": AssetResources.charger6},
-    {"image": AssetResources.charger7},
-  ];
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -174,7 +167,13 @@ class Chargerlistscreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         elevation: 0,
-        leading: Icon(Icons.arrow_back, color: AppColors.black),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back,color: AppColors.black,),
+        ),
+        
         centerTitle: false,
         title: Text("Charges", style: AppTextstyle.large()),
         actions: [
@@ -233,7 +232,7 @@ class Chargerlistscreen extends StatelessWidget {
             /// LIST VIEW
             Expanded(
               child: ListView.builder(
-                itemCount: items.length,
+                itemCount: 10,
                 itemBuilder: (_, index) {
 
                   return Container(
@@ -251,17 +250,7 @@ class Chargerlistscreen extends StatelessWidget {
                       children: [
 
                         /// IMAGE
-                        Container(
-                          height: 70,
-                          width: 70,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: AssetImage(items[index]["image"]),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
+                        Image.asset(AssetResources.charger),
                         SizedBox(width: 12),
 
                         /// TEXT

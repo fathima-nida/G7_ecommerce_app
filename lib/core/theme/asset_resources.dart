@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class AssetResources {
   static const logo = "assets/auth/logo.png";
   
@@ -9,6 +11,8 @@ class AssetResources {
   static const backcover= "asset/categories/back cover.png";
   static const screencards= "asset/categories/screencard.png";
   static const stand =  "asset/categories/stand.png";
+  
+ 
   static const pending = 'assets/dashboard/pending.png';
   static const accepted = 'assets/dashboard/accepted.png';
   static const billed = 'assets/dashboard/billed.png';
@@ -40,21 +44,18 @@ class AssetResources {
   static const prfleWhite = 'assets/bottom_navigation/white_profile .png';
 
   //nasla
-  static const charger1 = "asset/categories/charger 1.png";
-  static const charger2 = "asset/categories/charger2.png";
-  static const charger3 = "asset/categories/charger3.png";
-  static const charger4 = "asset/categories/charger4.png";
-  static const charger5 = "asset/categories/charger5.png";
-  static const charger6 = "asset/categories/charger6.png";
-  static const charger7 = "asset/categories/charger7.png";
-  static const backcoverX = "asset/categories/back cover.png";
-  static const headphone = "asset/categories/headset.png";
-
-
-   
+  static const charger1 = "assets/category/charger 1.png";
+  static const charger2 = "assets/category/charger2.png";
+  static const charger3 = "assets/category/charger3.png";
+  static const charger4 = "assets/category/charger4.png";
+  static const charger5 = "assets/category/charger5.png";
+  static const charger6 = "assets/category/charger6.png";
+  static const charger7 = "assets/category/charger7.png";
+  static const backcoverx="assets/category/back cover.png";
+  static const headphone ="assets/category/headset.png";
+  static const boxcart=  "assets/categories/box.png";
  
   //hisana
-
  static const logout = "assets/profile/logout .png";
  static const edit = "assets/profile/edit.png";
  static const order = "assets/profile/order.png";  
