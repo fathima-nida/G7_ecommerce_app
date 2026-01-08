@@ -6,6 +6,7 @@ import 'package:g7_comerce_app/core/theme/textstyle.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_event.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_state.dart';
+import 'package:g7_comerce_app/presentation/screens/auth/otp_screen.dart';
 import 'package:g7_comerce_app/presentation/widgets/bottom_navigation.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -35,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: BlocConsumer<LoginBloc, LoginState>(
             listener: (context, state) {
               if(state is LoginSuccess){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BottomNavigationWidget()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>OtpScreen()));
               }
               if(state is LoginFailure){
                 ScaffoldMessenger.of(context).showSnackBar(
