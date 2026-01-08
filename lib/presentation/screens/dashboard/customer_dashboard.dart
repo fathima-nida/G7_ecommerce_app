@@ -84,7 +84,7 @@ class CustomerDashboard extends StatelessWidget {
                         backgroundColor: AppColors.white,
                         child: Center(
                           child: Image.asset(
-                            AssetResources.pending,
+                            AssetResources.pending, 
                             height: 40,
                           ),
                         ),
