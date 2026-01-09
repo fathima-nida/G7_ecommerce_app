@@ -7,7 +7,6 @@ import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_event.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_state.dart';
 import 'package:g7_comerce_app/presentation/screens/auth/otp_screen.dart';
-import 'package:g7_comerce_app/presentation/widgets/bottom_navigation.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
@@ -25,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     mobilecontroller.dispose();
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {
