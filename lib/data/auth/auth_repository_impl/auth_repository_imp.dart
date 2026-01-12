@@ -3,7 +3,7 @@
 
 // import 'package:dartz/dartz.dart';
 // import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
-// import 'package:g7_comerce_app/domain/auth/model/login_request_model.dart';
+// import 'package:g7_comerce_app/domain/auth/model/login_request_model.dart'; 
 // import 'package:g7_comerce_app/domain/auth/model/login_response.dart';
 // import 'package:g7_comerce_app/domain/auth/repositories/login_repository.dart';
 // import 'package:g7_comerce_app/domain/common/app_failure.dart';
@@ -45,6 +45,5 @@
 //       return Left(AppFailure.client("Something went wrong"));
 //     }
 //   }
-        
 //     }
   
