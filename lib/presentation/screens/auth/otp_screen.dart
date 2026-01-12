@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
+import 'package:g7_comerce_app/presentation/screens/home/homescreen.dart';
 import 'package:pinput/pinput.dart';
 
 class OtpScreen extends StatelessWidget {
@@ -24,7 +25,9 @@ class OtpScreen extends StatelessWidget {
             Pinput(
               length: 6,
               keyboardType: TextInputType.number,
-              onCompleted: (pin) {},
+              onCompleted: (pin) {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>Homescreen()));
+              },
               defaultPinTheme: PinTheme(
                 width: 55,
                 height: 55,

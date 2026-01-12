@@ -8,13 +8,13 @@ class Chargerlistscreen extends StatelessWidget {
   Chargerlistscreen({super.key});
 
   final List<Map<String, dynamic>> items = [
-    {"image": AssetResources.charger1},
-    {"image": AssetResources.charger2},
-    {"image": AssetResources.charger3},
-    {"image": AssetResources.charger4},
-    {"image": AssetResources.charger5},
-    {"image": AssetResources.charger6},
-    {"image": AssetResources.charger7},
+    {"image": AssetResources.charger},
+    {"image": AssetResources.charger},
+    {"image": AssetResources.charger},
+    {"image": AssetResources.charger},
+    {"image": AssetResources.charger},
+    {"image": AssetResources.charger},
+    {"image": AssetResources.charger},
   ];
 
   @override
