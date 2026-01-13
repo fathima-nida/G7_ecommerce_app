@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:g7_comerce_app/domain/common/common_response_model.dart';
 
 class LoginResponseModel extends Equatable {
   final String token;
