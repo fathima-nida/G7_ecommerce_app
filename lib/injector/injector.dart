@@ -10,6 +10,7 @@ void setup() {
   /// =========================
   /// Repository
   /// =========================
+  /// 
   getit.registerSingleton<LoginRepository>(
     AuthRepositoryImp(),
   );
