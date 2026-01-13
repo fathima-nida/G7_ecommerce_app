@@ -54,6 +54,7 @@ class AssetResources {
   static const backcoverx="assets/category/back cover.png";
   static const headphone ="assets/category/headset.png";
   static const boxcart=  "assets/categories/box.png";
+  static const removebag="assets/cart/removebag.png";
  
   //hisana
  static const logout = "assets/profile/logout .png";
