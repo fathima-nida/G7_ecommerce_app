@@ -4,4 +4,7 @@ class ApiEndpoints {
   // Authentication
   static const String login = '/ecommerce-login';
   static String otp(String otp) => 'verify-otp?OtpCode=$otp';
+
+  // Dashboard
+  static const String dashboard = '/get-ecommerce-dashboard';
 }

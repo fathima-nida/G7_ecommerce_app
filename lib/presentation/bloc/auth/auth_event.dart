@@ -13,6 +13,11 @@ class LoginWithMobileEvent extends LoginEvent {
 
   const LoginWithMobileEvent(this.mobile);
 
+
+
   @override
   List<Object?> get props => [mobile];
 }
+
+class checkLoginStatus extends LoginEvent{}
+class LogoutApp extends LoginEvent{}

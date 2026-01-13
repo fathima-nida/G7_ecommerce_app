@@ -6,14 +6,14 @@ part 'auth_response_dto.g.dart';
 @JsonSerializable()
 class LoginResponseDto {
   /// Common response fields
-  @JsonKey(name: "status")
-  final bool? status;
+  // @JsonKey(name: "status")
+  // final bool? status;
 
-  @JsonKey(name: "statusCode")
-  final int? statusCode;
+  // @JsonKey(name: "statusCode")
+  // final int? statusCode;
 
-  @JsonKey(name: "message")
-  final String? message;
+  // @JsonKey(name: "message")
+  // final String? message;
 
   /// Login-specific fields
   @JsonKey(name: "token")
@@ -26,9 +26,9 @@ class LoginResponseDto {
   final dynamic otpCode;
 
   const LoginResponseDto({
-    this.status,
-    this.statusCode,
-    this.message,
+    // this.status,
+    // this.statusCode,
+    // this.message,
     this.token,
     this.expiration,
     this.otpCode,
@@ -42,9 +42,9 @@ class LoginResponseDto {
   /// ✅ Convert DTO → Domain Model
   LoginResponseModel toModel() {
     return LoginResponseModel(
-      status: status ?? false,
-      statusCode: statusCode ?? 0,
-      message: message ?? '',
+      // status: status ?? false,
+      // statusCode: statusCode ?? 0,
+      // message: message ?? '',
       token: token?.toString() ?? '',
       expiration: expiration?.toString() ?? '',
       otpCode: otpCode?.toString() ?? '',

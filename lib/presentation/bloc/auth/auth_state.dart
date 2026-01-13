@@ -33,3 +33,8 @@ class LoginFailure extends LoginState {
   @override
   List<Object?> get props => [message];
 }
+class  ShowAuthPage extends LoginState{}
+class AuthLoggedIn extends LoginState{}
+final class TokenExpiredState extends LoginState{}
+final class LogoutSuccess extends LoginState{}
+

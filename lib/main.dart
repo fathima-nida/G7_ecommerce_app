@@ -6,7 +6,8 @@ import 'package:g7_comerce_app/core/build_config/build_config.dart';
 import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
 import 'package:g7_comerce_app/injector/injector.dart' as di;
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
-import 'package:g7_comerce_app/presentation/screens/auth/loginscreen.dart';
+import 'package:g7_comerce_app/presentation/bloc/dashboard/bloc/cstmr_dashboard_bloc.dart';
+import 'package:g7_comerce_app/presentation/screens/auth/splashscreen.dart';
 import 'package:g7_comerce_app/utils/shared_pref_helper/shared_pref_helper.dart';
 
 
@@ -38,13 +39,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-      BlocProvider(create: (_)=>di.getit.get<LoginBloc>()),
+      BlocProvider<LoginBloc>(create: (_)=>di.getit.get<LoginBloc>()),
+      BlocProvider<CstmrDashboardBloc>(create: (_)=>di.getit.get<CstmrDashboardBloc>()),
+      
       ],
         
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home: LoginScreen(),
+        home: SplashScreen(),
       ),
     );
   }
