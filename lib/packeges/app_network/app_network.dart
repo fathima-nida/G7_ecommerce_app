@@ -113,11 +113,11 @@ class AppNetwork {
   static Map<String, dynamic> _getCustomHeaders(String url) {
     final Map<String, dynamic> headers = {"Content-Type": "application/json"};
 
-    if (url.contains(ApiEndpoints.login)) {
+    // if (url.contains(ApiEndpoints.login)) {
       // No token needed for appAuth
     
       headers["Authorization"] = "Bearer ${BuildConfig.appToken}";
-    } 
+    // } 
 
     return headers;
   }
