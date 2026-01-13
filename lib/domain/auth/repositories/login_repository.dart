@@ -4,4 +4,5 @@ import 'package:g7_comerce_app/domain/auth/models/login_response.dart';
 
 abstract class LoginRepository {
   FutureEither<LoginResponseModel> loginAuth(LoginRequestModel reqModel);
+ 
 }
