@@ -19,11 +19,7 @@ const  CartScreen({super.key});
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        
-      ),
+     
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(

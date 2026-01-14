@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AppStorage {
   static Future<void> setString(String key, String value) async {
+    log("📌 LOCAL STORAGE SAVED: $key = $value");
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(key, value);
     log("📌 LOCAL STORAGE SAVED: $key = $value");
