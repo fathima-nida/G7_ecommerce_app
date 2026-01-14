@@ -6,12 +6,10 @@ import 'package:g7_comerce_app/core/build_config/build_config.dart';
 import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
 import 'package:g7_comerce_app/injector/injector.dart' as di;
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
-import 'package:g7_comerce_app/presentation/screens/auth/loginscreen.dart';
+import 'package:g7_comerce_app/presentation/bloc/favourite/favourite_bloc.dart';
 import 'package:g7_comerce_app/presentation/screens/auth/splashscreen.dart';
+
 import 'package:g7_comerce_app/utils/shared_pref_helper/shared_pref_helper.dart';
-
-
-
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +38,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
       BlocProvider<LoginBloc>(create: (_)=>di.getit.get<LoginBloc>()),
+      BlocProvider<FavouriteBloc>(create: (_) => di.getit.get<FavouriteBloc>()),
+                                           
+
       ],
         
       child: MaterialApp(

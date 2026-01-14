@@ -1,3 +1,4 @@
+import 'dart:nativewrappers/_internal/vm/bin/socket_patch.dart';
 
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
@@ -6,7 +7,6 @@ import 'package:g7_comerce_app/core/theme/textstyle.dart';
 import 'package:g7_comerce_app/presentation/screens/cart/cartlists.dart';
 import 'package:g7_comerce_app/presentation/screens/category/categorypage.dart';
 import 'package:g7_comerce_app/presentation/screens/home/homescreen.dart';
-
 import 'package:g7_comerce_app/presentation/screens/profile/profile.dart';
 import 'package:g7_comerce_app/presentation/screens/favourite/favourite.dart';
 
@@ -24,7 +24,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     Homescreen(),
     CategoryPage(),
     CartScreen(),
-    Favourite(),
+   FavouriteScreen(),
     ProfileScreen()
   ];
 

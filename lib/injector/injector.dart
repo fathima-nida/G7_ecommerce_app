@@ -1,5 +1,8 @@
+import 'package:g7_comerce_app/data/services/favourite_api.dart';
+import 'package:g7_comerce_app/domain/repositories/favourite_repository.dart';
+import 'package:g7_comerce_app/domain/repositories/favourite_repository_impl.dart';
+import 'package:g7_comerce_app/presentation/bloc/favourite/favourite_bloc.dart';
 import 'package:get_it/get_it.dart';
-
 import 'package:g7_comerce_app/data/auth/auth_repository_impl/auth_repository_imp.dart';
 import 'package:g7_comerce_app/domain/auth/repositories/login_repository.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
@@ -14,13 +17,18 @@ void setup() {
   getit.registerSingleton<LoginRepository>(
     AuthRepositoryImp(),
   );
-
+   getit.registerLazySingleton<FavouriteApi>(() => FavouriteApi());
+   getit.registerLazySingleton<FavouriteRepository>(
+      () => FavouriteRepositoryImpl(getit<FavouriteApi>()));
   /// =========================
   /// Bloc
   /// =========================
   getit.registerFactory<LoginBloc>(
   () => LoginBloc(getit<LoginRepository>()),
 );
+   getit.registerFactory<FavouriteBloc>(
+    () => FavouriteBloc(getit<FavouriteRepository>()),
+  );
 
 }
 
