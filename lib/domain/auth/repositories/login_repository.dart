@@ -1,4 +1,4 @@
-import 'package:g7_comerce_app/data/auth/dtos/otp_response_dto.dart';
+
 import 'package:g7_comerce_app/domain/auth/models/otp_request_model.dart';
 import 'package:g7_comerce_app/domain/auth/models/otp_response_model.dart';
 import 'package:g7_comerce_app/domain/common/generic_types.dart';
