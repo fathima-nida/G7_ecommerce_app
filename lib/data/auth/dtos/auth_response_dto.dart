@@ -5,6 +5,7 @@ part 'auth_response_dto.g.dart';
 
 @JsonSerializable()
 class LoginResponseDto {
+
   
   /// Login-specific fields
   @JsonKey(name: "token")
@@ -17,6 +18,7 @@ class LoginResponseDto {
   final dynamic otpCode;
 
   const LoginResponseDto({
+   
     this.token,
     this.expiration,
     this.otpCode,
@@ -30,6 +32,7 @@ class LoginResponseDto {
   /// ✅ Convert DTO → Domain Model
   LoginResponseModel toModel() {
     return LoginResponseModel(
+     
       token: token?.toString() ?? '',
       expiration: expiration?.toString() ?? '',
       otpCode: otpCode?.toString() ?? '',
