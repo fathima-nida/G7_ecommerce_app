@@ -7,6 +7,7 @@ import 'package:g7_comerce_app/presentation/bloc/auth/auth_event.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_state.dart';
 import 'package:g7_comerce_app/presentation/screens/auth/loginscreen.dart';
 import 'package:g7_comerce_app/presentation/screens/home/homescreen.dart';
+import 'package:g7_comerce_app/presentation/widgets/bottom_navigation.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -35,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
         }
       else if(state is AuthLoggedIn){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>Homescreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNavigationWidget()));
       }
         // TODO: implement listener
       },
