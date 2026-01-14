@@ -10,10 +10,10 @@ class CategoryPage extends StatelessWidget {
   CategoryPage({super.key});
 
   final List<Map<String, dynamic>> categoryList = [
-    {'image': AssetResources.charger, 'text': 'Charger'},
-    {'image': AssetResources.backcover, 'text': 'Back Covers'},
-    {'image': AssetResources.screencard, 'text': 'Screen Guards'},
-    {'image': AssetResources.stand, 'text': 'Mobile Stands'},
+    {'image': AssetResources.chargerb, 'text': 'Charger'},
+    {'image': AssetResources.backcovers, 'text': 'Back Covers'},
+    {'image': AssetResources.screenguard, 'text': 'Screen Guards'},
+    {'image': AssetResources.mobilestand, 'text': 'Mobile Stands'},
   ];
 
   @override
