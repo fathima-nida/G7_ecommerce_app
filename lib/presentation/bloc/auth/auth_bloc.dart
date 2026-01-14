@@ -20,49 +20,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<checkLoginStatus>(_checkLoginStatus);
     on<LogoutApp>(logout);
   }
-
-  
-
-  // Future<void> _onLoginWithMobile(
-  //   LoginWithMobileEvent event,
-  //   Emitter<LoginState> emit,
-  // ) async {
-  //   log("fffffffffffffffff  ${event.mobile}");
-  //   emit(LoginLoading());
-
-  //   final request = LoginRequestModel(mobile: event.mobile);
-  //   log('login auth...............:$request');
-  //   final result = await repository.loginAuth(request);
-
-  //   log("loginAuth result is... : $result");
-
-  //   result.fold(
-  //     (failure) {
-  //       emit(LoginFailure(failure.message));
-  //     },
-  //     (response) async {
-  //              if (response.token.isNotEmpty) {
-  //         await SharedPrefHelper.saveAppToken(response.token);
-  //          BuildConfig.appToken = response.token;
-  //         final saved = await SharedPrefHelper.getAppToken();
-  //         print("✅ TOKEN SAVED SUCCESSFULLY: $saved");
-  //       }
-
-  //       emit(LoginSuccess(response));
-  //     },
-  //   );
-  //   // // async work OUTSIDE fold
-  //   // if (result.isRight()) {
-  //   //   final response = result.getOrElse(
-  //   //     () => LoginResponseModel(token: "", expiration: "", otpCode: ""),
-  //   //   );
-  //   //   if (response != null && response.token.isNotEmpty) {
-  //   //     await SharedPrefHelper.saveAppToken(response.token);
-  //   //   }
-  //   // }
-  // }
-
-
      Future<void> _onLoginWithMobile(
   LoginWithMobileEvent event,
   Emitter<LoginState> emit,

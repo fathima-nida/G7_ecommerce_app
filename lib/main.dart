@@ -6,7 +6,7 @@ import 'package:g7_comerce_app/core/build_config/build_config.dart';
 import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
 import 'package:g7_comerce_app/injector/injector.dart' as di;
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
-import 'package:g7_comerce_app/presentation/bloc/dashboard/bloc/cstmr_dashboard_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/dashboard/cstmr_dashboard_bloc.dart';
 import 'package:g7_comerce_app/presentation/screens/auth/splashscreen.dart';
 import 'package:g7_comerce_app/utils/shared_pref_helper/shared_pref_helper.dart';
 
