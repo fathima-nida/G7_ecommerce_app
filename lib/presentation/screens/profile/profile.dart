@@ -50,7 +50,38 @@ class ProfileScreen extends StatelessWidget {
 
                 const Spacer(),
 
-                Image.asset(AssetResources.logout, width: 28, height: 28),
+                //Image.asset(AssetResources.logout, width: 28, height: 28),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(context: context,
+                     builder: (context){
+                      return AlertDialog(
+                        title: const Text("Logout"),
+                        content: const Text(
+                          "Are you sure you want to logout?",
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: (){
+                              Navigator.pop(context);
+                            }, 
+                            child: const Text("Cancle"),
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.pink,
+                              ),
+                              onPressed: (){
+                                Navigator.pop(context);
+                              }, 
+                              child: const Text("Logout"),
+                              ),
+                        ],
+                      );
+                     }
+                     );
+                  },
+                )
               ],
             ),
           ),
