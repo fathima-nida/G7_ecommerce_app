@@ -1,6 +1,6 @@
-import 'package:g7_comerce_app/domain/common/common_response_model.dart';
+import 'package:equatable/equatable.dart';
 
-class OtpResponseModel extends CommonResponseModel {
+class OtpResponseModel extends Equatable {
   final int userId;
   final String mobileNo;
   final String role;
@@ -11,9 +11,7 @@ class OtpResponseModel extends CommonResponseModel {
   final List<dynamic> routes;
 
   const OtpResponseModel({
-    required super.status,
-    required super.statusCode,
-    required super.message,
+    
     required this.userId,
     required this.mobileNo,
     required this.role,
@@ -28,9 +26,7 @@ class OtpResponseModel extends CommonResponseModel {
     final data = map['data'] ?? {};
 
     return OtpResponseModel(
-      status: map['status'] ?? false,
-      statusCode: map['statusCode'] ?? 0,
-      message: map['message'] ?? '',
+    
 
       userId: data['userId'] ?? 0,
       mobileNo: data['mobileNo'] ?? '',
@@ -45,9 +41,7 @@ class OtpResponseModel extends CommonResponseModel {
 
   factory OtpResponseModel.dummy() {
     return const OtpResponseModel(
-      status: false,
-      statusCode: 0,
-      message: '',
+   
       userId: 0,
       mobileNo: '',
       role: '',
@@ -62,7 +56,7 @@ class OtpResponseModel extends CommonResponseModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      ...super.toMap(),
+  
       'data': {
         'userId': userId,
         'mobileNo': mobileNo,
@@ -78,7 +72,7 @@ class OtpResponseModel extends CommonResponseModel {
 
   @override
   List<Object?> get props =>
-      super.props +
+ 
       [
         userId,
         mobileNo,
@@ -91,9 +85,7 @@ class OtpResponseModel extends CommonResponseModel {
       ];
 
   OtpResponseModel copyWith({
-    bool? status,
-    int? statusCode,
-    String? message,
+ 
     int? userId,
     String? mobileNo,
     String? role,
@@ -104,9 +96,7 @@ class OtpResponseModel extends CommonResponseModel {
     List<dynamic>? routes,
   }) {
     return OtpResponseModel(
-      status: status ?? this.status,
-      statusCode: statusCode ?? this.statusCode,
-      message: message ?? this.message,
+    
       userId: userId ?? this.userId,
       mobileNo: mobileNo ?? this.mobileNo,
       role: role ?? this.role,

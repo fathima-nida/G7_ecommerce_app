@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:g7_comerce_app/domain/common/common_response_model.dart';
 
 class LoginResponseModel extends Equatable {
   final String token;
@@ -14,11 +13,7 @@ class LoginResponseModel extends Equatable {
   });
 
   factory LoginResponseModel.fromMap(Map<String, dynamic> map) {
-    // final data = map['data'] ?? {};
     return LoginResponseModel(
-      // status: map['status'] ?? false,
-      // statusCode: map['statusCode'] ?? 0,
-      // message: map['message'] ?? '',
       token: map ['token'] ?? '',
       expiration: map['expiration'] ?? '',
       otpCode: map['otpCode'] ?? '',
@@ -27,9 +22,6 @@ class LoginResponseModel extends Equatable {
 
   factory LoginResponseModel.dummy() {
     return const LoginResponseModel(
-      // status: false,
-      // statusCode: 0,
-      // message: '',
       token: '',
       expiration: '',
       otpCode: '',
@@ -39,7 +31,6 @@ class LoginResponseModel extends Equatable {
   @override
   Map<String, dynamic> toMap() {
     return {
-      // ...super.toMap(),
       'token': token,
       'expiration': expiration,
       'otpCode': otpCode,
@@ -51,17 +42,11 @@ class LoginResponseModel extends Equatable {
   [token, expiration, otpCode];
 
   LoginResponseModel copyWith({
-    // bool? status,
-    // int? statusCode,
-    // String? message,
     String? token,
     String? expiration,
     String? otpCode,
   }) {
     return LoginResponseModel(
-      // status: status ?? this.status,
-      // statusCode: statusCode ?? this.statusCode,
-      // message: message ?? this.message,
       token: token ?? this.token,
       expiration: expiration ?? this.expiration,
       otpCode: otpCode ?? this.otpCode,
