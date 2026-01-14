@@ -8,4 +8,6 @@ class ApiEndpoints {
 
   // Dashboard
   static const String dashboard = '/get-ecommerce-dashboard';
+  //home
+  static const String secNewarrival="/section-wise-items/{sectionName}";
 }
