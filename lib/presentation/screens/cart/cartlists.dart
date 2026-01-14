@@ -19,11 +19,7 @@ const  CartScreen({super.key});
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        
-      ),
+     
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Column(
@@ -45,141 +41,7 @@ const  CartScreen({super.key});
                         color: Colors.grey.withOpacity(0.15),
                       ),
                     ),
-                    // child: Column(
-                    //   crossAxisAlignment: CrossAxisAlignment.start,
-                    //   children: [
-                    //     /// TOP → IMAGE + TITLE + PRICE
-                    //     Row(
-                    //       crossAxisAlignment: CrossAxisAlignment.start,
-                    //       children: [
-                    //         Container(
-                    //           height: 70,
-                    //           width: 70,
-                    //           decoration: BoxDecoration(
-                    //             borderRadius: BorderRadius.circular(8),
-                    //             image: DecorationImage(
-                    //               image: AssetImage(items[index]["image"]),
-                    //               fit: BoxFit.cover,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         const SizedBox(width: 10),
-                    //         Expanded(
-                    //           child: Column(
-                    //             crossAxisAlignment: CrossAxisAlignment.start,
-                    //             children: [
-                    //               Text(
-                    //                 "Resource to discover and connect",
-                    //                 maxLines: 1,
-                    //                 overflow: TextOverflow.ellipsis,
-                    //                 style: AppTextstyle.medium(),
-                    //               ),
-                    //               const SizedBox(height: 4),
-                    //               Text(
-                    //                 "₹ 29,999",
-                    //                 style: AppTextstyle.large(
-                    //                   fontWeight: FontWeight.w700,
-                    //                 ),
-                    //               ),
-                    //             ],
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-
-                    //     const SizedBox(height: 8),
-
-                    //     /// DESCRIPTION BOX
-                    //     Container(
-                    //       height: 38,
-                    //       padding: const EdgeInsets.symmetric(horizontal: 10),
-                    //       decoration: BoxDecoration(
-                    //         color: const Color(0xffF3F3F6),
-                    //         borderRadius: BorderRadius.circular(10),
-                    //       ),
-                    //       child: Row(
-                    //         children: [
-                    //           Expanded(
-                    //             child: Text(
-                    //               "Your resource to discover and connect with designers",
-                    //               maxLines: 1,
-                    //               overflow: TextOverflow.ellipsis,
-                    //               style: AppTextstyle.small(),
-                    //             ),
-                    //           ),
-                    //           VerticalDivider(
-                    //             thickness: 1,
-                    //             color: Colors.grey.withOpacity(0.4),
-                    //           ),
-                    //           Container(
-                    //             height: 26,
-                    //             width: 26,
-                    //             decoration: BoxDecoration(
-                    //               borderRadius: BorderRadius.circular(6),
-                    //               image: DecorationImage(
-                    //                 image: AssetImage(items[index]["box"]),
-                    //                 fit: BoxFit.cover,
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ),
-
-                    //     const Spacer(),
-
-                    //     /// BOTTOM → QTY + REMOVE
-                    //     Row(
-                    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //       children: [
-                    //         Container(
-                    //           height: 34,
-                    //           padding: const EdgeInsets.symmetric(horizontal: 10),
-                    //           decoration: BoxDecoration(
-                    //             borderRadius: BorderRadius.circular(20),
-                    //             border: Border.all(
-                    //               color: Colors.grey.withOpacity(.4),
-                    //             ),
-                    //           ),
-                    //           child: Row(
-                    //             children: const [
-                    //               Icon(Icons.remove, size: 16),
-                    //               SizedBox(width: 8),
-                    //               Text("01"),
-                    //               SizedBox(width: 8),
-                    //               Icon(Icons.add, size: 16),
-                    //             ],
-                    //           ),
-                    //         ),
-                    //         Container(
-                    //           height: 34,
-                    //           padding: const EdgeInsets.symmetric(horizontal: 14),
-                    //           decoration: BoxDecoration(
-                    //             color: const Color(0xffFFE8ED),
-                    //             borderRadius: BorderRadius.circular(20),
-                    //           ),
-                    //           child: Row(
-                    //             children: [
-                    //               const Icon(
-                    //                 Icons.delete_outline,
-                    //                 size: 16,
-                    //                 color: Colors.pink,
-                    //               ),
-                    //               const SizedBox(width: 4),
-                    //               Text(
-                    //                 "Remove",
-                    //                 style: AppTextstyle.small(
-                    //                   fontColor: Colors.pink,
-                    //                 ),
-                    //               ),
-                    //             ],
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ],
-                    // ),
-
+                  
 
 
                    child: Row(
@@ -290,14 +152,14 @@ const  CartScreen({super.key});
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(
-                                      Icons.shopping_bag_outlined,
-                                      size: 18,
-                                      color: AppColors.pink,
-                                    ),
-                                    // Image.asset(AssetResources.redbag,height: 13.56,width: 13.56,
-                                    // color: AppColors.pink,),
-                                    //  const SizedBox(width: 6),
+                                    // Icon(
+                                    //   Icons.shopping_bag_outlined,
+                                    //   size: 18,
+                                    //   color: AppColors.pink,
+                                    // ),
+                                    Image.asset(AssetResources.removebag,height: 13.56,width: 13.56,
+                                    color: AppColors.pink,),
+                                     const SizedBox(width: 6),
                                     Text(
                                       "Remove",
                                       style: AppTextstyle.small(fontWeight: FontWeight.w500,fontColor: AppColors.pink)

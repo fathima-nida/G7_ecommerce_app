@@ -6,6 +6,8 @@ part 'auth_response_dto.g.dart';
 @JsonSerializable()
 class LoginResponseDto {
 
+  
+  /// Login-specific fields
   @JsonKey(name: "token")
   final dynamic token;
 
