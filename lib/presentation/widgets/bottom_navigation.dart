@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
+import 'package:g7_comerce_app/data/home/home_repository_impl/sec_newarrival_repo_impl.dart';
 import 'package:g7_comerce_app/presentation/screens/cart/cartlists.dart';
 import 'package:g7_comerce_app/presentation/screens/category/categorypage.dart';
 import 'package:g7_comerce_app/presentation/screens/home/homescreen.dart';
@@ -21,7 +22,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    Homescreen(),
+    Homescreen(repository: SecNewarrivalRepositoryImp(),),
     CategoryPage(),
     CartScreen(),
     Favourite(),

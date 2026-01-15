@@ -1,18 +1,18 @@
 import 'package:equatable/equatable.dart';
-import 'package:g7_comerce_app/domain/home/models/pagination_model.dart';
-import 'package:g7_comerce_app/domain/home/models/section_item_model.dart';
+import 'package:g7_comerce_app/domain/home/models/section_newarrival/sec_newarrivalpagination_model.dart';
+import 'package:g7_comerce_app/domain/home/models/section_newarrival/section_newarrival_item_model.dart';
 
-class SectionWiseItemsRespModel extends Equatable {
+class SectionOfferzoneItemsRespModel extends Equatable {
   final PaginationModel pagination;
   final List<SectionItemDataModel> sections;
 
-  const SectionWiseItemsRespModel({
+  const SectionOfferzoneItemsRespModel({
     required this.pagination,
     required this.sections,
   });
 
-  factory SectionWiseItemsRespModel.fromMap(Map<String, dynamic> map) {
-    return SectionWiseItemsRespModel(
+  factory SectionOfferzoneItemsRespModel.fromMap(Map<String, dynamic> map) {
+    return SectionOfferzoneItemsRespModel(
       pagination: PaginationModel.fromMap(
         map['pagination'] as Map<String, dynamic>? ?? {},
       ),
@@ -24,8 +24,8 @@ class SectionWiseItemsRespModel extends Equatable {
     );
   }
 
-  factory SectionWiseItemsRespModel.dummy() {
-    return SectionWiseItemsRespModel(
+  factory SectionOfferzoneItemsRespModel.dummy() {
+    return SectionOfferzoneItemsRespModel(
       pagination: PaginationModel.dummy(),
       sections: const [],
     );
@@ -38,11 +38,11 @@ class SectionWiseItemsRespModel extends Equatable {
     };
   }
 
-  SectionWiseItemsRespModel copyWith({
+  SectionOfferzoneItemsRespModel copyWith({
     PaginationModel? pagination,
     List<SectionItemDataModel>? sections,
   }) {
-    return SectionWiseItemsRespModel(
+    return SectionOfferzoneItemsRespModel(
       pagination: pagination ?? this.pagination,
       sections: sections ?? this.sections,
     );

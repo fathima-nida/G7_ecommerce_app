@@ -1,5 +1,5 @@
 import 'package:g7_comerce_app/data/dashboard/ctmr_dashboard_impl/cstmr_dashboard_impl.dart';
-import 'package:g7_comerce_app/data/home/home_repository_impl/sec_newarrival_rep_impl.dart';
+import 'package:g7_comerce_app/data/home/home_repository_impl/sec_newarrival_repo_impl.dart';
 import 'package:g7_comerce_app/domain/dashboard/repositories/custom_dashboard_repo.dart';
 import 'package:g7_comerce_app/domain/home/repository/sec_newarrival_repository.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/cstmr_dashboard_bloc.dart';

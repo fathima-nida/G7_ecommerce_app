@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:g7_comerce_app/domain/home/models/section_newarrival_req_model.dart';
+import 'package:g7_comerce_app/domain/home/models/section_newarrival/section_newarrival_req_model.dart';
 import 'package:g7_comerce_app/domain/home/repository/sec_newarrival_repository.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/bloc/section_newarrival_event.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/bloc/section_newarrival_state.dart';

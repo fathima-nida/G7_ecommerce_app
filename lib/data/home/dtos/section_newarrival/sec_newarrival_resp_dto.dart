@@ -1,5 +1,5 @@
-import 'package:g7_comerce_app/domain/home/models/pagination_model.dart';
-import 'package:g7_comerce_app/domain/home/models/section_newarrival_resp_model.dart';
+import 'package:g7_comerce_app/domain/home/models/section_newarrival/sec_newarrivalpagination_model.dart';
+import 'package:g7_comerce_app/domain/home/models/section_newarrival/section_newarrival_resp_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'pagination_dto.dart';
 import 'section_item_dto.dart';
