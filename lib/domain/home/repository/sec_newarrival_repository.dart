@@ -3,5 +3,5 @@ import 'package:g7_comerce_app/domain/home/models/section_newarrival_req_model.d
 import 'package:g7_comerce_app/domain/home/models/section_newarrival_resp_model.dart';
 
 abstract class SecNewarrivalRepository {
-  FutureEither< SectionWiseItemsRespModel>getSecNewarrival(SectionWiseItemsReqModel reqModel);
+  FutureEither< SectionWiseItemsRespModel>fetchSecNewarrival(SectionWiseItemsReqModel reqModel);
 }

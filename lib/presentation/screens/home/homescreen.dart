@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
+import 'package:g7_comerce_app/domain/home/models/section_newarrival_req_model.dart';
+import 'package:g7_comerce_app/presentation/bloc/home/bloc/section_newarrival_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/home/bloc/section_newarrival_event.dart';
+import 'package:g7_comerce_app/presentation/bloc/home/bloc/section_newarrival_state.dart';
+import 'package:g7_comerce_app/presentation/screens/home/homescreen.dart';
+import 'package:g7_comerce_app/presentation/screens/home/homescreen.dart' as GridView show builder;
 import 'package:g7_comerce_app/presentation/screens/home/searchscreen.dart';
 import 'package:g7_comerce_app/presentation/screens/home/widgets/carousal.dart';
+
+import 'homescreen.dart';
 
 class Homescreen extends StatefulWidget {
   Homescreen({super.key});
@@ -48,7 +57,6 @@ class _HomescreenState extends State<Homescreen> {
                 child: Row(
                   children: [
                     CircleAvatar(
-                      
                       backgroundImage: AssetImage(AssetResources.profile),
                     ),
                     SizedBox(width: 5),
@@ -76,7 +84,7 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                     Row(
                       children: [
-                        Container( 
+                        Container(
                           decoration: BoxDecoration(
                             color: AppColors.lytwhite,
                             shape: BoxShape.circle,
@@ -215,76 +223,90 @@ class _HomescreenState extends State<Homescreen> {
               SizedBox(height: 15),
               Text("New Arrival", style: AppTextstyle.large(fontSize: 19)),
               SizedBox(height: 15),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 1,
-                  crossAxisSpacing: 2,
-                  childAspectRatio: 0.7,
-                ),
-                itemCount: widget.imagelist.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    color: AppColors.warmwhite,
-                    // height: 186,
-                    // width: 12
-                    child: Column(
-                      //mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Align(
-                          alignment: Alignment.topRight,
-                          child:Image.asset(AssetResources.favorite,scale: 1,),
-                        ),
-                        Expanded(child: Image.asset(widget.imagelist[index])),
-                        Text(widget.nameList[index],style: AppTextstyle.small(fontColor: AppColors.bluegrey),),
-                        Text(
-                          "₹ 25,000",
-                          style: AppTextstyle.medium(
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              color: index == 2 || index == 5
-                                  ? AppColors.opacitypinkcolor
-                                  : AppColors.Opacitygreencolor,
-                            ),
+          
+             
+                     BlocBuilder<SecNewarrivalBloc, SecNewArrivalState>(
+                       builder: (context, state) {
 
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                             
-                                Image.asset(AssetResources.bag,
-                                color: index == 2 || index == 5
-                                      ? AppColors.pink
-                                       : AppColors.green,),
-                                SizedBox(width: 5),
-                                Text(
-                                  index == 2 || index == 5
-                                      ? "Remove"
-                                      : "Add Cart",
-                                  style: AppTextstyle.small(
-                                    fontColor: index == 2 || index == 5
-                                        ? AppColors.pink
-                                        : AppColors.green,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
+                         return GridView.builder(
+                                           shrinkWrap: true,
+                                           physics: NeverScrollableScrollPhysics(),
+                                           padding: EdgeInsets.zero,
+                                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                             crossAxisCount: 3,
+                                             mainAxisSpacing: 1,
+                                             crossAxisSpacing: 2,
+                                             childAspectRatio: 0.7,
+                                           ),
+                                           itemCount: items.length,
+                                           itemBuilder: (context, index) {
+                                             final item = items[index];
+                                             return Container(
+                                               color: AppColors.warmwhite,
+                                               child: Column(
+                                                 children: [
+                                                   Align(
+                                                     alignment: Alignment.topRight,
+                                                     child: Image.asset(
+                                                       AssetResources.favorite,
+                                                       scale: 1,
+                                                     ),
+                                                   ),
+                                                   Expanded(
+                                                     child: item.images.isNotEmpty
+                                                         ? Image.network(
+                                                             item.images.first,
+                                                             fit: BoxFit.contain,
+                                                             errorBuilder:
+                                                                 (context, error, stackTrace) =>
+                                                                     Image.asset(
+                                                                       AssetResources.headset,
+                                                                     ),
+                                                           )
+                                                         : Image.asset(AssetResources.headset),
+                                                   ),
+                                                   // Text(
+                                                   //   item.name,
+                                                   //   style: AppTextstyle.small(
+                                                   //     fontColor: AppColors.bluegrey,
+                                                   //   ),
+                                                   // ),
+                                                   Text(
+                                                     item.name.isNotEmpty
+                                                         ? item.name
+                                                         : "Unnamed product",
+                                                     style: AppTextstyle.small(
+                                                       fontColor: AppColors.bluegrey,
+                                                     ),
+                                                   ),
+                                                   // Text(
+                                                   //   "₹ ${item.mrp}",
+                                                   //   style: AppTextstyle.medium(
+                                                   //     fontWeight: FontWeight.w700,
+                                                   //   ),
+                                                   // ),
+                                                   Text(
+                                                     item.mrp > 0
+                                                         ? "₹ ${item.mrp}"
+                                                         : "Price not available",
+                                                     style: AppTextstyle.medium(
+                                                       fontWeight: FontWeight.w700,
+                                                     ),
+                                                   ),
+                                                 ],
+                                               ),
+                                             );
+                                           },
+                                         );
+                       },
+                     );
+                  }
+
+                  // ✅ Default fallback if state is something else
+                  return const SizedBox();
                 },
               ),
+
               SizedBox(height: 15),
               Carousal(image: widget.ad2),
               SizedBox(height: 15),
@@ -310,10 +332,15 @@ class _HomescreenState extends State<Homescreen> {
                       children: [
                         Align(
                           alignment: Alignment.topRight,
-                          child:Image.asset(AssetResources.favorite,scale: 1,),
+                          child: Image.asset(AssetResources.favorite, scale: 1),
                         ),
-                        Expanded(child: Image.asset(widget.imagelist[index],)),
-                        Text(widget.nameList[index],style: AppTextstyle.small(fontColor: AppColors.bluegrey),),
+                        Expanded(child: Image.asset(widget.imagelist[index])),
+                        Text(
+                          widget.nameList[index],
+                          style: AppTextstyle.small(
+                            fontColor: AppColors.bluegrey,
+                          ),
+                        ),
                         Text(
                           "₹ 25,000",
                           style: AppTextstyle.medium(
@@ -335,10 +362,12 @@ class _HomescreenState extends State<Homescreen> {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                            
-                                Image.asset(AssetResources.bag,color: index == 2 || index == 5
-                                     ? AppColors.pink
-                                      : AppColors.green,),
+                                Image.asset(
+                                  AssetResources.bag,
+                                  color: index == 2 || index == 5
+                                      ? AppColors.pink
+                                      : AppColors.green,
+                                ),
                                 SizedBox(width: 5),
                                 Text(
                                   index == 2 || index == 5
@@ -360,7 +389,7 @@ class _HomescreenState extends State<Homescreen> {
                   );
                 },
               ),
-              SizedBox(height: 60,)
+              SizedBox(height: 60),
             ],
           ),
         ),

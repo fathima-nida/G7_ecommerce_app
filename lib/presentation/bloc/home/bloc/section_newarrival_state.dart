@@ -1,6 +1,5 @@
-
 import 'package:equatable/equatable.dart';
-import 'package:g7_comerce_app/domain/home/models/section_newarrival_resp_model.dart';
+import 'package:g7_comerce_app/domain/home/models/section_item_model.dart';
 
 abstract class SecNewArrivalState extends Equatable {
   const SecNewArrivalState();
@@ -9,21 +8,27 @@ abstract class SecNewArrivalState extends Equatable {
   List<Object?> get props => [];
 }
 
+/// Initial state
 class SecNewArrivalInitial extends SecNewArrivalState {}
 
+/// While API is loading
 class SecNewArrivalLoading extends SecNewArrivalState {}
 
-class SecNewArrivalLoaded extends SecNewArrivalState {
-  final SectionWiseItemsRespModel data;
-  const SecNewArrivalLoaded(this.data);
+/// Data loaded successfully
+class SecNewArrivalSuccess extends SecNewArrivalState {
+  final List<SectionItemDataModel> items;
+
+  const SecNewArrivalSuccess(this.items);
 
   @override
-  List<Object?> get props => [data];
+  List<Object?> get props => [items];
 }
 
-class SecNewArrivalError extends SecNewArrivalState {
+/// API failed
+class SecNewArrivalFailure extends SecNewArrivalState {
   final String message;
-  const SecNewArrivalError(this.message);
+
+  const SecNewArrivalFailure(this.message);
 
   @override
   List<Object?> get props => [message];

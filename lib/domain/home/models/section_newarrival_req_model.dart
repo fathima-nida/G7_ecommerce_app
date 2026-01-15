@@ -11,9 +11,10 @@ class SectionWiseItemsReqModel extends Equatable {
     this.pageSize = 10,
   });
 
-  /// Query parameters only
+  /// Query parameters
   Map<String, dynamic> toQueryMap() {
     return {
+      "sectionName": sectionName,
       "pageNumber": pageNumber,
       "pageSize": pageSize,
     };

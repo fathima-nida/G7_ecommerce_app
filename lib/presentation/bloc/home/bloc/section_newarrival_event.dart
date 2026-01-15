@@ -7,13 +7,12 @@ abstract class SecNewArrivalEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class FetchSecNewArrival extends SecNewArrivalEvent {
-  final int page;
-  const FetchSecNewArrival({this.page = 1});
-
-  @override
-  List<Object?> get props => [page];
+/// Triggered when New Arrival section loads
+class FetchNewArrivalEvent extends SecNewArrivalEvent {
+  const FetchNewArrivalEvent();
 }
 
-class RefreshSecNewArrival extends SecNewArrivalEvent {}
-
+/// Optional: retry on failure
+class RetryFetchNewArrivalEvent extends SecNewArrivalEvent {
+  const RetryFetchNewArrivalEvent();
+}
