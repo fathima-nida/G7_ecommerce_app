@@ -8,6 +8,8 @@ class BuildConfig {
   static late final Duration timeOut;
   static late final bool isDeveloperWindowEnabled;
 
+  static get instance => null;
+
   static Future<void> initialize({
     required AppEnv environment,
     required String baseUrl,

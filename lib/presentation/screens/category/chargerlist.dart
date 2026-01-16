@@ -1,20 +1,20 @@
-
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
+import 'package:g7_comerce_app/presentation/screens/home/product%20view.dart';
 
 class Chargerlistscreen extends StatelessWidget {
   Chargerlistscreen({super.key});
 
-  final List<Map<String, dynamic>> items = [
-    {"image": AssetResources.charger},
-    {"image": AssetResources.charger},
-    {"image": AssetResources.charger},
-    {"image": AssetResources.charger},
-    {"image": AssetResources.charger},
-    {"image": AssetResources.charger},
-    {"image": AssetResources.charger},
+  final List<Map<String, dynamic>> products = [
+    {"id": 1, "image": AssetResources.charger},
+    {"id": 2, "image": AssetResources.charger},
+    {"id": 3, "image": AssetResources.charger},
+    {"id": 4, "image": AssetResources.charger},
+    {"id": 5, "image": AssetResources.charger},
+    {"id": 6, "image": AssetResources.charger},
+    {"id": 7, "image": AssetResources.charger},
   ];
 
   @override
@@ -23,26 +23,19 @@ class Chargerlistscreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         elevation: 0,
-        leading: Icon(Icons.arrow_back, color: AppColors.black),
-        centerTitle: false,
-        title: Text("Charges", style: AppTextstyle.large()),
-        actions: [
-          SizedBox(width: 10),
-        ],
+        leading: const Icon(Icons.arrow_back, color: AppColors.black),
+        title: Text("Chargers", style: AppTextstyle.large()),
       ),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           children: [
-
-            /// SEARCH + FILTER ROW
+            // Search row
             Row(
               children: [
-                /// SEARCH FIELD
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
                     height: 45,
                     decoration: BoxDecoration(
                       color: AppColors.lighteGrey.withOpacity(0.3),
@@ -50,22 +43,17 @@ class Chargerlistscreen extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        Icon(Icons.search, color: Colors.grey),
-                        SizedBox(width: 10),
+                        const Icon(Icons.search, color: Colors.grey),
+                        const SizedBox(width: 10),
                         Expanded(
-                          child: Text(
-                            "Search products",
-                            style: AppTextstyle.small(fontColor: Colors.grey),
-                          ),
+                          child: Text("Search products",
+                              style: AppTextstyle.small(fontColor: Colors.grey)),
                         ),
                       ],
                     ),
                   ),
                 ),
-
-                SizedBox(width: 10),
-
-                /// FILTER ICON BOX
+                const SizedBox(width: 10),
                 Container(
                   height: 45,
                   width: 45,
@@ -73,91 +61,85 @@ class Chargerlistscreen extends StatelessWidget {
                     color: AppColors.lighteGrey.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Icon(Icons.tune, color: AppColors.black, size: 22),
+                  child: const Icon(Icons.tune, size: 22),
                 ),
               ],
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
 
-            /// LIST VIEW
+            // Product List
             Expanded(
               child: ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (_, index) {
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  final item = products[index];
 
-                  return Container(
-                    margin: EdgeInsets.only(bottom: 12),
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: Colors.grey.withOpacity(0.2),
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => ProductViewPage(productId: item['id']),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 12),
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.grey.withOpacity(0.2)),
                       ),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-
-                        /// IMAGE
-                        Container(
-                          height: 70,
-                          width: 70,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: AssetImage(items[index]["image"]),
-                              fit: BoxFit.cover,
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 70,
+                            width: 70,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: AssetImage(item["image"]),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(width: 12),
-
-                        /// TEXT
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Resource to discover and connect",
-                                style: AppTextstyle.medium(),
-                              ),
-                              SizedBox(height: 5),
-                              Text(
-                                "₹ 29,999",
-                                style: AppTextstyle.large(
-                                  fontWeight: FontWeight.w600,
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Fast Charger",
+                                    style: AppTextstyle.medium()),
+                                const SizedBox(height: 5),
+                                Text("₹ 29,999",
+                                    style: AppTextstyle.large(
+                                        fontWeight: FontWeight.w600)),
+                                const SizedBox(height: 5),
+                                Container(
+                                  height: 33,
+                                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                                  decoration: BoxDecoration(
+                                    color: Colors.green.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: const [
+                                      Icon(Icons.shopping_bag_outlined,
+                                          size: 18, color: Colors.green),
+                                      SizedBox(width: 6),
+                                      Text("Add Cart",
+                                          style: TextStyle(color: Colors.green)),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 5),
-
-                              /// ADD CART BUTTON
-                              Container(
-                                height: 33,
-                                padding: EdgeInsets.symmetric(horizontal: 12),
-                                decoration: BoxDecoration(
-                                  color: Colors.green.withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(Icons.shopping_bag_outlined,
-                                        size: 18, color: Colors.green),
-                                    SizedBox(width: 6),
-                                    Text("Add Cart",
-                                        style: AppTextstyle.small(
-                                            fontColor: Colors.green)),
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-
-                        /// FAVORITE ICON
-                        Icon(Icons.favorite_border, size: 22),
-                      ],
+                          const Icon(Icons.favorite_border, size: 22),
+                        ],
+                      ),
                     ),
                   );
                 },

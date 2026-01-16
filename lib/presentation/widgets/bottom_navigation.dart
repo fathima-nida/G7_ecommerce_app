@@ -1,5 +1,3 @@
-import 'dart:nativewrappers/_internal/vm/bin/socket_patch.dart';
-
 import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';

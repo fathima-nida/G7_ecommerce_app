@@ -1,13 +1,88 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
-import 'package:g7_comerce_app/core/theme/asset_resources.dart';
-import 'package:g7_comerce_app/core/theme/textstyle.dart';
 import 'package:g7_comerce_app/data/models/favouritemodel.dart';
-import 'package:g7_comerce_app/data/services/favourite_api.dart';
 import 'package:g7_comerce_app/presentation/bloc/favourite/favourite_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/favourite/favourite_event.dart';
 import 'package:g7_comerce_app/presentation/bloc/favourite/favourite_state.dart';
+
+class FavouriteScreen extends StatefulWidget {
+  const FavouriteScreen({super.key});
+
+  @override
+  State<FavouriteScreen> createState() => _FavouriteScreenState();
+}
+class _FavouriteScreenState extends State<FavouriteScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<FavouriteBloc>().add(LoadFavourites()); 
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: BlocBuilder<FavouriteBloc, FavouriteState>(
+        builder: (context, state) {
+    
+          if (state is FavouriteLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+    
+          if (state is FavouriteError) {
+            return Center(child: Text(state.message));
+          }
+    
+          if (state is FavouriteLoaded) {
+            return ListView.builder(
+              itemCount: state.favourites.length,
+              itemBuilder: (context, index) {
+                final item = state.favourites[index];
+                return favouriteTile(context, item);
+              },
+            );
+          }
+    
+          return const SizedBox();
+        },
+      ),
+    );
+  }
+
+  Widget favouriteTile(BuildContext context, FavouriteModel item) {
+    return ListTile(
+      leading: Image.network(item.image),
+      title: Text(item.title),
+      subtitle: Text("₹${item.price}"),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              context.read<FavouriteBloc>().add(AddToCartFromFavourite(item.id));
+            },
+          ),
+
+          IconButton(
+            icon: const Icon(Icons.delete, color: AppColors.red),
+            onPressed: () {
+              context.read<FavouriteBloc>().add(DeleteFavourite(item.id));
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
 
 // class Favourite extends StatelessWidget {
 //   Favourite({super.key});
@@ -313,75 +388,3 @@ import 'package:g7_comerce_app/presentation/bloc/favourite/favourite_state.dart'
 
 
 
-
-class FavouriteScreen extends StatefulWidget {
-  const FavouriteScreen({super.key});
-
-  @override
-  State<FavouriteScreen> createState() => _FavouriteScreenState();
-}
-class _FavouriteScreenState extends State<FavouriteScreen> {
-
-  @override
-  void initState() {
-    super.initState();
-    context.read<FavouriteBloc>().add(LoadFavourites()); // 👈 HERE
-  }
-  
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<FavouriteBloc, FavouriteState>(
-        builder: (context, state) {
-    
-          if (state is FavouriteLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-    
-          if (state is FavouriteError) {
-            return Center(child: Text(state.message));
-          }
-    
-          if (state is FavouriteLoaded) {
-            return ListView.builder(
-              itemCount: state.favourites.length,
-              itemBuilder: (context, index) {
-                final item = state.favourites[index];
-                return favouriteTile(context, item);
-              },
-            );
-          }
-    
-          return const SizedBox();
-        },
-      ),
-    );
-  }
-
-  Widget favouriteTile(BuildContext context, FavouriteModel item) {
-    return ListTile(
-      leading: Image.network(item.image),
-      title: Text(item.title),
-      subtitle: Text("₹${item.price}"),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-
-          IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            onPressed: () {
-              context.read<FavouriteBloc>().add(AddToCartFromFavourite(item.id));
-            },
-          ),
-
-          IconButton(
-            icon: const Icon(Icons.delete, color: Colors.red),
-            onPressed: () {
-              context.read<FavouriteBloc>().add(DeleteFavourite(item.id));
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}

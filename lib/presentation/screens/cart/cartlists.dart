@@ -175,9 +175,6 @@ const  CartScreen({super.key});
                       )
                     ],
                    ),
-
-
-
                   );
                 },
               ),
