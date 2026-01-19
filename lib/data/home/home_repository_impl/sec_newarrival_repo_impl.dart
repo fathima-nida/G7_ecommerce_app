@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
 import 'package:g7_comerce_app/data/common_dto/api_response_dto.dart';
@@ -11,14 +10,13 @@ import 'package:g7_comerce_app/domain/home/models/section_newarrival/section_new
 import 'package:g7_comerce_app/domain/home/repository/sec_newarrival_repository.dart';
 import 'package:g7_comerce_app/packeges/app_network/app_network.dart';
 
-class SecNewarrivalRepositoryImp implements SecNewarrivalRepository {
+class SecNewarrivalRepositoryImp extends SecNewarrivalRepository {
   @override
   FutureEither<SectionWiseItemsRespModel> fetchSecNewarrival(
     SectionWiseItemsReqModel request,
   ) async {
     try {
-      // Replace {sectionName} in the endpoint
-      final url = ApiEndpoints.secNewarrival.replaceFirst(
+     final url = ApiEndpoints.secNewarrival.replaceFirst(
         '{sectionName}',
         request.sectionName,
       );
