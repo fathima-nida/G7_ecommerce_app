@@ -8,4 +8,5 @@ class ApiEndpoints {
 
   // Dashboard
   static const String dashboard = '/get-ecommerce-dashboard';
+  static const String cart='/cart';
 }
