@@ -25,7 +25,7 @@ class CstmrDashboardBloc
     final result = await repo.getCustomerDashboard(req);
 
     result.fold(
-      (failure) => emit(cstmrDashboardFailure(failure.message)),
+      (failure) => emit(CstmrDashboardFailure(failure.message)),
       (success) => emit(CstmrDashboardSuccess(success)),
     );
   }

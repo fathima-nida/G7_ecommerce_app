@@ -18,10 +18,10 @@ final class CstmrDashboardSuccess extends CstmrDashboardState{
   List<Object> get props => [dashboard];
 }
 
-class cstmrDashboardFailure extends CstmrDashboardState{
+class CstmrDashboardFailure extends CstmrDashboardState{
   final String message;
 
-  const cstmrDashboardFailure(this.message);
+  const CstmrDashboardFailure(this.message);
 
   @override
   List<Object> get props => [message];

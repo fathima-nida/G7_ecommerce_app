@@ -32,7 +32,7 @@ class AssetResources {
 
   static const home = 'assets/bottom_navigation/house.png';
   static const category = 'assets/bottom_navigation/category.png';
-  static const cart = 'assets/bottom_navigation/cart.png';
+  static const cart = 'assets/bottom_navigation/removebag.png';
   static const favorite = 'assets/bottom_navigation/favourite.png';
   static const prfle = 'assets/bottom_navigation/profile.png';
   static const bag = "assets/category/Bag.png";
@@ -54,13 +54,13 @@ class AssetResources {
   static const backcoverx="assets/category/back cover.png";
   static const headphone ="assets/category/headset.png";
   static const boxcart=  "assets/categories/box.png";
-  static const removebag="assets/cart/removebag.png";
+  static const removebag="assets/cart/red_bag.png";
  
   //hisana
  static const logout = "assets/profile/logout .png";
  static const edit = "assets/profile/edit.png";
  static const order = "assets/profile/order.png";  
- static const tick = "assets/profile/shield-tick .png";
+ static const tick = "assets/profile/shield_tick .png";
  static const document = "assets/profile/document_text .png";
  static const questionmark = "assets/profile/question mark.png";
  static const lock = "assets/profile/lock .png";

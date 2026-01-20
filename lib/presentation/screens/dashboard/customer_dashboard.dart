@@ -58,7 +58,7 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
             if (state is CstmrDashboardLoading) {
               return Center(child: CircularProgressIndicator());
             }
-            if (state is cstmrDashboardFailure) {
+            if (state is CstmrDashboardFailure) {
               return Center(child: Text(state.message));
             }
             if (state is CstmrDashboardSuccess) {
