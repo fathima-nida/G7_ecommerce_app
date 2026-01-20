@@ -7,7 +7,7 @@ class CartRequestModel {
     required this.pageSize,
   });
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
       "page": page,
       "pageSize": pageSize,

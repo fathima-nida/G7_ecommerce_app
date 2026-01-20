@@ -8,28 +8,22 @@ part of 'cart_response_dto.dart';
 
 CartResponseDto _$CartResponseDtoFromJson(Map<String, dynamic> json) =>
     CartResponseDto(
-      status: json['status'] as bool,
-      statusCode: (json['statusCode'] as num).toInt(),
-      message: json['message'] as String,
-      data: CartDataDto.fromJson(json['data'] as Map<String, dynamic>),
+      data: json['data'] == null
+          ? null
+          : CartDataDto.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CartResponseDtoToJson(CartResponseDto instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'statusCode': instance.statusCode,
-      'message': instance.message,
-      'data': instance.data,
-    };
+    <String, dynamic>{'data': instance.data};
 
 CartDataDto _$CartDataDtoFromJson(Map<String, dynamic> json) => CartDataDto(
-  pagination: PaginationDto.fromJson(
-    json['pagination'] as Map<String, dynamic>,
-  ),
-  products: (json['products'] as List<dynamic>)
-      .map((e) => ProductDto.fromJson(e as Map<String, dynamic>))
+  pagination: json['pagination'] == null
+      ? null
+      : PaginationDto.fromJson(json['pagination'] as Map<String, dynamic>),
+  products: (json['products'] as List<dynamic>?)
+      ?.map((e) => CartProductDto.fromJson(e as Map<String, dynamic>))
       .toList(),
-  totalPrice: (json['totalPrice'] as num).toDouble(),
+  totalPrice: json['totalPrice'],
 );
 
 Map<String, dynamic> _$CartDataDtoToJson(CartDataDto instance) =>
@@ -41,10 +35,10 @@ Map<String, dynamic> _$CartDataDtoToJson(CartDataDto instance) =>
 
 PaginationDto _$PaginationDtoFromJson(Map<String, dynamic> json) =>
     PaginationDto(
-      page: (json['page'] as num).toInt(),
-      pageSize: (json['pageSize'] as num).toInt(),
-      totalRecords: (json['totalRecords'] as num).toInt(),
-      totalPages: (json['totalPages'] as num).toInt(),
+      page: json['page'],
+      pageSize: json['pageSize'],
+      totalRecords: json['totalRecords'],
+      totalPages: json['totalPages'],
     );
 
 Map<String, dynamic> _$PaginationDtoToJson(PaginationDto instance) =>
@@ -55,19 +49,24 @@ Map<String, dynamic> _$PaginationDtoToJson(PaginationDto instance) =>
       'totalPages': instance.totalPages,
     };
 
-ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) => ProductDto(
-  productId: (json['productId'] as num).toInt(),
-  name: json['name'] as String,
-  qty: (json['qty'] as num).toInt(),
-  price: (json['price'] as num).toDouble(),
-  image: json['image'] as String,
-);
+CartProductDto _$CartProductDtoFromJson(Map<String, dynamic> json) =>
+    CartProductDto(
+      productId: json['productId'],
+      name: json['name'],
+      qty: json['qty'],
+      price: json['price'],
+      image: json['image'],
+      description: json['description'],
+      cartItemId: json['cartItemId'],
+    );
 
-Map<String, dynamic> _$ProductDtoToJson(ProductDto instance) =>
+Map<String, dynamic> _$CartProductDtoToJson(CartProductDto instance) =>
     <String, dynamic>{
       'productId': instance.productId,
       'name': instance.name,
       'qty': instance.qty,
       'price': instance.price,
       'image': instance.image,
+      'description': instance.description,
+      'cartItemId': instance.cartItemId,
     };

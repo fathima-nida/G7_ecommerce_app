@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
-import 'package:g7_comerce_app/presentation/bloc/dashboard/bloc/cstmr_dashboard_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/dashboard/cstmr_dashboard_bloc.dart';
 import 'package:g7_comerce_app/presentation/screens/dashboard/all_product.dart';
 
 class CustomerDashboard extends StatefulWidget {
@@ -14,14 +14,14 @@ class CustomerDashboard extends StatefulWidget {
 }
 
 class _CustomerDashboardState extends State<CustomerDashboard> {
-  final List<Map<String, dynamic>> gridItems = [
-    {'status': 'Accepted', 'image': AssetResources.accepted, 'count': '28'},
-    {'status': 'Billed', 'image': AssetResources.billed, 'count': '13'},
-    // {'status': 'Processing', 'image': AssetResources.processing, 'count': '17'},
-    // {'status': 'Packed', 'image': AssetResources.packed, 'count': '23'},
-    // {'status': 'Dispatched', 'image': AssetResources.dispatched, 'count': '54'},
-    {'status': 'Delivered', 'image': AssetResources.delivered, 'count': '34'},
-  ];
+  // final List<Map<String, dynamic>> gridItems = [
+  //   {'status': 'Accepted', 'image': AssetResources.accepted, 'count': '28'},
+  //   {'status': 'Billed', 'image': AssetResources.billed, 'count': '13'},
+  //   // {'status': 'Processing', 'image': AssetResources.processing, 'count': '17'},
+  //   // {'status': 'Packed', 'image': AssetResources.packed, 'count': '23'},
+  //   // {'status': 'Dispatched', 'image': AssetResources.dispatched, 'count': '54'},
+  //   {'status': 'Delivered', 'image': AssetResources.delivered, 'count': '34'},
+  // ];
 
   @override
   void initState() {
@@ -207,7 +207,7 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
                         mainAxisSpacing: 10,
                         childAspectRatio: 1.5,
                       ),
-                      itemCount: 3,
+                      itemCount: gridItems.length,
                       itemBuilder: (context, index) {
                         final item = gridItems[index];
                         return InkWell(

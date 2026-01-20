@@ -1,37 +1,16 @@
-class CartResponse {
-  final bool status;
-  final int statusCode;
-  final String message;
-  final CartData data;
 
-  CartResponse({
-    required this.status,
-    required this.statusCode,
-    required this.message,
-    required this.data,
-  });
-
-  factory CartResponse.fromJson(Map<String, dynamic> json) {
-    return CartResponse(
-      status: json['status'],
-      statusCode: json['statusCode'],
-      message: json['message'],
-      data: CartData.fromJson(json['data']),
-    );
-  }
-}
-
-// class CartData {
+// class CartDataResponseModel {
 //   final Pagination pagination;
 //   final List<Product> products;
+ 
 
-//   CartData({
+//   CartDataResponseModel({
 //     required this.pagination,
 //     required this.products,
 //   });
 
-//   factory CartData.fromJson(Map<String, dynamic> json) {
-//     return CartData(
+//   factory CartDataResponseModel.fromJson(Map<String, dynamic> json) {
+//     return CartDataResponseModel(
 //       pagination: Pagination.fromJson(json['pagination']),
 //       products: (json['products'] as List)
 //           .map((e) => Product.fromJson(e))
@@ -39,81 +18,166 @@ class CartResponse {
 //     );
 //   }
 // }
-class CartData {
-  final Pagination pagination;
-  final List<Product> products;
-  final double totalPrice;
 
-  CartData({
+
+// class Pagination {
+//   final int page;
+//   final int pageSize;
+//   final int totalRecords;
+//   final int totalPages;
+
+//   Pagination({
+//     required this.page,
+//     required this.pageSize,
+//     required this.totalRecords,
+//     required this.totalPages,
+//   });
+
+//   factory Pagination.fromJson(Map<String, dynamic> json) {
+//     return Pagination(
+//       page: json['page'],
+//       pageSize: json['pageSize'],
+//       totalRecords: json['totalRecords'],
+//       totalPages: json['totalPages'],
+//     );
+//   }
+// }
+
+
+// class Product {
+//   final int id;
+//   final String name;
+//   final int qty;
+//   final double price;
+//   final String image;
+//   final String? description;
+//   final int cartItemId;
+
+//   Product({
+//     required this.id,
+//     required this.name,
+//     required this.qty,
+//     required this.price,
+//     required this.image,
+//     required this.description,
+//     required this.cartItemId,
+//   });
+
+//   factory Product.fromJson(Map<String, dynamic> json) {
+//     return Product(
+//       id: json['productId']??0, // map API key
+//       name: json['name']??'',
+//       qty: json['qty']??0,
+//       price: (json['price'] as num?)?.toDouble()??0.0,
+//       image: json['image']??'',
+//       description: json['description'],
+//       cartItemId: json['cartitemid']??0,
+//     );
+//   }
+// }
+
+
+import 'package:equatable/equatable.dart';
+
+class CartDataresponseModel extends Equatable {
+  final PaginationModel pagination;
+  final List<CartProductModel> products;
+  final num totalPrice;
+
+  const CartDataresponseModel({
     required this.pagination,
     required this.products,
     required this.totalPrice,
   });
 
-  factory CartData.fromJson(Map<String, dynamic> json) {
-    return CartData(
-      pagination: Pagination.fromJson(json['pagination']),
-      products: (json['products'] as List)
-          .map((e) => Product.fromJson(e))
-          .toList(),
-      totalPrice: (json['totalPrice'] as num?)?.toDouble() ?? 0.0,
+  factory CartDataresponseModel.dummy() {
+    return CartDataresponseModel(
+      pagination: PaginationModel.dummy(),
+      products: const [],
+      totalPrice: 0,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        pagination,
+        products,
+        totalPrice,
+      ];
 }
 
-
-class Pagination {
+/// ================== PAGINATION MODEL ==================
+class PaginationModel extends Equatable {
   final int page;
   final int pageSize;
   final int totalRecords;
   final int totalPages;
 
-  Pagination({
+  const PaginationModel({
     required this.page,
     required this.pageSize,
     required this.totalRecords,
     required this.totalPages,
   });
 
-  factory Pagination.fromJson(Map<String, dynamic> json) {
-    return Pagination(
-      page: json['page'],
-      pageSize: json['pageSize'],
-      totalRecords: json['totalRecords'],
-      totalPages: json['totalPages'],
+  factory PaginationModel.dummy() {
+    return const PaginationModel(
+      page: 0,
+      pageSize: 0,
+      totalRecords: 0,
+      totalPages: 0,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        page,
+        pageSize,
+        totalRecords,
+        totalPages,
+      ];
 }
 
-// class Product {
-//   Product();
-
-//   factory Product.fromJson(Map<String, dynamic> json) {
-//     return Product();
-//   }
-// }
-class Product {
+/// ================== CART PRODUCT MODEL ==================
+class CartProductModel extends Equatable {
   final int id;
   final String name;
   final int qty;
-  final double price;
+  final num price;
   final String image;
+  final String? description;
+  final int cartItemId;
 
-  Product({
+  const CartProductModel({
     required this.id,
     required this.name,
     required this.qty,
     required this.price,
     required this.image,
+    required this.description,
+    required this.cartItemId,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-      id: json['productId'], // map API key
-      name: json['name'],
-      qty: json['qty'],
-      price: (json['price'] as num).toDouble(),
-      image: json['image'],
+  factory CartProductModel.dummy() {
+    return const CartProductModel(
+      id: -1,
+      name: '',
+      qty: 0,
+      price: 0,
+      image: '',
+      description: null,
+      cartItemId: -1,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        qty,
+        price,
+        image,
+        description,
+        cartItemId,
+      ];
 }

@@ -1,6 +1,6 @@
 part of 'cstmr_dashboard_bloc.dart';
 
-sealed class CstmrDashboardState extends Equatable {
+abstract class CstmrDashboardState extends Equatable {
   const CstmrDashboardState();
   
   @override

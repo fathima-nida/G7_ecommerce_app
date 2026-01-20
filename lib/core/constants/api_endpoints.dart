@@ -8,5 +8,10 @@ class ApiEndpoints {
 
   // Dashboard
   static const String dashboard = '/get-ecommerce-dashboard';
-  static const String cart='/cart';
+  //home
+  static const String secNewarrival="/section-wise-items/{sectionName}";
+  //cart
+  static const String cart= '/get-ecommerce-cart';
+  static const String removefromcart='/remove-ecommerce-cart{cartId}';
+  static const String updatequantity='/update-ecommerce-po-cart-qty';
 }
