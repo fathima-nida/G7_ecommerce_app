@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
-import 'package:g7_comerce_app/presentation/bloc/dashboard/cstmr_dashboard_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/dashboard/customer_dashboard/cstmr_dashboard_bloc.dart';
 import 'package:g7_comerce_app/presentation/screens/dashboard/all_product.dart';
 
 class CustomerDashboard extends StatefulWidget {
@@ -29,7 +29,7 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
 
     context.read<CstmrDashboardBloc>().add(
       LoadCstmrDashboardEvent(
-        fromDate: DateTime.now().subtract(const Duration(days: 30)),
+        fromDate: DateTime.now(),
         toDate: DateTime.now(),
       ),
     );
@@ -58,27 +58,34 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
             if (state is CstmrDashboardLoading) {
               return Center(child: CircularProgressIndicator());
             }
-            if (state is cstmrDashboardFailure) {
+            if (state is CstmrDashboardFailure) {
               return Center(child: Text(state.message));
             }
             if (state is CstmrDashboardSuccess) {
               final dashboard = state.dashboard;
 
-              final gridItems = dashboard.data.map((e) {
-                String image = AssetResources.pending;
-                if (e.status.toLowerCase() == "accepted") {
-                  image = AssetResources.accepted;
-                } else if (e.status.toLowerCase() == "billed") {
-                  image = AssetResources.billed;
-                } else if (e.status.toLowerCase() == "delivered") {
-                  image = AssetResources.delivered;
-                }
-                return {
-                  'status': e.status,
-                  'image': image,
-                  'count': e.totalCount.toString(),
-                };
-              }).toList();
+              final gridItems = dashboard.data
+                  .where(
+                    (e) => e.status.toLowerCase() != "pending",
+                  ) 
+                  .map((e) {
+                    String image = AssetResources.pending;
+
+                    if (e.status.toLowerCase() == "accepted") {
+                      image = AssetResources.accepted;
+                    } else if (e.status.toLowerCase() == "billed") {
+                      image = AssetResources.billed;
+                    } else if (e.status.toLowerCase() == "delivered") {
+                      image = AssetResources.delivered;
+                    }
+
+                    return {
+                      'status': e.status,
+                      'image': image,
+                      'count': e.totalCount.toString(),
+                    };
+                  })
+                  .toList();
 
               final orderedCount = dashboard.data.fold<int>(
                 0,

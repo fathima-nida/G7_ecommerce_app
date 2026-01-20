@@ -26,4 +26,20 @@ class SharedPrefHelper {
   static Future<void> clearAll() async {
     await AppStorage.clearAll();  
   }
+
+
+  
+  static Future<void> saveLedgerId(String ledgerId) async {
+  await AppStorage.setString(PrefResources.LEDGER_ID, ledgerId);
+}
+
+static Future<String?> getLedgerId() async {
+  return AppStorage.getString(PrefResources.LEDGER_ID);
+}
+
+  static Future<void> clearLedgerId() async {
+    await AppStorage.remove(PrefResources.LEDGER_ID);
+  }
+
+
 }

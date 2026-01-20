@@ -7,8 +7,7 @@ import 'package:g7_comerce_app/domain/dashboard/repositories/custom_dashboard_re
 part 'cstmr_dashboard_event.dart';
 part 'cstmr_dashboard_state.dart';
 
-class CstmrDashboardBloc
-    extends Bloc<CstmrDashboardEvent, CstmrDashboardState> {
+class CstmrDashboardBloc extends Bloc<CstmrDashboardEvent, CstmrDashboardState> {
   final CstmrDashboardRepo repo;
   CstmrDashboardBloc( this.repo) : super(CstmrDashboardInitial()) {
     on<LoadCstmrDashboardEvent>(_onLoadDashboard);
@@ -19,13 +18,13 @@ class CstmrDashboardBloc
   ) async {
     emit(CstmrDashboardLoading());
     final req = CstmrDashboardReqModel(
-      fromData: event.fromDate,
+      fromDate: event.fromDate,
       toDate: event.toDate,
     );
     final result = await repo.getCustomerDashboard(req);
 
     result.fold(
-      (failure) => emit(cstmrDashboardFailure(failure.message)),
+      (failure) => emit(CstmrDashboardFailure(failure.message)),
       (success) => emit(CstmrDashboardSuccess(success)),
     );
   }

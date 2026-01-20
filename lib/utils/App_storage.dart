@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:g7_comerce_app/core/constants/pref_resources.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppStorage {
@@ -25,4 +26,7 @@ class AppStorage {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
   }
+
+
+
 }

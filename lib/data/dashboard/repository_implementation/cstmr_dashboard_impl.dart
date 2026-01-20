@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
 import 'package:g7_comerce_app/data/dashboard/dtos/cstm_dashboard_response_dto.dart';
@@ -12,20 +14,20 @@ class CstmrDashboardImpl extends CstmrDashboardRepo {
   FutureEither<CstmrDashboardRespModel> getCustomerDashboard(
     CstmrDashboardReqModel reqModel,
   ) async {
+    log(
+      'fromData = ${reqModel.fromDate.toString()}, toDate = ${reqModel.toDate.toString()}',
+    );
     final response = await AppNetwork.get(
       url: '${ApiEndpoints.baseUrl}${ApiEndpoints.dashboard}',
       queryParameters: reqModel.toMap(),
     );
 
-    return response.fold(
-      (err) => Left(err),
-      (success) {
-        final dashboardDto = CstmrDashboardRespDto.fromJson(
-          success.data as Map<String, dynamic>,
-        );
+    return response.fold((err) => Left(err), (success) {
+      final dashboardDto = CstmrDashboardRespDto.fromJson(
+        success.data as Map<String, dynamic>,
+      );
 
-        return Right(dashboardDto.toModel());
-      },
-    );
+      return Right(dashboardDto.toModel());
+    });
   }
 }
