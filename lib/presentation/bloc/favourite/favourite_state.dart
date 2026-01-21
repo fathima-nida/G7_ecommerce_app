@@ -1,15 +1,31 @@
-import 'package:g7_comerce_app/data/models/favouritemodel.dart';
+part of 'favourite_bloc.dart';
 
-abstract class FavouriteState {}
+abstract class FavouriteState extends Equatable {
+  const FavouriteState();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class FavouriteInitial extends FavouriteState {}
 
 class FavouriteLoading extends FavouriteState {}
 
-class FavouriteLoaded extends FavouriteState {
-  final List<FavouriteModel> favourites;
-  FavouriteLoaded(this.favourites);
+class FavouriteSuccess extends FavouriteState {
+  final FavouriteItemResponse data;
+
+  const FavouriteSuccess(this.data);
+
+  @override
+  List<Object?> get props => [data];
 }
 
-class FavouriteError extends FavouriteState {
+class FavouriteFailure extends FavouriteState {
   final String message;
-  FavouriteError(this.message);
+
+  const FavouriteFailure(this.message);
+
+  @override
+  List<Object?> get props => [message];
 }
+

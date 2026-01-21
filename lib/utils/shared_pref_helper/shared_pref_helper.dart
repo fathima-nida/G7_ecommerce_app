@@ -26,4 +26,6 @@ class SharedPrefHelper {
   static Future<void> clearAll() async {
     await AppStorage.clearAll();  
   }
+
+  static Future<dynamic> getToken() async {}
 }

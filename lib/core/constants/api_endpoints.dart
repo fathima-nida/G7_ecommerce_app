@@ -10,4 +10,9 @@ class ApiEndpoints {
   static const String dashboard = '/get-ecommerce-dashboard';
   //home
   static const String secNewarrival="/section-wise-items/{sectionName}";
+//favourie
+   static const String favourite = "/get-ecommerce-wishlist ";
+   //product view
+    static const String productDetails = "/ecommerce-product-details/{productId} ";
+   
 }

@@ -1,17 +1,33 @@
-import '../../../data/models/product_model.dart';
 
-abstract class ProductState {}
 
-class ProductInitial extends ProductState {}
+import 'package:equatable/equatable.dart';
+import 'package:g7_comerce_app/domain/category/models/product_response_model.dart';
 
-class ProductLoading extends ProductState {}
+abstract class ProductDetailsState extends Equatable {
+  const ProductDetailsState();
 
-class ProductLoaded extends ProductState {
-  final ProductModel product;
-  ProductLoaded(this.product);
+  @override
+  List<Object?> get props => [];
 }
 
-class ProductError extends ProductState {
+class ProductDetailsInitial extends ProductDetailsState {}
+
+class ProductDetailsLoading extends ProductDetailsState {}
+
+class ProductDetailsSuccess extends ProductDetailsState {
+  final ProductDetailsResponse response;
+
+  const ProductDetailsSuccess(this.response);
+
+  @override
+  List<Object?> get props => [response];
+}
+
+class ProductDetailsFailure extends ProductDetailsState {
   final String message;
-  ProductError(this.message);
+
+  const ProductDetailsFailure(this.message);
+
+  @override
+  List<Object?> get props => [message];
 }

@@ -1,39 +1,29 @@
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import '../../../data/services/product_api.dart';
-// import 'product_event.dart';
-// import 'product_state.dart';
-
-// class ProductBloc extends Bloc<ProductEvent, ProductState> {
-//   ProductBloc() : super(ProductInitial()) {
-//     on<LoadProductEvent>((event, emit) async {
-//       emit(ProductLoading());
-//       try {
-//         final product = await ProductApi.getProduct(event.id);
-//         emit(ProductLoaded(product));
-//       } catch (e) {
-//         emit(ProductError("Failed to load product"));
-//       }
-//     });
-//   }
-// }
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:g7_comerce_app/domain/cart/repositories/product_repo.dart';
-import 'product_event.dart';
-import 'product_state.dart';
-
-class ProductBloc extends Bloc<ProductEvent, ProductState> {
+import 'package:bloc/bloc.dart';
+import 'package:g7_comerce_app/domain/category/models/product_request_model.dart';
+import 'package:g7_comerce_app/domain/category/repositories/product_repository.dart';
+import 'package:g7_comerce_app/presentation/bloc/product/product_event.dart';
+import 'package:g7_comerce_app/presentation/bloc/product/product_state.dart';
+class ProductDetailsBloc
+    extends Bloc<ProductDetailsEvent, ProductDetailsState> {
   final ProductRepository repo;
 
-  ProductBloc(this.repo) : super(ProductInitial()) {
-    on<LoadProductEvent>((event, emit) async {
-      emit(ProductLoading());
-      try {
-        final product = await repo.getProduct(event.id);
-        emit(ProductLoaded(product));
-      } catch (_) {
-        emit(ProductError("Failed to load product"));
-      }
-    });
+  ProductDetailsBloc(this.repo) : super(ProductDetailsInitial()) {
+    on<LoadProductDetailsEvent>(_onLoadProductDetails);
+  }
+
+  Future<void> _onLoadProductDetails(
+    LoadProductDetailsEvent event,
+    Emitter<ProductDetailsState> emit,
+  ) async {
+    emit(ProductDetailsLoading());
+    final req = ProductRequestModel(productId: event.productId,);
+
+final result = await repo.getProductDetails(req);
+
+
+    result.fold(
+      (failure) => emit(ProductDetailsFailure(failure.message)),
+      (success) => emit(ProductDetailsSuccess(success)),
+    );
   }
 }
-
