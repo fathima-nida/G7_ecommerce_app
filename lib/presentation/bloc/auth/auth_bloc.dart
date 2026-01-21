@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/core/build_config/build_config.dart';
 import 'package:g7_comerce_app/domain/auth/models/login_request_model.dart';
-import 'package:g7_comerce_app/domain/auth/models/login_response.dart';
 import 'package:g7_comerce_app/domain/auth/models/otp_request_model.dart';
 import 'package:g7_comerce_app/domain/auth/repositories/login_repository.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_event.dart';
