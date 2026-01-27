@@ -11,6 +11,7 @@ import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/customer_dashboard/cstmr_dashboard_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/categorylist/category_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/home/sec_newarrival/search_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/sec_newarrival/section_newarrival_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/favourite/favourite_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/product/product_bloc.dart';
@@ -53,6 +54,9 @@ class MyApp extends StatelessWidget {
       BlocProvider<BannerBloc>(create: (_)=>di.getit.get<BannerBloc>()),
       BlocProvider<CategoryBloc>(create: (_)=>di.getit.get<CategoryBloc>()),
       BlocProvider<SecNewarrivalBloc>(create: (_)=>di.getit.get<SecNewarrivalBloc>()),
+      BlocProvider<BannerBloc>(create: (_)=>di.getit.get<BannerBloc>()),
+      BlocProvider<CategoryBloc>(create: (_)=>di.getit.get<CategoryBloc>()),
+      BlocProvider<SearchBloc>(create: (_)=>di.getit.get<SearchBloc>()),
   ],
       
        
