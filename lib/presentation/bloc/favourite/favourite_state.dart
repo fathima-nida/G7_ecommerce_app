@@ -12,18 +12,19 @@ class FavouriteInitial extends FavouriteState {}
 class FavouriteLoading extends FavouriteState {}
 
 class FavouriteSuccess extends FavouriteState {
-  final FavouriteItemResponse data;
-
-  const FavouriteSuccess(this.data);
+  final FavouriteItemResponse success;
+  const FavouriteSuccess(this.success);
 
   @override
-  List<Object?> get props => [data];
+  List<Object?> get props => [];
+
 }
 
 class FavouriteFailure extends FavouriteState {
   final String message;
+ const FavouriteFailure(this.message);
 
-  const FavouriteFailure(this.message);
+
 
   @override
   List<Object?> get props => [message];

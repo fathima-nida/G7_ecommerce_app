@@ -1,16 +1,36 @@
 import 'package:equatable/equatable.dart';
 
 class FavouriteItemResponse extends Equatable {
+  final int irId;
+  final String irName;
+  final int irMrp;
+  final bool stock;
+  final String description;
+  final List<String> images;
+
+  
   final PaginationModel pagination;
   final List<WishlistProductModel> products;
 
   const FavouriteItemResponse({
+    required this.irId,
+    required this.irName, 
+  required this.irMrp,
+   required this.stock,
+   required this.description,
+   required this.images,
     required this.pagination,
     required this.products,
   });
 
   factory FavouriteItemResponse.fromMap(Map<String, dynamic> map) {
     return FavouriteItemResponse(
+      irId: map['ir_id'] ?? 0,
+      irName: map['ir_name'] ?? '',
+      irMrp: map['ir_mrp'] ?? 0,
+      stock: map['stock'] ?? false,
+      description: map['description'] ?? '',
+      images: List<String>.from(map['images'] ?? []),
       pagination: PaginationModel.fromMap(
         map['pagination'] ?? {},
       ),
@@ -24,6 +44,12 @@ class FavouriteItemResponse extends Equatable {
 
   factory FavouriteItemResponse.dummy() {
     return  FavouriteItemResponse(
+              irId: 0,
+      irName: '',
+      irMrp: 0,
+      stock: false,
+      description: '',
+      images: const [],
       pagination: PaginationModel.dummy(),
       products: const [], // ✅ FIXED
     );
@@ -41,6 +67,12 @@ class FavouriteItemResponse extends Equatable {
     List<WishlistProductModel>? products,
   }) {
     return FavouriteItemResponse(
+      irId: irId,
+      irName: irName,
+      irMrp: irMrp,
+      stock: stock,
+      description: description,
+      images: images,
       pagination: pagination ?? this.pagination,
       products: products ?? this.products,
     );
@@ -99,16 +131,72 @@ class PaginationModel extends Equatable {
 /* ---------------- PRODUCT ---------------- */
 
 class WishlistProductModel extends Equatable {
-  const WishlistProductModel();
+  
+  final String productName;
+  final double price;
+  final String imageUrl;
+  final int irId;
+  final String irName;
+  final int irMrp;
+  final bool stock;
+  final List<String> images;
+
+
+  const WishlistProductModel({
+    required this.productName,
+    required this.price,
+    required this.imageUrl,
+    required this.irId,
+    required this.irName,
+    required this.irMrp,
+    required this.stock,
+    required this.images,
+
+  });
 
   factory WishlistProductModel.fromMap(Map<String, dynamic> map) {
-    return const WishlistProductModel();
+  return WishlistProductModel(
+    irId: map['itemId'] ?? 0,          // from API
+    irName: map['itemName'] ?? '',     // fallback
+    irMrp: (map['itemMrp'] ?? 0).toInt(),
+    stock: true,                       // API may not return, default to true
+    images: List<String>.from(map['images'] ?? []),
+    productName: map['itemName'] ?? '',
+    price: (map['price'] ?? 0).toDouble(),
+    imageUrl: (map['images'] != null && (map['images'] as List).isNotEmpty)
+        ? (map['images'] as List).first
+        : '',
+  );
+}
+
+
+  factory WishlistProductModel.dummy() {
+    return const WishlistProductModel(
+      irId: 0,
+      irName: '',
+      irMrp: 0,
+      stock: false,
+      images: [],
+      productName: '',
+      price: 0,
+      imageUrl: '',
+    );
   }
 
   Map<String, dynamic> toMap() {
-    return {};
+    return {
+      'irId': irId,
+      'irName': irName,
+      'irMrp': irMrp,
+      'stock': stock,
+      'images': images,
+       'productName': productName,
+      'price': price,
+      'imageUrl': imageUrl,
+    };
   }
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [productName, price, imageUrl];
+    
 }

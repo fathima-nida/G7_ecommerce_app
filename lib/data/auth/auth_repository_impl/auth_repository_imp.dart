@@ -1,4 +1,3 @@
-import 'dart:convert' show json;
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:g7_comerce_app/core/constants/api_endpoints.dart';
@@ -13,6 +12,7 @@ import 'package:g7_comerce_app/domain/auth/repositories/login_repository.dart';
 import 'package:g7_comerce_app/domain/common/app_failure.dart';
 import 'package:g7_comerce_app/domain/common/generic_types.dart';
 import 'package:g7_comerce_app/packeges/app_network/app_network.dart';
+import 'package:g7_comerce_app/utils/shared_pref_helper/shared_pref_helper.dart';
 
 class AuthRepositoryImp extends LoginRepository {
   @override
@@ -78,9 +78,20 @@ class AuthRepositoryImp extends LoginRepository {
             AppFailure.server(responseData.message, responseData.statusCode),
           );
         }
-        return Right(
-          responseData.data!.toModel(),
-        );
+        // return Right(
+        //   responseData.data!.toModel(),
+        // );
+
+
+         // ✅ convert dto to domain model
+      final model = responseData.data!.toModel();
+
+      // ✅ SAVE LEDGER ID HERE
+      SharedPrefHelper.saveLedgerId(model.ledgerId.toString());
+
+      return Right(model);
+
+
       });
     } catch (e) {
       log("Verify OTP Error: $e");

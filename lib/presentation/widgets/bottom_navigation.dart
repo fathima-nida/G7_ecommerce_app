@@ -22,7 +22,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     Homescreen(),
     CategoryPage(),
     CartScreen(),
-   Favourite(),
+    Favourite(),
     ProfileScreen()
   ];
 

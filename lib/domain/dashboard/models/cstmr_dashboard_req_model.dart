@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class CstmrDashboardReqModel extends Equatable {
-  final DateTime fromData;
+  final DateTime fromDate;
   final DateTime toDate;
-  const CstmrDashboardReqModel({required this.fromData, required this.toDate});
+  const CstmrDashboardReqModel({required this.fromDate, required this.toDate});
 
   @override
-  List<Object?> get props => [fromData, toDate];
+  List<Object?> get props => [fromDate, toDate];
   String formatDate(DateTime date) {
     final year = date.year.toString().padLeft(4, '0');
     final month = date.month.toString().padLeft(2, '0');
@@ -15,6 +15,6 @@ class CstmrDashboardReqModel extends Equatable {
   }
 
   Map<String, dynamic> toMap() {
-    return {"fromDate": formatDate(fromData), "toDate": formatDate(toDate)};
+    return {"fromDate": formatDate(fromDate), "toDate": formatDate(toDate)};
   }
 }

@@ -22,6 +22,7 @@ import 'package:equatable/equatable.dart';
 
 class ProductRequestModel extends Equatable {
   final int productId;
+  
 
   const ProductRequestModel({
     required this.productId,

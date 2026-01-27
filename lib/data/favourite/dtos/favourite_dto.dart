@@ -24,6 +24,12 @@ class WishlistDataDto {
   /// DTO → DOMAIN MODEL
   FavouriteItemResponse toModel() {
     return FavouriteItemResponse(
+      irId: 0,
+      irName: '',
+      irMrp: 0,
+      stock: false,
+      description: '',
+      images: const [], 
       pagination: pagination?.toModel() ?? PaginationModel.dummy(),
       products: (products ?? []).map((e) => e.toModel()).toList(),
     );
@@ -76,6 +82,15 @@ class WishlistProductDto {
   Map<String, dynamic> toJson() => _$WishlistProductDtoToJson(this);
 
   WishlistProductModel toModel() {
-    return const WishlistProductModel();
+    return const WishlistProductModel(
+      irId: 0,
+      irName: "",
+      irMrp: 0,
+      stock: false, 
+      images: [], 
+      productName: "",
+      price: 0.0,
+      imageUrl: "",
+    );
   }
 }

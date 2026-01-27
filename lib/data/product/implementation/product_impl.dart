@@ -12,8 +12,8 @@ class ProductImpl extends ProductRepository {
   FutureEither<ProductDetailsResponse> getProductDetails(
       ProductRequestModel request) async {
     final response = await AppNetwork.get(
-      url: '${ApiEndpoints.baseUrl}${ApiEndpoints.productDetails}',
-      queryParameters: request.toMap(),
+      url: '${ApiEndpoints.baseUrl}${ApiEndpoints.productDetails}/${request.productId}',
+      
     );
 
     return response.fold(

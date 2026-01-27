@@ -78,6 +78,7 @@ class ProductDetailsDto {
       name: name ?? '',
       mrp: int.tryParse(mrp?.toString() ?? '0') ?? 0,
       isInWishlist: isInWishlist ?? false,
+      description: '',
       images: images ?? const [],
     );
   }

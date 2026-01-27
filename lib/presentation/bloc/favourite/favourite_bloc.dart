@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:g7_comerce_app/domain/favourite/model/favourite_item_response.dart';
 import 'package:g7_comerce_app/domain/favourite/model/favourite_request_model.dart';
-import 'package:g7_comerce_app/domain/favourite/repository/favourie_repository.dart';
+import 'package:g7_comerce_app/domain/favourite/repository/favourite_repository.dart';
 
 part 'favourite_event.dart';
 part 'favourite_state.dart';
@@ -13,6 +13,7 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
   FavouriteBloc(this.repo) : super(FavouriteInitial()) {
     on<LoadFavouriteEvent>(_onLoadFavourites);
   }
+  
 
   Future<void> _onLoadFavourites(
     LoadFavouriteEvent event,
@@ -21,6 +22,11 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
     emit(FavouriteLoading());
 
     final req = FavouriteRequestModel(
+      irId: 0,
+      irName: '',
+      irMrp: 0,
+      stock: 0,
+      irImages: const [],
       pageNo: event.page,
       pageSize: event.pageSize,
     );
