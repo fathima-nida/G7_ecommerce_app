@@ -16,13 +16,13 @@ class SecNewarrivalRepositoryImp extends SecNewarrivalRepository {
     SectionWiseItemsReqModel request,
   ) async {
     try {
-     final url = ApiEndpoints.secNewarrival.replaceFirst(
-        '{sectionName}',
-        request.sectionName,
-      );
+    //  final url = ApiEndpoints.secNewarrival.replaceFirst(
+    //     '{sectionName}',
+    //     request.sectionName,
+    //   );
 
       final response = await AppNetwork.get(
-        url: '${ApiEndpoints.baseUrl}$url',
+        url: '${ApiEndpoints.baseUrl}${ApiEndpoints.secNewarrival}/${request.sectionName}',
         queryParameters: {
           'pageNumber': request.pageNumber,
           'pageSize': request.pageSize,

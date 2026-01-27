@@ -85,4 +85,6 @@ static Future<String?> getLedgerId() async {
   }
 
 
+
+  static Future<dynamic> getToken() async {}
 }

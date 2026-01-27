@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
 
-class DescriptionBottomSheet extends StatelessWidget {
+class DescriptionBottomSheet extends StatefulWidget {
   const DescriptionBottomSheet({super.key});
 
+  @override
+  State<DescriptionBottomSheet> createState() => _DescriptionBottomSheetState();
+}
+
+class _DescriptionBottomSheetState extends State<DescriptionBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = TextEditingController();

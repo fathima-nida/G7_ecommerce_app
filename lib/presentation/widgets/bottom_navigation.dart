@@ -5,7 +5,6 @@ import 'package:g7_comerce_app/core/theme/textstyle.dart';
 import 'package:g7_comerce_app/presentation/screens/cart/cartlists.dart';
 import 'package:g7_comerce_app/presentation/screens/category/categorypage.dart';
 import 'package:g7_comerce_app/presentation/screens/home/homescreen.dart';
-
 import 'package:g7_comerce_app/presentation/screens/profile/profile.dart';
 import 'package:g7_comerce_app/presentation/screens/favourite/favourite.dart';
 

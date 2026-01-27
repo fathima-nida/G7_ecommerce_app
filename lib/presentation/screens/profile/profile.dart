@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
+import 'package:g7_comerce_app/presentation/screens/auth/loginscreen.dart';
 import 'package:g7_comerce_app/presentation/screens/dashboard/customer_dashboard.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -50,7 +51,62 @@ class ProfileScreen extends StatelessWidget {
 
                 const Spacer(),
 
-                Image.asset(AssetResources.logout, width: 28, height: 28),
+                //Image.asset(AssetResources.logout, width: 28, height: 28),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(context: context,
+                     builder: (context){
+                      return AlertDialog(
+                        title:  Text("Logout"),
+                        content: const Text(
+                          "Are you sure you want to logout?",
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: (){
+                              Navigator.pop(context);
+                            }, 
+                             style: TextButton.styleFrom(
+                               foregroundColor: AppColors.black, 
+                               side: const BorderSide(
+                                color: AppColors.bluegrey,
+                                width: 1.5,
+                               ),
+                             ),
+                            child: const Text("Cancle"),
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.pink,
+                                foregroundColor: AppColors.black,
+                                // side: const BorderSide(
+                                // color: AppColors.bluegrey,
+                                // width: 1.5,
+                                //),
+                              ),
+                              onPressed: (){
+                                Navigator.pop(context);
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context)=>  LoginScreen(),
+                                    ),
+                                    (route) => false,
+                                    );
+                              }, 
+
+                              child: const Text("Logout"),
+                              ),
+                        ],
+                      );
+                     }
+                     );
+                  },
+                  child: Image.asset(AssetResources.logout,
+                  width: 28,
+                  height: 28,
+                  ),
+                ),
               ],
             ),
           ),
