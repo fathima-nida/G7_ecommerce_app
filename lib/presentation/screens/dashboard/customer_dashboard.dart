@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
@@ -5,6 +7,8 @@ import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/customer_dashboard/cstmr_dashboard_bloc.dart';
 import 'package:g7_comerce_app/presentation/screens/dashboard/all_product.dart';
+import 'package:g7_comerce_app/presentation/screens/dashboard/widgets/calender_picker.dart';
+import 'package:intl/intl.dart';
 
 class CustomerDashboard extends StatefulWidget {
   CustomerDashboard({super.key});
@@ -14,25 +18,36 @@ class CustomerDashboard extends StatefulWidget {
 }
 
 class _CustomerDashboardState extends State<CustomerDashboard> {
-  // final List<Map<String, dynamic>> gridItems = [
-  //   {'status': 'Accepted', 'image': AssetResources.accepted, 'count': '28'},
-  //   {'status': 'Billed', 'image': AssetResources.billed, 'count': '13'},
-  //   // {'status': 'Processing', 'image': AssetResources.processing, 'count': '17'},
-  //   // {'status': 'Packed', 'image': AssetResources.packed, 'count': '23'},
-  //   // {'status': 'Dispatched', 'image': AssetResources.dispatched, 'count': '54'},
-  //   {'status': 'Delivered', 'image': AssetResources.delivered, 'count': '34'},
-  // ];
-
   @override
   void initState() {
     super.initState();
 
+    final today = DateTime.now();
+
+    fromDate = today;
+    toDate = today;
+
     context.read<CstmrDashboardBloc>().add(
-      LoadCstmrDashboardEvent(
-        fromDate: DateTime.now(),
-        toDate: DateTime.now(),
-      ),
+      LoadCstmrDashboardEvent(fromDate: fromDate!, toDate: toDate!),
     );
+  }
+
+  DateTime? selectedDate;
+  DateTime? fromDate;
+  DateTime? toDate;
+
+  String formatDate(DateTime? date) {
+    if (date == null) return "";
+    return DateFormat("dd MMM yyyy").format(date); // example: 13 Jan 2026
+  }
+
+  String getDateRangeText() {
+    final DateTime today = DateTime.now();
+
+    final DateTime f = fromDate ?? today;
+    final DateTime t = toDate ?? today;
+
+    return "${formatDate(f)} - ${formatDate(t)}";
   }
 
   @override
@@ -65,9 +80,7 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
               final dashboard = state.dashboard;
 
               final gridItems = dashboard.data
-                  .where(
-                    (e) => e.status.toLowerCase() != "pending",
-                  ) 
+                  .where((e) => e.status.toLowerCase() != "pending")
                   .map((e) {
                     String image = AssetResources.pending;
 
@@ -93,9 +106,71 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
               );
 
               return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // SizedBox(height: 20),
-                  devider,
+                  InkWell(
+                    onTap: () {
+                      pickFromToDate();
+                    },
+                    child: Container(
+                      height: 45,
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(13),
+                        border: Border.all(color: AppColors.pink, width: 1),
+                        color: Colors.pink.withOpacity(0.09),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          
+                          Icon(
+                            Icons.calendar_today_outlined,
+                            color: AppColors.pink,
+                          ),
+
+                          const SizedBox(width: 8),
+
+                          Expanded(
+                            child: Text(
+                              getDateRangeText(),
+                              style: AppTextstyle.small(
+                                fontColor: AppColors.pink,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+
+                          IconButton(
+                            onPressed: () {
+                              final today = DateTime.now();
+
+                              setState(() {
+                                fromDate = today;
+                                toDate = today;
+                              });
+
+                              context.read<CstmrDashboardBloc>().add(
+                                LoadCstmrDashboardEvent(
+                                  fromDate: fromDate!,
+                                  toDate: toDate!,
+                                ),
+                              );
+                            },
+                            icon: const Icon(Icons.refresh),
+                            color: AppColors.pink,
+
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 17),
                   Container(
                     height: 135,
                     // width: 380,
@@ -268,5 +343,70 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
         ),
       ),
     );
+  }
+
+  Future<void> pickFromToDate() async {
+    ///  Pick FROM date
+    DateTime? pickedFrom = await showDatePicker(
+      context: context,
+      initialDate: fromDate ?? DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+      helpText: "From Date",
+      confirmText: 'Next',
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: AppColors.red,
+              onPrimary: Colors.white,
+              onSurface: Colors.black,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (pickedFrom == null) return;
+
+    setState(() {
+      fromDate = pickedFrom;
+      toDate = null; // reset to date
+    });
+
+    ///  Pick TO date
+    DateTime? pickedTo = await showDatePicker(
+      context: context,
+      initialDate: pickedFrom,
+      firstDate: pickedFrom, //  to date must be >= from date
+      lastDate: DateTime(2100),
+      helpText: "To Date",
+      confirmText: 'Apply',
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: AppColors.red,
+              onPrimary: Colors.white,
+              onSurface: Colors.black,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (pickedTo == null) return;
+
+    setState(() {
+      toDate = pickedTo;
+      context.read<CstmrDashboardBloc>().add(
+        LoadCstmrDashboardEvent(fromDate: pickedFrom, toDate: toDate!),
+      );
+    });
+
+    log("FROM: $fromDate");
+    log("TO: $toDate");
   }
 }
