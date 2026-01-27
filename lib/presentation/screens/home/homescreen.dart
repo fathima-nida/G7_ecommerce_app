@@ -5,12 +5,10 @@ import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
 import 'package:g7_comerce_app/domain/auth/models/otp_response_model.dart';
-import 'package:g7_comerce_app/domain/cart/model/cart_response.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_state.dart';
 import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_event.dart';
-import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_state.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_event.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_state.dart';
@@ -212,7 +210,7 @@ class _HomescreenState extends State<Homescreen> {
                   if (state is BannerLoading) {
                     return const SizedBox(
                       height: 180,
-                      child: Center(child: CircularProgressIndicator()),
+                     
                     );
                   }
                   if (state is BannerLoaded) {
@@ -252,7 +250,7 @@ class _HomescreenState extends State<Homescreen> {
               BlocBuilder<SecNewarrivalBloc, SecNewArrivalState>(
                 builder: (context, state) {
                   if (state is SecNewArrivalLoading) {
-                    return const Center(child: CircularProgressIndicator());
+                    return const SizedBox();
                   } else if (state is SecNewArrivalFailure) {
                     return Center(
                       child: Column(
@@ -393,7 +391,7 @@ class _HomescreenState extends State<Homescreen> {
                   if (state is BannerLoading) {
                     return const SizedBox(
                       height: 180,
-                      child: CircularProgressIndicator(),
+                     
                     );
                   }
                   if (state is BannerLoaded) {
@@ -434,7 +432,7 @@ class _HomescreenState extends State<Homescreen> {
               BlocBuilder<SecNewarrivalBloc, SecNewArrivalState>(
                 builder: (context, state) {
                   if (state is SecNewArrivalLoading) {
-                    return const Center(child: CircularProgressIndicator());
+                    return const SizedBox();
                   } else if (state is SecNewArrivalFailure) {
                     return Center(
                       child: Column(

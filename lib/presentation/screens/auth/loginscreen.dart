@@ -81,6 +81,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (value == null || value.isEmpty) {
                           return "Please enter your Mobile number";
                         }
+                        if (value.contains(' ')) {
+                          return "Spaces are not allowed";
+                        }
                         if (value.length != 10) {
                           return "Mobile number must be 10 digits";
                         }
@@ -118,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               onPressed: () {
                                 if (formkey.currentState!.validate()) {
-                                   context.read<LoginBloc>().add(
+                                  context.read<LoginBloc>().add(
                                     LoginWithMobileEvent(
                                       mobilecontroller.text.trim(),
                                     ),
