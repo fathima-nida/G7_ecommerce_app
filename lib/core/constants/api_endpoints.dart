@@ -12,10 +12,10 @@ class ApiEndpoints {
 
   
   //home
- static const String secNewarrival = "/section-wise-items/{sectionName}";
- static const String banner ="/banner-list";
+ static const String secNewarrival = "/section-wise-items";
+ static const String banner ="/banner-list"; 
  static const String categoryList="/category-list";
-  static const String searchProducts="/ecommerce-search-products/{name}";
+  static const String searchProducts="/ecommerce-search-products";
 
  
 }

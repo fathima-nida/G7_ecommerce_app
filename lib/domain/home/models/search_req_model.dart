@@ -35,3 +35,4 @@ class SearchReqModel {
   @override
   List<Object?> get props => [name, categoryId];
 }
+

@@ -14,8 +14,9 @@ class SearchRepositoryImp extends SearchRepository{
     SearchReqModel reqModel,
   ) async {
 final response = await AppNetwork.get(
-  url: '${ApiEndpoints.baseUrl}${ApiEndpoints.searchProducts}',
-  queryParameters: reqModel.toMap(),
+  url: '${ApiEndpoints.baseUrl}${ApiEndpoints.searchProducts}/${reqModel.name}',
+  
+ 
 );
 
 return response.fold(

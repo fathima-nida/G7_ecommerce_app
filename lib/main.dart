@@ -10,6 +10,7 @@ import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/customer_dashboard/cstmr_dashboard_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/categorylist/category_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/home/sec_newarrival/search_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/sec_newarrival/section_newarrival_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/order_view/order_view_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/sales_ordes/bloc/sales_orders_bloc.dart';
@@ -52,7 +53,8 @@ class MyApp extends StatelessWidget {
       BlocProvider<OrderViewBloc>(create: (_)=>di.getit.get<OrderViewBloc>()),
       BlocProvider<SecNewarrivalBloc>(create: (_)=>di.getit.get<SecNewarrivalBloc>()),
       BlocProvider<BannerBloc>(create: (_)=>di.getit.get<BannerBloc>()),
-      BlocProvider<CategoryBloc>(create: (_)=>di.getit.get<CategoryBloc>())
+      BlocProvider<CategoryBloc>(create: (_)=>di.getit.get<CategoryBloc>()),
+      BlocProvider<SearchBloc>(create: (_)=>di.getit.get<SearchBloc>()),
       ],
         
       child: MaterialApp(
