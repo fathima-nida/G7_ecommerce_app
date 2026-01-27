@@ -3,19 +3,24 @@ import 'package:g7_comerce_app/domain/auth/models/login_response.dart';
 import 'package:g7_comerce_app/domain/auth/models/otp_response_model.dart';
 
 abstract class LoginState extends Equatable {
-  const LoginState();
+  final OtpResponseModel? user;
+
+  const LoginState({this.user});
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [user];
 }
 
-/// Initial screen state
-class LoginInitial extends LoginState {}
+/// Initial state
+class LoginInitial extends LoginState {
+  const LoginInitial({OtpResponseModel? user}) : super(user: user);
+}
 
-/// While API is loading
+/// Loading states
 class LoginLoading extends LoginState {}
+class OtpVerifyLoading extends LoginState {}
 
-/// Login success → OTP sent
+/// Login success (after sending OTP)
 class LoginSuccess extends LoginState {
   final LoginResponseModel response;
 
@@ -34,22 +39,10 @@ class LoginFailure extends LoginState {
   @override
   List<Object?> get props => [message];
 }
-class  ShowAuthPage extends LoginState{}
-class AuthLoggedIn extends LoginState{}
-final class TokenExpiredState extends LoginState{}
-final class LogoutSuccess extends LoginState{}
-
-/// While OTP verification is in progress
-class OtpVerifyLoading extends LoginState {}
 
 /// OTP verified successfully
 class OtpVerifySuccess extends LoginState {
-  final OtpResponseModel user;
-
-  const OtpVerifySuccess(this.user);
-
-  @override
-  List<Object?> get props => [user];
+  const OtpVerifySuccess(OtpResponseModel user) : super(user: user);
 }
 
 /// OTP verification failed
@@ -61,3 +54,17 @@ class OtpVerifyFailure extends LoginState {
   @override
   List<Object?> get props => [message];
 }
+
+/// Authenticated user (already logged in)
+class AuthLoggedIn extends LoginState {
+  const AuthLoggedIn(OtpResponseModel user) : super(user: user);
+}
+
+/// Logged out
+class LogoutSuccess extends LoginState {}
+
+/// Show login/auth screen
+class ShowAuthPage extends LoginState {}
+
+/// Token expired (optional)
+class TokenExpiredState extends LoginState {}

@@ -4,6 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
+import 'package:g7_comerce_app/domain/auth/models/otp_response_model.dart';
+import 'package:g7_comerce_app/domain/cart/model/cart_response.dart';
+import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/auth/auth_state.dart';
+import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_event.dart';
+import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_state.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_event.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_state.dart';
@@ -14,7 +21,6 @@ import 'package:g7_comerce_app/presentation/bloc/home/sec_newarrival/section_new
 import 'package:g7_comerce_app/presentation/screens/cart/cartlists.dart';
 import 'package:g7_comerce_app/presentation/screens/home/searchscreen.dart';
 import 'package:g7_comerce_app/presentation/screens/home/widgets/dots.dart';
-import 'package:g7_comerce_app/presentation/widgets/bottom_navigation.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -25,19 +31,18 @@ class Homescreen extends StatefulWidget {
 
 class _HomescreenState extends State<Homescreen> {
   late final PageController _bannerController;
-   late final PageController _banner2Controller;
+  late final PageController _banner2Controller;
   @override
-
   void initState() {
     super.initState();
-     _bannerController = PageController();
-       _banner2Controller = PageController();
+    _bannerController = PageController();
+    _banner2Controller = PageController();
 
     context.read<BannerBloc>().add(const FetchBannerEvent());
     context.read<SecNewarrivalBloc>().add(const FetchNewArrivalEvent());
     context.read<CategoryBloc>().add(const FetchCategoryEvent());
+    context.read<CartBloc>().add(LoadCart());
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -51,72 +56,89 @@ class _HomescreenState extends State<Homescreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: Row(
-                  children: [
-                    const CircleAvatar(
-                      backgroundImage: AssetImage(AssetResources.profile),
-                    ),
-                    const SizedBox(width: 5),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Ahmed Raza",
-                            style: AppTextstyle.medium(fontSize: 15),
-                          ),
-                          Text(
-                            "ahmedraza@gmail.com",
-                            style: AppTextstyle.small(
-                              fontSize: 13,
-                              fontColor: AppColors.grey,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Row(
+                child: BlocBuilder<LoginBloc, LoginState>(
+                  builder: (context, state) {
+                    OtpResponseModel? user;
+                    if (state is OtpVerifySuccess) {
+                      user = state.user;
+                    } else if (state is AuthLoggedIn) {
+                      user = state.user;
+                    }
+
+                    return Row(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 8),
-                          decoration: const BoxDecoration(
-                            color: AppColors.lytwhite,
-                            shape: BoxShape.circle,
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => Searchscreen(),
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage:
+                              (user?.profileImage.isNotEmpty == true)
+                              ? NetworkImage(user!.profileImage)
+                              : const AssetImage(AssetResources.profile)
+                                    as ImageProvider,
+                        ),
+
+                        const SizedBox(width: 5),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                user?.ledgerName ?? "Guest User",
+                                style: AppTextstyle.medium(fontSize: 15),
+                              ),
+                              Text(
+                                user?.role ?? "",
+                                style: AppTextstyle.small(
+                                  fontSize: 13,
+                                  fontColor: AppColors.grey,
                                 ),
-                              );
-                            },
-                            icon: const Icon(
-                              Icons.search_outlined,
-                              size: 20,
-                              color: AppColors.grey,
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 8),
-                          decoration: const BoxDecoration(
-                            color: AppColors.lytwhite,
-                            shape: BoxShape.circle,
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.notifications_outlined,
-                              size: 20,
-                              color: AppColors.grey,
+                        Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 8),
+                              decoration: const BoxDecoration(
+                                color: AppColors.lytwhite,
+                                shape: BoxShape.circle,
+                              ),
+                              child: IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => Searchscreen(),
+                                    ),
+                                  );
+                                },
+                                icon: const Icon(
+                                  Icons.search_outlined,
+                                  size: 20,
+                                  color: AppColors.grey,
+                                ),
+                              ),
                             ),
-                          ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 8),
+                              decoration: const BoxDecoration(
+                                color: AppColors.lytwhite,
+                                shape: BoxShape.circle,
+                              ),
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.notifications_outlined,
+                                  size: 20,
+                                  color: AppColors.grey,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
               const SizedBox(height: 20),
@@ -139,16 +161,13 @@ class _HomescreenState extends State<Homescreen> {
                             child: Column(
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.all(
-                                    2,
-                                  ), 
+                                  padding: const EdgeInsets.all(2),
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
                                       style: BorderStyle.none,
                                       color: AppColors.bluegrey,
                                     ),
-                                  
                                   ),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.lytwhite,
@@ -197,29 +216,28 @@ class _HomescreenState extends State<Homescreen> {
                     );
                   }
                   if (state is BannerLoaded) {
-                   
                     return Column(
-        children: [
-          SizedBox(
-            height: 180,
-            child: PageView.builder(
-              controller: _bannerController,
-              itemCount: state.banner1Images.length,
-              itemBuilder: (context, index) {
-                return Image.network(
-                  state.banner1Images[index],
-                  fit: BoxFit.cover,
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 10),
-          DotsIndicator(
-            itemCount: state.banner1Images.length,
-            controller: _bannerController,
-          ),
-        ],
-      );
+                      children: [
+                        SizedBox(
+                          height: 180,
+                          child: PageView.builder(
+                            controller: _bannerController,
+                            itemCount: state.banner1Images.length,
+                            itemBuilder: (context, index) {
+                              return Image.network(
+                                state.banner1Images[index],
+                                fit: BoxFit.cover,
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        DotsIndicator(
+                          itemCount: state.banner1Images.length,
+                          controller: _bannerController,
+                        ),
+                      ],
+                    );
                   }
                   if (state is BannerError) {
                     return const SizedBox(height: 180);
@@ -314,46 +332,62 @@ class _HomescreenState extends State<Homescreen> {
                                     : "Price not available",
                                 style: AppTextstyle.medium(
                                   fontWeight: FontWeight.w700,
-                                  
                                 ),
-                                
                               ),
-                              SizedBox(height: 4,),
-                              InkWell(onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>CartScreen()));
-                              },
-                                child: Container(height: 20,width: 100,decoration: BoxDecoration(borderRadius: BorderRadius.circular(6),
-                                color:AppColors.Opacitygreencolor
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Image.asset(AssetResources.bag),
-                                    
-                                   
-                                    Text("Add Cart",style:AppTextstyle.small(fontColor:AppColors.green,),),
-                                  ],
-                                ),
-                                ),
-                              )
+                              SizedBox(height: 4),
+                              // BlocBuilder<CartBloc, CartState>(
+                              //   builder: (context, state) {
+                              //     CartProductModel?cartProduct;
+                              //     if(CartState is CartLoaded ){
+                              //       try{
+                              //         cartProduct=CartState.cartResponse.products.firstWhere((p)=>p.id==item.id);
+                              //       }catch(_){cartProduct =null;}
+
+                              //     }
+                              //     final bool isInCart=cartProduct!=null;
+                              //     return InkWell(
+                              //       onTap: () {
+                              //         if(isInCart){context.read<CartBloc>().add(RemoveFromCart(cartProduct!.cartItemId));
+                              //         }else{
+                              //           context.read<CartBloc>().add(Add)
+                              //         }
+                              //       },
+                              //       child: Container(
+                              //         height: 20,
+                              //         width: 100,
+                              //         decoration: BoxDecoration(
+                              //           borderRadius: BorderRadius.circular(6),
+                              //           color: AppColors.Opacitygreencolor,
+                              //         ),
+                              //         child: Row(
+                              //           mainAxisAlignment:
+                              //               MainAxisAlignment.spaceEvenly,
+                              //           children: [
+                              //             Image.asset(AssetResources.bag),
+
+                              //             Text(
+                              //               "Add Cart",
+                              //               style: AppTextstyle.small(
+                              //                 fontColor: AppColors.green,
+                              //               ),
+                              //             ),
+                              //           ],
+                              //         ),
+                              //       ),
+                              //     );
+                              //   },
+                              // ),
                             ],
-                            
                           ),
-                          
                         );
-                    
                       },
-                     
-                      
                     );
                   }
                   return const SizedBox();
-                
                 },
               ),
               const SizedBox(height: 15),
 
-             
               BlocBuilder<BannerBloc, BannerState>(
                 builder: (context, state) {
                   if (state is BannerLoading) {
@@ -363,29 +397,28 @@ class _HomescreenState extends State<Homescreen> {
                     );
                   }
                   if (state is BannerLoaded) {
-                 
-                          return Column(
-        children: [
-          SizedBox(
-            height: 180,
-            child: PageView.builder(
-              controller: _banner2Controller,
-              itemCount: state.banner2Images.length,
-              itemBuilder: (context, index) {
-                return Image.network(
-                  state.banner2Images[index],
-                  fit: BoxFit.cover,
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 10),
-          DotsIndicator(
-            itemCount: state.banner2Images.length,
-            controller: _banner2Controller,
-          ),
-        ],
-      );
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: 180,
+                          child: PageView.builder(
+                            controller: _banner2Controller,
+                            itemCount: state.banner2Images.length,
+                            itemBuilder: (context, index) {
+                              return Image.network(
+                                state.banner2Images[index],
+                                fit: BoxFit.cover,
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        DotsIndicator(
+                          itemCount: state.banner2Images.length,
+                          controller: _banner2Controller,
+                        ),
+                      ],
+                    );
                   }
                   if (state is BannerError) {
                     return const SizedBox(height: 180);
@@ -441,7 +474,7 @@ class _HomescreenState extends State<Homescreen> {
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final item = items[index];
-                       
+
                         return Container(
                           color: AppColors.warmwhite,
                           child: Column(
@@ -478,28 +511,40 @@ class _HomescreenState extends State<Homescreen> {
                               ),
 
                               SizedBox(height: 4),
-                            
-                            
-                               InkWell(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CartScreen()));
-                                },
-                                 child: Container(height: 20,width: 100,decoration: BoxDecoration(borderRadius: BorderRadius.circular(6),
-                                                               color:AppColors.Opacitygreencolor
-                                                               ),
-                                                               child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Image.asset(AssetResources.bag),
-                                    
-                                   
-                                    Text("Add Cart",style:AppTextstyle.small(fontColor:AppColors.green,),),
-                                  ],
-                                  ),
-                             ),
 
-                               ),
-                               SizedBox(height: 2,),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CartScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  height: 20,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6),
+                                    color: AppColors.Opacitygreencolor,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Image.asset(AssetResources.bag),
+
+                                      Text(
+                                        "Add Cart",
+                                        style: AppTextstyle.small(
+                                          fontColor: AppColors.green,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 2),
                             ],
                           ),
                         );

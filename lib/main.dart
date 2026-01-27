@@ -21,6 +21,7 @@ import 'package:g7_comerce_app/utils/shared_pref_helper/shared_pref_helper.dart'
 
 
 
+
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -36,6 +37,7 @@ void main()async {
     timeOut: const Duration(seconds: 15),
     isDeveloperWindowEnabled: true,
   );
+ 
 
   runApp(const MyApp());
 }
@@ -50,7 +52,7 @@ class MyApp extends StatelessWidget {
       BlocProvider<LoginBloc>(create: (_)=>di.getit.get<LoginBloc>()),
       BlocProvider<CstmrDashboardBloc>(create: (_)=>di.getit.get<CstmrDashboardBloc>()),
       BlocProvider<CartBloc>(create: (_)=>di.getit.get<CartBloc>()),
-      BlocProvider<BannerBloc>(create: (_)=>di.getit.get<BannerBloc>(),),
+      BlocProvider<BannerBloc>(create: (_)=>di.getit.get<BannerBloc>()),
       BlocProvider<CategoryBloc>(create: (_)=>di.getit.get<CategoryBloc>()),
       BlocProvider<SecNewarrivalBloc>(create: (_)=>di.getit.get<SecNewarrivalBloc>()),
       ],
