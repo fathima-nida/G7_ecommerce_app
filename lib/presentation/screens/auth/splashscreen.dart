@@ -21,17 +21,15 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     context.read<LoginBloc>().add(CheckLoginStatusEvent());
-    //  Future.delayed(Duration(seconds: 2),(){
-    //   Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-    //  }
-    //  );
+   
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if(state is ShowAuthPage){
+          await Future.delayed(const Duration(seconds: 4));
           Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
         }
       else if(state is AuthLoggedIn){

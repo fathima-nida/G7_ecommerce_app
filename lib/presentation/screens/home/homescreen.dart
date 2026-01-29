@@ -285,7 +285,7 @@ class _HomescreenState extends State<Homescreen> {
                             crossAxisCount: 3,
                             mainAxisSpacing: 1,
                             crossAxisSpacing: 2,
-                            childAspectRatio: 0.7,
+                            childAspectRatio: 0.70,
                           ),
                       itemCount: items.length,
                       itemBuilder: (context, index) {
@@ -295,6 +295,7 @@ class _HomescreenState extends State<Homescreen> {
                           child: Column(
                             children: [
                               InkWell(
+                                onTap: (){},
                                 child: Align(
                                   alignment: Alignment.topRight,
                                   child: Image.asset(
@@ -467,7 +468,7 @@ class _HomescreenState extends State<Homescreen> {
                             crossAxisCount: 3,
                             mainAxisSpacing: 1,
                             crossAxisSpacing: 2,
-                            childAspectRatio: 0.7,
+                            childAspectRatio: 0.60,
                           ),
                       itemCount: items.length,
                       itemBuilder: (context, index) {
