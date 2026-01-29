@@ -6,9 +6,10 @@ class FavouriteItemResponse extends Equatable {
   final int irMrp;
   final bool stock;
   final String description;
+ 
+
   final List<String> images;
 
-  
   final PaginationModel pagination;
   final List<WishlistProductModel> products;
 

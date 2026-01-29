@@ -1,8 +1,6 @@
 part of 'favourite_bloc.dart';
 
 abstract class FavouriteState extends Equatable {
-  const FavouriteState();
-
   @override
   List<Object?> get props => [];
 }
@@ -11,22 +9,19 @@ class FavouriteInitial extends FavouriteState {}
 
 class FavouriteLoading extends FavouriteState {}
 
+class FavouriteActionLoading extends FavouriteState {}
+
 class FavouriteSuccess extends FavouriteState {
   final FavouriteItemResponse success;
-  const FavouriteSuccess(this.success);
+  FavouriteSuccess(this.success);
+}
 
-  @override
-  List<Object?> get props => [];
-
+class FavouriteActionSuccess extends FavouriteState {
+  final String message;
+  FavouriteActionSuccess(this.message);
 }
 
 class FavouriteFailure extends FavouriteState {
   final String message;
- const FavouriteFailure(this.message);
-
-
-
-  @override
-  List<Object?> get props => [message];
+  FavouriteFailure(this.message);
 }
-
