@@ -9,6 +9,7 @@ import 'package:g7_comerce_app/presentation/screens/dashboard/order_view.dart';
 import 'package:intl/intl.dart';
 
 class AllProduct extends StatefulWidget {
+  
   // final SalesOrdersRespModel? routeName;
   const AllProduct({super.key,});
 
@@ -40,14 +41,14 @@ class _AllProductState extends State<AllProduct> {
   void initState() {
     super.initState();
 
-    context.read<SalesOrdersBloc>().add(
-      LoadSalesOrdersEvent(
-        pageNumber: 1,
-        pageSize: 10,
-        fromDate: DateTime.now(),
-        toDate: DateTime.now(),
-      ),
-    );
+    // context.read<SalesOrdersBloc>().add(
+    //   LoadSalesOrdersEvent(
+    //     pageNumber: 1,
+    //     pageSize: 10,
+    //     fromDate: DateTime.now(),
+    //     toDate: DateTime.now(),
+    //   ),
+    // );
   }
 
   @override

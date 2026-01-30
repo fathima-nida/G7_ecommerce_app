@@ -54,18 +54,16 @@ class _OrderViewState extends State<OrderView> {
 
     return Column(
       children: List.generate(steps.length, (index) {
-        final isCompleted = index < currentStep;
+        final isCompleted = index <= currentStep;
         final isActive = index == currentStep;
 
         Color circleColor = isCompleted
-            ? AppColors.skyBlue
-            : isActive
-            ? AppColors.red
-            : AppColors.grey;
+            ? AppColors.green
+            : Color.fromARGB(255, 232, 92, 92);
 
         Color lineColor = index < currentStep
-            ? AppColors.skyBlue
-            : AppColors.grey;
+            ? AppColors.green
+            : Color.fromARGB(255, 232, 92, 92);
 
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,10 +97,20 @@ class _OrderViewState extends State<OrderView> {
                       steps[index]["title"].toString(),
                       style: AppTextstyle.small(
                         fontWeight: FontWeight.w700,
-                        fontColor: isActive ? AppColors.red : AppColors.black,
+                        fontColor: isCompleted
+                            ? AppColors.black
+                            : const Color.fromARGB(255, 232, 92, 92),
                       ),
                     ),
-
+                    // Text(
+                    //   date.toString(),
+                    //   style: AppTextstyle.small(
+                    //     // fontWeight: FontWeight.w700,
+                    //     fontColor: isCompleted
+                    //         ? AppColors.black
+                    //         : AppColors.red,
+                    //   ),
+                    // ),
                     const SizedBox(height: 18),
                   ],
                 ),
@@ -149,26 +157,24 @@ class _OrderViewState extends State<OrderView> {
   }
 
   // Date formate like date-ymonth-year
-  
+
   String formatDateOnly(dynamic date) {
-  if (date == null) return "-";
+    if (date == null) return "-";
 
-  try {
-    DateTime dt;
+    try {
+      DateTime dt;
 
-    if (date is DateTime) {
-      dt = date;
-    } else {
-      dt = DateTime.parse(date.toString());
+      if (date is DateTime) {
+        dt = date;
+      } else {
+        dt = DateTime.parse(date.toString());
+      }
+
+      return DateFormat("dd-MM-yyyy").format(dt);
+    } catch (e) {
+      return "-";
     }
-
-    return DateFormat("dd-MM-yyyy").format(dt);
-  } catch (e) {
-    return "-";
   }
-}
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -313,7 +319,7 @@ class _OrderViewState extends State<OrderView> {
                         tilePadding: const EdgeInsets.symmetric(horizontal: 0),
                         shape: Border.all(color: AppColors.white),
                         title: Text(
-                          '1 Item Delivered',
+                          '1 Item ${orderView.status}',
                           style: AppTextstyle.medium(
                             fontWeight: FontWeight.w700,
                           ),
@@ -331,7 +337,7 @@ class _OrderViewState extends State<OrderView> {
                             Text(
                               // '20-12-2025',
                               formatDateOnly(orderView.date),
-                              
+
                               style: AppTextstyle.small(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
