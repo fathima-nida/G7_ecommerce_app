@@ -24,8 +24,12 @@ class AddFavouriteEvent extends FavouriteEvent {
 }
 
 class RemoveFavouriteEvent extends FavouriteEvent {
+  final int index;
   final int productId;
-  RemoveFavouriteEvent(this.productId);
+  RemoveFavouriteEvent(
+   this.index,
+   this.productId,
+    );
 
   @override
   List<Object?> get props => [productId];

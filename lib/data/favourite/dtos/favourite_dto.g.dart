@@ -39,7 +39,19 @@ Map<String, dynamic> _$PaginationDtoToJson(PaginationDto instance) =>
     };
 
 WishlistProductDto _$WishlistProductDtoFromJson(Map<String, dynamic> json) =>
-    WishlistProductDto();
+    WishlistProductDto(
+      irId: json['ir_id'],
+      irName: json['ir_name'],
+      irMrp: json['ir_mrp'],
+      stock: json['stock'],
+      images: json['images'] as List<dynamic>?,
+    );
 
 Map<String, dynamic> _$WishlistProductDtoToJson(WishlistProductDto instance) =>
-    <String, dynamic>{};
+    <String, dynamic>{
+      'ir_id': instance.irId,
+      'ir_name': instance.irName,
+      'ir_mrp': instance.irMrp,
+      'stock': instance.stock,
+      'images': instance.images,
+    };
