@@ -7,10 +7,10 @@ class AssetResources {
   static const phonestand="assets/category/phonestand.png";
   static const screencard="assets/category/screecard.png";
    static const chargerb="assets/category/chrgrbg.png";
-  static const charger= "asset/category/charger 1.png";
-  static const phonecase= "asset/categories/back cover.png";
-  static const screencards= "asset/categories/screencard.png";
-  static const stand =  "asset/categories/stand.png";
+  static const charger= "assets/category/charger_1.png";
+  static const phonecase= "assets/categories/back cover.png";
+  static const screencards= "assets/categories/screencard.png";
+  static const stand =  "assets/categories/stand.png";
   
  
   static const pending = 'assets/dashboard/pending.png';
@@ -54,7 +54,7 @@ class AssetResources {
   static const charger7 = "assets/category/charger7.png";
   static const backcoverx="assets/category/back cover.png";
   static const headphone ="assets/category/headset.png";
-  static const boxcart=  "assets/categories/box.png";
+  static const boxcart=  "assets/category/box.png";
   static const removebag="assets/cart/red_bag.png";
  
   //hisana
