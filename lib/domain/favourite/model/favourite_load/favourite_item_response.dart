@@ -6,9 +6,10 @@ class FavouriteItemResponse extends Equatable {
   final int irMrp;
   final bool stock;
   final String description;
+ 
+
   final List<String> images;
 
-  
   final PaginationModel pagination;
   final List<WishlistProductModel> products;
 
@@ -170,18 +171,18 @@ class WishlistProductModel extends Equatable {
 }
 
 
-  factory WishlistProductModel.dummy() {
-    return const WishlistProductModel(
-      irId: 0,
-      irName: '',
-      irMrp: 0,
-      stock: false,
-      images: [],
-      productName: '',
-      price: 0,
-      imageUrl: '',
-    );
-  }
+  // factory WishlistProductModel.dummy() {
+  //   return const WishlistProductModel(
+  //     irId: 0,
+  //     irName: '',
+  //     irMrp: 0,
+  //     stock: false,
+  //     images: [],
+  //     productName: '',
+  //     price: 0,
+  //     imageUrl: '',
+  //   );
+  // }
 
   Map<String, dynamic> toMap() {
     return {

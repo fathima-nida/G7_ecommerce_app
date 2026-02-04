@@ -6,7 +6,6 @@ class ProductDetailsResponse extends Equatable {
   final String message;
   final ProductDetailsModel data;
   
-
   const ProductDetailsResponse({
     required this.status,
     required this.statusCode,

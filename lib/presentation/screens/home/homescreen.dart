@@ -9,6 +9,7 @@ import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_state.dart';
 import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_event.dart';
+import 'package:g7_comerce_app/presentation/bloc/favourite/favourite_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_event.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_state.dart';
@@ -40,6 +41,9 @@ class _HomescreenState extends State<Homescreen> {
     context.read<SecNewarrivalBloc>().add(const FetchNewArrivalEvent());
     context.read<CategoryBloc>().add(const FetchCategoryEvent());
     context.read<CartBloc>().add(LoadCart());
+    context.read<FavouriteBloc>().add(
+      LoadFavouriteEvent(page: 1, pageSize: 100),
+    );
   }
 
   @override
@@ -146,7 +150,7 @@ class _HomescreenState extends State<Homescreen> {
                   if (state is CategoryLoading) {
                     return const SizedBox(
                       height: 110,
-                      child: CircularProgressIndicator(),
+                      child:SizedBox()
                     );
                   }
                   if (state is CategoryLoaded) {
@@ -208,10 +212,7 @@ class _HomescreenState extends State<Homescreen> {
               BlocBuilder<BannerBloc, BannerState>(
                 builder: (context, state) {
                   if (state is BannerLoading) {
-                    return const SizedBox(
-                      height: 180,
-                     
-                    );
+                    return const SizedBox(height: 180);
                   }
                   if (state is BannerLoaded) {
                     return Column(
@@ -290,20 +291,42 @@ class _HomescreenState extends State<Homescreen> {
                       itemCount: items.length,
                       itemBuilder: (context, index) {
                         final item = items[index];
-                        return Container(
+                      
+                    return Container(
                           color: AppColors.warmwhite,
                           child: Column(
                             children: [
-                              InkWell(
-                                onTap: (){},
-                                child: Align(
-                                  alignment: Alignment.topRight,
-                                  child: Image.asset(
-                                    AssetResources.favicon,
-                                    scale: 22,
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: InkWell(
+                                  onTap: () {
+                                   
+                                    setState(() {
+                                      items[index] = item.copyWith(
+                                        isInWishlist: !item.isInWishlist,
+                                      );
+                                    });
+
+                                    
+                                    if (item.isInWishlist) {
+                                      context.read<FavouriteBloc>().add(
+                                        RemoveFavouriteEvent(item.id),
+                                      );
+                                    } else {
+                                      context.read<FavouriteBloc>().add(
+                                        AddFavouriteEvent(item.id),
+                                      );
+                                    }
+                                  },
+                                  child: Icon(
+                                    item.isInWishlist
+                                        ? Icons.favorite
+                                        : Icons.favorite_border_outlined,
+                                        color: item.isInWishlist?AppColors.pink:AppColors.pink,
                                   ),
                                 ),
                               ),
+
                               Expanded(
                                 child: item.images.isNotEmpty
                                     ? Image.network(
@@ -390,10 +413,7 @@ class _HomescreenState extends State<Homescreen> {
               BlocBuilder<BannerBloc, BannerState>(
                 builder: (context, state) {
                   if (state is BannerLoading) {
-                    return const SizedBox(
-                      height: 180,
-                     
-                    );
+                    return const SizedBox(height: 180);
                   }
                   if (state is BannerLoaded) {
                     return Column(
@@ -480,9 +500,31 @@ class _HomescreenState extends State<Homescreen> {
                             children: [
                               Align(
                                 alignment: Alignment.topRight,
-                                child: Image.asset(
-                                  AssetResources.favicon,
-                                  scale: 22,
+                                child: InkWell(
+                                  onTap: () {
+                                    // Toggle locally for instant UI feedback
+                                    setState(() {
+                                      items[index] = item.copyWith(
+                                        isInWishlist: !item.isInWishlist,
+                                      );
+                                    });
+
+                                    // Call bloc to update backend
+                                    if (item.isInWishlist) {
+                                      context.read<FavouriteBloc>().add(
+                                        RemoveFavouriteEvent(item.id),
+                                      );
+                                    } else {
+                                      context.read<FavouriteBloc>().add(
+                                        AddFavouriteEvent(item.id),
+                                      );
+                                    }
+                                  },
+                                  child: Icon(
+                                    item.isInWishlist
+                                        ? Icons.favorite
+                                        : Icons.favorite_border_outlined,
+                                  ),
                                 ),
                               ),
                               Expanded(

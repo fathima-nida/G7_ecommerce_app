@@ -24,5 +24,5 @@ class ApiEndpoints {
    static const String favourite = "/get-ecommerce-wishlist";
    //product view
     static const String productDetails = "/ecommerce-product-details";
-   
+   static const String addToCart="/ecommerce-wishlist";
 }

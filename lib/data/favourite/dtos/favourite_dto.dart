@@ -1,4 +1,5 @@
-import 'package:g7_comerce_app/domain/favourite/model/favourite_item_response.dart';
+
+import 'package:g7_comerce_app/domain/favourite/model/favourite_load/favourite_item_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'favourite_dto.g.dart';

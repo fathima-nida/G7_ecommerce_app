@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
-import 'package:g7_comerce_app/domain/favourite/model/favourite_item_response.dart';
+import 'package:g7_comerce_app/domain/favourite/model/favourite_load/favourite_item_response.dart';
 import 'package:g7_comerce_app/presentation/bloc/favourite/favourite_bloc.dart';
 import 'favouriealert.dart';
 
@@ -26,7 +25,7 @@ class _FavouriteState extends State<Favourite> {
     final result = await showModalBottomSheet<String>(
       context: context,
       isScrollControlled: true,
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.black,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -64,141 +63,133 @@ WishlistProductModel(
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<FavouriteBloc, FavouriteState>(
-        builder: (context, state) {
-          if (state is FavouriteLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-        if (state is FavouriteFailure) {
-      return Center(child: Text(state.message));
-    }
-    final productsToShow = (state is FavouriteSuccess)
-    ? state.success.products:[];
-if (productsToShow.isEmpty){
-  return Center(
-    child:Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(AssetResources.headphone,width: 120,height: 120, ),
-        const SizedBox(height: 10),
-        Text("your wishlist is empty",style: TextStyle(fontSize: 16, color:Colors.grey),
+  body: BlocConsumer<FavouriteBloc, FavouriteState>(
+    listener: (context, state) {
+      if (state is FavouriteActionSuccess) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(state.message)),
+        );
+      }
+    },
+    builder: (context, state) {
+      if (state is FavouriteLoading) {
+        return const Center(child: CircularProgressIndicator());
+      }
 
-        )
-      ],
-    )
-  );
-}
-          return ListView.builder(
-            padding: const EdgeInsets.all(10),
-            itemCount: productsToShow.length,
-            itemBuilder: (context, index) {
-              final WishlistProductModel item =productsToShow[index];
-            final String imageUrl = item.imageUrl.isNotEmpty
-            ? item.imageUrl
-            : (item.images.isNotEmpty ? item.images.first : '');
-   final String titleText = item.productName;
-   final String priceText =   "₹${item.price.toStringAsFixed(0)}";
-    final int qty = 1;
-   
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Container(
-                 // height: 150,
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
-                    color: AppColors.containercolor,
-                  ),
-                   child: Row(
-          children: [
-            ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child:Image.asset(imageUrl,width: 100,height: 100,fit: BoxFit.cover,),
-                        
+      if (state is FavouriteFailure) {
+        return Center(child: Text(state.message));
+      }
+
+      final productsToShow = (state is FavouriteSuccess)
+          ? state.success.products
+          : [];
+
+      if (productsToShow.isEmpty) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(AssetResources.headphone, width: 120),
+              const SizedBox(height: 10),
+              const Text("Your wishlist is empty"),
+            ],
+          ),
+        );
+      }
+
+      return ListView.builder(
+        itemCount: productsToShow.length,
+        itemBuilder: (context, index) {
+          final item = productsToShow[index];
+
+          return Container(
+            key: ValueKey('${item.irId}_${item.imageUrl}'),
+            margin: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14),
+              color: AppColors.containercolor,
+            ),
+            child: Row(
+              children: [
+                //////
+              Image.asset(
+  item.imageUrl,
+  width: 90,
+  height: 90,
+  fit: BoxFit.cover,
+),
+
+
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(item.productName,maxLines: 1,overflow: TextOverflow.ellipsis,),
+                          InkWell(
+                            onTap: () {
+                              context.read<FavouriteBloc>().add(
+                                RemoveFavouriteEvent(item.irId),
+                              );
+                            },
+                            child: const Icon(Icons.close, color: AppColors.red),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    titleText,
-                                    style: AppTextstyle.small(
-                                      fontWeight: FontWeight.w500,
-                                      fontColor: AppColors.grey,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                      Text("₹${item.price}",
+                      style: AppTextstyle.medium(
+                                fontWeight: FontWeight.w600,
+                              ),
+                      ), 
+                         const SizedBox(height: 8),
+                          InkWell(
+                              onTap: () => _openDescriptionSheet(context),
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                height: 34,
+                                width: 110,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: AppColors.opacitygreenColor,
                                 ),
-                                Icon(Icons.close, color: AppColors.pink),
-                              ],
-                            ),
-                            const SizedBox(height: 5),
-                            Text(
-                              priceText,
-                              style: AppTextstyle.medium(fontWeight: FontWeight.w700),
-                            ),
-                            //const Spacer(),
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.center,
                                   children: [
-                                    _buildQuantityButton(Icons.remove),
-                                    const SizedBox(width: 12),
-                                    Text(
-                                     qty.toString().padLeft(2, '0'),
-                                      style: AppTextstyle.small(fontWeight: FontWeight.w500),
+                                    Image.asset(
+                                      AssetResources.bag,
+                                      color: AppColors.greenlight,
+                                      width: 18,
                                     ),
-                                    const SizedBox(width: 12),
-                                    _buildQuantityButton(Icons.add),
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      "Add Cart",
+                                      style: AppTextstyle.small(
+                                        fontColor:
+                                            AppColors.greenlight,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
                                   ],
                                 ),
-                                InkWell(
-                                  onTap: () => _openDescriptionSheet(context),
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Container(
-                                    height: 34,
-                                    width: 104,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: AppColors.opacitygreenColor,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset(AssetResources.bag, color: AppColors.greenlight),
-                                        const SizedBox(width: 6),
-                                        Text(
-                                          "Add Cart",
-                                          style: AppTextstyle.small(
-                                            fontColor: AppColors.greenlight,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
+                              ),
+                            ),          
                     ],
                   ),
-                ),
-              );
-            },
+                )
+              ],
+            ),
           );
         },
-      ),
-    );
+      );
+    },
+  ),
+);
+
   }
 
   Widget _buildQuantityButton(IconData icon) {
@@ -216,14 +207,41 @@ if (productsToShow.isEmpty){
       ),
     );
   }
-  
+  Widget _buildImage(String url) {
+    if (url.isEmpty) {
+      return _placeholderImage();
+    }
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Image.network(
+        url,
+        width: 90,
+        height: 90,
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => _placeholderImage(),
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const SizedBox(
+            width: 90,
+            height: 90,
+            child: Center(child: CircularProgressIndicator(strokeWidth: 2)),
+          );
+        },
+      ),
+    );
+  }
+
   Widget _placeholderImage() {
-    
     return Container(
-      width: 100,
-      height: 100,
-      color: Colors.grey[300],
-      child: const Icon(Icons.image, size: 40),
+      width: 90,
+      height: 90,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: Colors.grey[300],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: const Icon(Icons.image, size: 32),
     );
   }
 }
