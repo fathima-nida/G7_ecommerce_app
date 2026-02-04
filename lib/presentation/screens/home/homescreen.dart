@@ -524,6 +524,7 @@ class _HomescreenState extends State<Homescreen> {
                                     item.isInWishlist
                                         ? Icons.favorite
                                         : Icons.favorite_border_outlined,
+                                        color: item.isInWishlist? AppColors.pink:AppColors.pink,
                                   ),
                                 ),
                               ),
