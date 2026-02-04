@@ -6,6 +6,7 @@ import 'package:g7_comerce_app/core/theme/app_colors.dart';
 import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/customer_dashboard/cstmr_dashboard_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/dashboard/sales_ordes/bloc/sales_orders_bloc.dart';
 import 'package:g7_comerce_app/presentation/screens/dashboard/all_product.dart';
 import 'package:g7_comerce_app/presentation/screens/dashboard/widgets/calender_picker.dart';
 import 'package:intl/intl.dart';
@@ -243,6 +244,13 @@ class _CustomerDashboardState extends State<CustomerDashboard> {
                   devider,
                   InkWell(
                     onTap: () {
+                      context.read<SalesOrdersBloc>().add(
+                        LoadSalesOrdersEvent(
+                          pageNumber: 1,
+                          pageSize: 10,
+                          fromDate: fromDate!,
+                                  toDate: toDate!,
+                        ));
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => AllProduct()),

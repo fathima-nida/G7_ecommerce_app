@@ -310,7 +310,7 @@ class _HomescreenState extends State<Homescreen> {
                                     
                                     if (item.isInWishlist) {
                                       context.read<FavouriteBloc>().add(
-                                        RemoveFavouriteEvent(item.id),
+                                        RemoveFavouriteEvent(index, item.id),
                                       );
                                     } else {
                                       context.read<FavouriteBloc>().add(
@@ -512,7 +512,7 @@ class _HomescreenState extends State<Homescreen> {
                                     // Call bloc to update backend
                                     if (item.isInWishlist) {
                                       context.read<FavouriteBloc>().add(
-                                        RemoveFavouriteEvent(item.id),
+                                        RemoveFavouriteEvent(index, item.id),
                                       );
                                     } else {
                                       context.read<FavouriteBloc>().add(

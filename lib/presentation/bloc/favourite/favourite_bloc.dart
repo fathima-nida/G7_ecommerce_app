@@ -27,11 +27,6 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
     emit(FavouriteLoading());
 
     final req = FavouriteRequestModel(
-      irId: 0,
-      irName: '',
-      irMrp: 0,
-      stock: 0,
-      irImages: const [],
       pageNo: event.page,
       pageSize: event.pageSize,
     );
@@ -66,28 +61,62 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
     add(LoadFavouriteEvent(page: 1, pageSize: 10));
   }
 
-  // REMOVE
+  // // REMOVE
+  // Future<void> _onRemoveFavourite(
+  //   RemoveFavouriteEvent event,
+  //   Emitter<FavouriteState> emit,
+  // ) async {
+  //   emit(FavouriteActionLoading());
+
+  //   final req = WishlistRequestModel(
+  //     productId: event.productId,
+  //     isWishlist: 0,
+  //   );
+
+  //   final result = await repo.wishlistAction(req);
+
+  //   result.fold(
+  //     (failure) => emit(FavouriteFailure(failure.message)),
+  //     (success) => emit(FavouriteActionSuccess(success.message)),
+  //   );
+
+  //   add(LoadFavouriteEvent(page: 1, pageSize: 10));
+  // }
   Future<void> _onRemoveFavourite(
-    RemoveFavouriteEvent event,
-    Emitter<FavouriteState> emit,
-  ) async {
-    emit(FavouriteActionLoading());
+  RemoveFavouriteEvent event,
+  Emitter<FavouriteState> emit,
+) async {
+  if (state is! FavouriteSuccess) return;
 
-    final req = WishlistRequestModel(
-      productId: event.productId,
-      isWishlist: 0,
-    );
+  final currentState = state as FavouriteSuccess;
 
-    final result = await repo.wishlistAction(req);
+  final updatedList = currentState.success.products
+      .where((item) => item.irId != event.productId)
+      .toList();
 
-    result.fold(
-      (failure) => emit(FavouriteFailure(failure.message)),
-      (success) => emit(FavouriteActionSuccess(success.message)),
-    );
+  emit(FavouriteSuccess(
+    FavouriteItemResponse(
+      products: updatedList,
+      pagination: currentState.success.pagination,
+    ),
+  ));
 
-    add(LoadFavouriteEvent(page: 1, pageSize: 10));
-  }
-  
+  final req = WishlistRequestModel(
+    productId: event.productId,
+    isWishlist: 0,
+  );
 
+  final result = await repo.wishlistAction(req);
 
+  result.fold(
+    (failure) {
+      
+      emit(currentState);
+    // emit(FavouriteFailure(failure.message));
+    },
+    (success) {
+    // emit(FavouriteActionSuccess(success.message));
+    },
+  );
+}
 }

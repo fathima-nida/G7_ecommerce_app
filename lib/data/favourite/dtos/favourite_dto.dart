@@ -25,12 +25,6 @@ class WishlistDataDto {
   /// DTO → DOMAIN MODEL
   FavouriteItemResponse toModel() {
     return FavouriteItemResponse(
-      irId: 0,
-      irName: '',
-      irMrp: 0,
-      stock: false,
-      description: '',
-      images: const [], 
       pagination: pagination?.toModel() ?? PaginationModel.dummy(),
       products: (products ?? []).map((e) => e.toModel()).toList(),
     );
@@ -75,7 +69,27 @@ class PaginationDto {
 
 @JsonSerializable()
 class WishlistProductDto {
-  const WishlistProductDto();
+  @JsonKey(name: "ir_id")
+  final dynamic irId;
+
+  @JsonKey(name: "ir_name")
+  final dynamic irName;
+
+  @JsonKey(name: "ir_mrp")
+  final dynamic irMrp;
+
+  @JsonKey(name: "stock")
+  final dynamic stock;
+
+  @JsonKey(name: "images")
+  final List<dynamic>? images;
+  const WishlistProductDto({
+    this.irId,
+    this.irName,
+    this.irMrp,
+    this.stock,
+    this.images,
+  });
 
   factory WishlistProductDto.fromJson(Map<String, dynamic> json) =>
       _$WishlistProductDtoFromJson(json);
@@ -83,15 +97,13 @@ class WishlistProductDto {
   Map<String, dynamic> toJson() => _$WishlistProductDtoToJson(this);
 
   WishlistProductModel toModel() {
-    return const WishlistProductModel(
-      irId: 0,
-      irName: "",
-      irMrp: 0,
-      stock: false, 
-      images: [], 
-      productName: "",
-      price: 0.0,
-      imageUrl: "",
+    return  WishlistProductModel(
+      irId: irId ?? 0,
+      irName: irName ?? "",
+      irMrp:irMrp ??0,
+      stock:stock ??0, 
+      images: images?.map((e) => e.toString()).toList() ?? [],
+
     );
   }
 }
