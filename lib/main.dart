@@ -9,6 +9,8 @@ import 'package:g7_comerce_app/injector/injector.dart' as di;
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/customer_dashboard/cstmr_dashboard_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/dashboard/order_view/order_view_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/dashboard/sales_ordes/bloc/sales_orders_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/banner/banner_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/categorylist/category_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/home/sec_newarrival/search_bloc.dart';
@@ -18,13 +20,12 @@ import 'package:g7_comerce_app/presentation/bloc/product/product_bloc.dart';
 import 'package:g7_comerce_app/presentation/screens/auth/splashscreen.dart';
 import 'package:g7_comerce_app/utils/shared_pref_helper/shared_pref_helper.dart';
 
-
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   di.setup();
-   String? savedBaseUrl = await SharedPrefHelper.getBaseUrl();
+  String? savedBaseUrl = await SharedPrefHelper.getBaseUrl();
   savedBaseUrl ??= ApiEndpoints.baseUrl;
   await SharedPrefHelper.saveBaseUrl(savedBaseUrl);
 
@@ -34,7 +35,6 @@ void main()async {
     timeOut: const Duration(seconds: 15),
     isDeveloperWindowEnabled: true,
   );
- 
 
   runApp(const MyApp());
 }
@@ -44,30 +44,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return MultiBlocProvider(
       providers: [
-      BlocProvider<LoginBloc>(create: (_)=>di.getit.get<LoginBloc>()),
-      BlocProvider<CstmrDashboardBloc>(create: (_)=>di.getit.get<CstmrDashboardBloc>()),
-      BlocProvider(create: (_) => FavouriteBloc(FavouriteRepositoryImpl())),
-      BlocProvider<ProductDetailsBloc>(create: (_) => di.getit.get<ProductDetailsBloc>()),
-      BlocProvider<CartBloc>(create: (_)=>di.getit.get<CartBloc>()),
-      BlocProvider<BannerBloc>(create: (_)=>di.getit.get<BannerBloc>()),
-      BlocProvider<CategoryBloc>(create: (_)=>di.getit.get<CategoryBloc>()),
-      BlocProvider<SecNewarrivalBloc>(create: (_)=>di.getit.get<SecNewarrivalBloc>()),
-      BlocProvider<BannerBloc>(create: (_)=>di.getit.get<BannerBloc>()),
-      BlocProvider<CategoryBloc>(create: (_)=>di.getit.get<CategoryBloc>()),
-      BlocProvider<SearchBloc>(create: (_)=>di.getit.get<SearchBloc>()),
-  ],
-      
-       
+        BlocProvider<LoginBloc>(create: (_) => di.getit.get<LoginBloc>()),
+        BlocProvider<CstmrDashboardBloc>(
+          create: (_) => di.getit.get<CstmrDashboardBloc>(),
+        ),
+        BlocProvider<SalesOrdersBloc>(
+          create: (_) => di.getit.get<SalesOrdersBloc>(),
+        ),
+        BlocProvider<OrderViewBloc>(create: (_)=>di.getit.get<OrderViewBloc>()),
+        BlocProvider(create: (_) => FavouriteBloc(FavouriteRepositoryImpl())),
+        BlocProvider<ProductDetailsBloc>(
+          create: (_) => di.getit.get<ProductDetailsBloc>(),
+        ),
+        BlocProvider<CartBloc>(create: (_) => di.getit.get<CartBloc>()),
+        BlocProvider<BannerBloc>(create: (_) => di.getit.get<BannerBloc>()),
+        BlocProvider<CategoryBloc>(create: (_) => di.getit.get<CategoryBloc>()),
+        BlocProvider<SecNewarrivalBloc>(
+          create: (_) => di.getit.get<SecNewarrivalBloc>(),
+        ),
+        BlocProvider<BannerBloc>(create: (_) => di.getit.get<BannerBloc>()),
+        BlocProvider<CategoryBloc>(create: (_) => di.getit.get<CategoryBloc>()),
+        BlocProvider<SearchBloc>(create: (_) => di.getit.get<SearchBloc>()),
+      ],
+
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home:SplashScreen(),
+        home: SplashScreen(),
       ),
     );
   }
 }
-
-     
