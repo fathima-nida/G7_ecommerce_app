@@ -18,6 +18,7 @@ import 'package:g7_comerce_app/presentation/bloc/product/product_bloc.dart';
 import 'package:g7_comerce_app/presentation/screens/auth/splashscreen.dart';
 import 'package:g7_comerce_app/utils/shared_pref_helper/shared_pref_helper.dart';
 
+
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -33,6 +34,7 @@ void main()async {
     timeOut: const Duration(seconds: 15),
     isDeveloperWindowEnabled: true,
   );
+ 
 
   runApp(const MyApp());
 }

@@ -107,4 +107,6 @@ class OtpResponseModel extends Equatable {
       routes: routes ?? this.routes,
     );
   }
+ 
 }
+

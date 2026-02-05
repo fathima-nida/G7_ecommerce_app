@@ -6,7 +6,6 @@ import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_event.dart';
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_state.dart';
 import 'package:g7_comerce_app/presentation/screens/auth/loginscreen.dart';
-import 'package:g7_comerce_app/presentation/screens/home/homescreen.dart';
 import 'package:g7_comerce_app/presentation/widgets/bottom_navigation.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,18 +20,16 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<LoginBloc>().add(checkLoginStatus());
-    //  Future.delayed(Duration(seconds: 2),(){
-    //   Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-    //  }
-    //  );
+    context.read<LoginBloc>().add(CheckLoginStatusEvent());
+   
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if(state is ShowAuthPage){
+          await Future.delayed(const Duration(seconds: 4));
           Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
         }
       else if(state is AuthLoggedIn){

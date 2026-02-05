@@ -9,6 +9,7 @@ import 'package:g7_comerce_app/presentation/screens/profile/profile.dart';
 import 'package:g7_comerce_app/presentation/screens/favourite/favourite.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
+ 
   const BottomNavigationWidget({super.key});
 
   @override
@@ -18,8 +19,8 @@ class BottomNavigationWidget extends StatefulWidget {
 class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [
-    Homescreen(),
+  late final List<Widget> _pages = [
+     Homescreen(),
     CategoryPage(),
     CartScreen(),
     Favourite(),

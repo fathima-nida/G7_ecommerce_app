@@ -10,10 +10,11 @@ class DescriptionBottomSheet extends StatefulWidget {
 }
 
 class _DescriptionBottomSheetState extends State<DescriptionBottomSheet> {
+   final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
-
+   
     return Padding(
       
       padding: EdgeInsets.only(

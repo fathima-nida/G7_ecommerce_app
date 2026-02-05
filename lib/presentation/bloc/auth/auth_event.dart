@@ -13,14 +13,10 @@ class LoginWithMobileEvent extends LoginEvent {
 
   const LoginWithMobileEvent(this.mobile);
 
-
-
   @override
   List<Object?> get props => [mobile];
 }
 
-class checkLoginStatus extends LoginEvent{}
-class LogoutApp extends LoginEvent{}
 /// Triggered when user submits OTP
 class VerifyOtpEvent extends LoginEvent {
   final String otp;
@@ -31,3 +27,8 @@ class VerifyOtpEvent extends LoginEvent {
   List<Object?> get props => [otp];
 }
 
+/// Check if user is already logged in
+class CheckLoginStatusEvent extends LoginEvent {}
+
+/// Logout user
+class LogoutApp extends LoginEvent {}

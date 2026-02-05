@@ -15,6 +15,8 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
     on<LoadFavouriteEvent>(_onLoadFavourites);
     on<AddFavouriteEvent>(_onAddFavourite);
     on<RemoveFavouriteEvent>(_onRemoveFavourite);
+  
+
   }
 
   // LOAD

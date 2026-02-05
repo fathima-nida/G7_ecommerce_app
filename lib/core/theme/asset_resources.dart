@@ -37,6 +37,7 @@ class AssetResources {
   static const prfle = 'assets/bottom_navigation/profile.png';
   static const bag = "assets/category/Bag.png";
   static const favicon="assets/home/Heart - Icon.png";
+  static const favfillicon="assets/home/Heart - Iconfill.png";
 
   static const homeWhite = 'assets/bottom_navigation/white_house.png';
   static const categoryWhite = 'assets/bottom_navigation/white_category.png';

@@ -34,3 +34,4 @@ class RemoveFavouriteEvent extends FavouriteEvent {
   @override
   List<Object?> get props => [productId];
 }
+
