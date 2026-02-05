@@ -66,6 +66,9 @@ class _FavouriteState extends State<Favourite> {
   // ];
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+  final width = size.width;
+  final height = size.height;
     return Scaffold(
       body: BlocConsumer<FavouriteBloc, FavouriteState>(
         listener: (context, state) {
@@ -114,13 +117,11 @@ class _FavouriteState extends State<Favourite> {
                   color: AppColors.containercolor,
                 ),
                 child: Row(
-                  children: [
-                    //////
+                  children: [                 
                     item.images.isNotEmpty?
                     Image.network(item.images[0], width: 80): 
-                    Icon( Icons.image,),
-                    
-                    const SizedBox(width: 15),
+                   const Icon( Icons.image),     
+                     SizedBox(width: 12),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +129,11 @@ class _FavouriteState extends State<Favourite> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(item.irName),
+                              Text(item.irName,
+                               maxLines: 2,
+                               overflow: TextOverflow.ellipsis,
+                              ),
+                              
                               InkWell(
                                 onTap: () {
                                   context.read<FavouriteBloc>().add(
