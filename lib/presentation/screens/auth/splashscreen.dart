@@ -21,20 +21,25 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     context.read<LoginBloc>().add(CheckLoginStatusEvent());
-   
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) async {
-        if(state is ShowAuthPage){
-          await Future.delayed(const Duration(seconds: 4));
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+        if (state is ShowAuthPage) {
+          await Future.delayed(const Duration(seconds: 5));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => LoginScreen()),
+          );
+        } else if (state is AuthLoggedIn) {
+          await Future.delayed(const Duration(seconds: 5));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => BottomNavigationWidget()),
+          );
         }
-      else if(state is AuthLoggedIn){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNavigationWidget()));
-      }
         // TODO: implement listener
       },
       child: Scaffold(
