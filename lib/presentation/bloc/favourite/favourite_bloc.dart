@@ -61,7 +61,7 @@ class FavouriteBloc extends Bloc<FavouriteEvent, FavouriteState> {
     add(LoadFavouriteEvent(page: 1, pageSize: 10));
   }
 
-  // // REMOVE
+   // REMOVE
   // Future<void> _onRemoveFavourite(
   //   RemoveFavouriteEvent event,
   //   Emitter<FavouriteState> emit,
