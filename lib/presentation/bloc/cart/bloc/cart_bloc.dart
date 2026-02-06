@@ -2,7 +2,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/domain/cart/model/cart_request.dart';
 import 'package:g7_comerce_app/domain/cart/repositories/cart_repo.dart';
-
 import 'cart_event.dart';
 import 'cart_state.dart';
 
