@@ -84,7 +84,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
           ),
         ),
       ),
-    );
+    ); 
   }
 
   Widget _buildNavItem(int index) {
