@@ -119,8 +119,8 @@ class _FavouriteState extends State<Favourite> {
                 child: Row(
                   children: [                 
                     item.images.isNotEmpty?
-                    Image.network(item.images[0], width: 80): 
-                   const Icon( Icons.image),     
+                    Image.network(item.images[0], height:100,width: 100,): 
+                   const Icon( Icons.image,size:100),     
                      SizedBox(width: 12),
                     Expanded(
                       child: Column(
