@@ -10,3 +10,8 @@ sealed class CategoryEvent extends Equatable {
 class FetchCategoryEvent extends CategoryEvent{
   const FetchCategoryEvent();
 }
+class SearchCategoryEvent extends CategoryEvent {
+  final String name;
+  const SearchCategoryEvent(this.name);
+}
+

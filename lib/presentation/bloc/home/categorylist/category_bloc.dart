@@ -13,6 +13,8 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
 
   CategoryBloc(this.repository) : super(CategoryInitial()) {
     on<FetchCategoryEvent>(_onFetchCategory);
+       
+    
     }
   Future<void>_onFetchCategory(
     FetchCategoryEvent event,
@@ -31,4 +33,6 @@ result.fold((failure){emit(CategoryError(failure.message));},
  }
  );
   }
+  
+
 }

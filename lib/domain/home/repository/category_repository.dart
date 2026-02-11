@@ -4,4 +4,5 @@ import 'package:g7_comerce_app/domain/home/models/categorylist/category_respo_mo
 
 abstract class CategoryRepository {
 FutureEither<CategoryListResponseModel>fetchCategory(CategoryListReqModel requestmodel);
+
 }
