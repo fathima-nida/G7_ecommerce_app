@@ -27,5 +27,5 @@ class ApiEndpoints {
    static const String addToCart="/ecommerce-wishlist";
    //category screen
    static const String categoryName="/ecommerce-search-category";
-   static const String categoryId="/ecommerce-products-by-category/{categoryId}";
+   static const String categoryId="/ecommerce-products-by-category";
 }

@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:g7_comerce_app/core/theme/app_colors.dart';
-import 'package:g7_comerce_app/core/theme/asset_resources.dart';
 import 'package:g7_comerce_app/core/theme/textstyle.dart';
 import 'package:g7_comerce_app/domain/category/models/category_byname/categoryname_req_model.dart';
 import 'package:g7_comerce_app/presentation/bloc/category/category_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/category/category_event.dart';
-import 'package:g7_comerce_app/presentation/bloc/category/category_state.dart';
+import 'package:g7_comerce_app/presentation/bloc/home/categorylist/category_bloc.dart';
 import 'package:g7_comerce_app/presentation/screens/category/chargerlist.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -18,14 +16,10 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
-  final List<Map<String, dynamic>> categoryList = [
-    {'image': AssetResources.chargerb, 'text': 'Charger'},
-    {'image': AssetResources.backcovers, 'text': 'Back Covers'},
-    {'image': AssetResources.screenguard, 'text': 'Screen Guards'},
-    {'image': AssetResources.mobilestand, 'text': 'Mobile Stands'},
-  ];
+ 
 @override
   void initState() {
+   context.read<CategoryBloc>().add(const FetchCategoryEvent());
     // TODO: implement initState
     super.initState();
   }
@@ -67,19 +61,19 @@ class _CategoryPageState extends State<CategoryPage> {
 
             // 📦 GRID VIEW
             Expanded(
-              child: BlocBuilder<CategorySearchBloc, CategorySearchState>(
+              child: BlocBuilder<CategoryBloc, CategoryState>(
                 builder: (context, state) {
-                  if (state is CategorySearchLoading) {
+                  if (state is CategoryLoading) {
                     return const Center(child: CircularProgressIndicator());
-                  } else if (state is CategorySearchError) {
+                  } else if (state is CategoryError) {
                     return Center(
                       child: Text(
                         state.message,
                         style: AppTextstyle.small(fontColor: AppColors.red),
                       ),
                     );
-                  } else if (state is CategorySearchLoaded) {
-                    final categories = state.response.data;
+                  } else if (state is CategoryLoaded) {
+                    final categories = state.categories;
 
                     if (categories.isEmpty) {
                       return Center(
@@ -146,60 +140,14 @@ class _CategoryPageState extends State<CategoryPage> {
                     );
                   }
 
-                  // Initial state fallback
-                  return GridView.builder(
-                    itemCount: categoryList.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
-                      childAspectRatio: 184 / 111,
-                    ),
-                    itemBuilder: (context, index) {
-                      final data = categoryList[index];
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => Chargerlistscreen(),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: AppColors.lighteGrey.withOpacity(0.6),
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                            color: AppColors.white,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(data['image'], height: 40),
-                              const SizedBox(height: 6),
-                              Text(
-                                data['text'],
-                                style: AppTextstyle.small(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  fontColor: AppColors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
+          
+                  return SizedBox();
                 },
-              ),
-            ),
+             ),
+           ),
           ],
         ),
-      ),
+       ),
     );
   }
 }
