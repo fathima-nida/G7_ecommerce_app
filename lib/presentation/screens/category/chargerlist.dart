@@ -23,7 +23,10 @@ class Chargerlistscreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         elevation: 0,
-        leading: const Icon(Icons.arrow_back, color: AppColors.black),
+        leading:IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon:Icon(Icons.arrow_back, color: AppColors.black)),
+       
         title: Text("Chargers", style: AppTextstyle.large()),
       ),
       body: Padding(

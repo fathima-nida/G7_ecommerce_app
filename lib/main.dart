@@ -8,6 +8,7 @@ import 'package:g7_comerce_app/data/favourite/implementation/favourite_repositor
 import 'package:g7_comerce_app/injector/injector.dart' as di;
 import 'package:g7_comerce_app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/cart/bloc/cart_bloc.dart';
+import 'package:g7_comerce_app/presentation/bloc/category/category_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/customer_dashboard/cstmr_dashboard_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/order_view/order_view_bloc.dart';
 import 'package:g7_comerce_app/presentation/bloc/dashboard/sales_ordes/bloc/sales_orders_bloc.dart';
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<BannerBloc>(create: (_) => di.getit.get<BannerBloc>()),
         BlocProvider<CategoryBloc>(create: (_) => di.getit.get<CategoryBloc>()),
         BlocProvider<SearchBloc>(create: (_) => di.getit.get<SearchBloc>()),
+        BlocProvider<CategorySearchBloc>(create: (_)=>di.getit.get<CategorySearchBloc>())
       ],
 
       child: MaterialApp(
